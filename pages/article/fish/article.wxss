@@ -1,0 +1,38 @@
+
+.top {
+	padding-bottom:24rpx;
+	align-items:center;
+	justify-content:space-between;
+}
+
+.top .avatar image{
+	height:60rpx;
+	width:60rpx;
+	border-radius: 30rpx;
+}
+.top .info{
+	margin-left: 12rpx;
+}
+.top .info text{
+	font-size:30rpx;
+	display:block;
+}
+.top .info text.date{
+	font-size:22rpx;
+	color:#B8B8B8;
+}
+
+.top   .isfan{
+	font-size: 26rpx;
+    color: #B8B8B8;
+    border: 1px solid #B8B8B8;
+    padding: 3px 5px;
+}
+
+.content{
+	font-size: 34rpx;
+}
+.image{
+	width: 100%;
+	margin-top:24rpx;
+}

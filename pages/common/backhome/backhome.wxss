@@ -1,0 +1,14 @@
+view.fixed-view {
+	position:fixed;
+	top:50%;
+	padding:8rpx 12rpx;
+	font-size:26rpx;
+	border-top-right-radius: 12rpx;
+	border-bottom-right-radius: 12rpx;
+	background: #0a3255;
+	z-index: 100000;
+}
+image{
+	width: 36rpx;
+	height: 36rpx;
+}

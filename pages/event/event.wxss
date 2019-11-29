@@ -1,0 +1,90 @@
+.week-box{
+	background: #0a3255;
+	justify-content:space-around;	
+}
+.week-box .day{
+	font-size:26rpx;
+	color:#fff;
+	margin:12rpx 0rpx;
+	padding:8rpx 20rpx;
+}
+.week-box .active{
+	color: #fff;
+    background: #2a567b;
+}
+
+.tab-box{
+  	width: 100%;
+   	justify-content:space-around;
+	background:#0a3255;
+	padding:12rpx 0rpx;
+}
+.tab-box view{
+  	line-height:100rpx;
+  	text-align:center;
+  	color:#fff;
+  	font-size:32rpx;
+}
+.tab-box view.active{
+	border-bottom: 1rpx solid #fff;
+}
+
+.event-box {
+	padding: 12rpx;
+	flex-wrap: nowrap;
+	align-items: center;
+	background: #e8e8e8;
+	margin: 12rpx 12rpx 6rpx 12rpx;
+	border-radius: 12rpx;
+}
+.event-box image{
+	max-width: 258rpx;
+	height: 100%;
+	box-sizing: border-box;
+	border-radius: 12rpx;
+}
+.event-box .title{
+	font-size:30rpx;
+}
+.event-box view.tag{
+	padding: 5rpx 0px;
+}
+.event-box view .tag text{  
+	font-size: 24rpx;
+	background: #f16f41;
+	color: #fff;
+	padding: 6rpx 10rpx;
+	border-radius: 4rpx;
+	margin-right:20rpx;
+}
+.event-box view .tag text.verify{
+	background: #FF9900;
+}
+.event-box view .tag text.type{
+	background: #ddd;
+}
+.event-box view .tag text.heikeng{
+   background:#6A7A8B;
+}
+.event-box view .tag text.luya{
+	background:#FF6600;
+}
+.event-box view .tag text.haidiao{
+	background:#0075F6;
+}
+.event-box view .tag text.ziran{
+	background:#00CD99;
+}
+.event-box view .tag text.game{
+	background: #017ed2;
+}
+.event-box view .tag text.going {
+	background: #0ec254;
+}
+.event-box view .tag text.end{
+	background:#989aa2;
+}
+.event-box view .info-box{
+	font-size: 26rpx;
+    color: #787878;
+}

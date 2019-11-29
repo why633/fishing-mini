@@ -1,0 +1,78 @@
+.search
+{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  width:70%;
+  height:60rpx;
+  background-color:whitesmoke;
+  border:1rpx solid whitesmoke;
+  border-radius: 5rpx;
+
+}
+
+/* 搜索框提示文字样式 */
+.search input
+{
+  font-size:27rpx;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-left:30rpx; 
+}
+
+/* 搜索框小图标 */
+.search view image
+{ 
+  width:40rpx;
+  height:40rpx;
+  padding-right:20rpx;
+}
+
+.spot-box {
+  padding: 12rpx;
+  flex-wrap: nowrap;
+  align-items: center;
+  border-bottom: 1rpx solid #ddd;
+}
+.spot-box image{
+  width: 180rpx;
+  height: 180rpx;
+  box-sizing: border-box;
+}
+.spot-box .info .title{
+  font-size:30rpx;
+}
+.spot-box .star-tag-box{
+  padding: 5rpx 0rpx;
+}
+.spot-box .stars-box image{
+  width:30rpx;
+  height:30rpx;
+}
+.spot-box view.tag{
+  padding: 0rpx;
+  align-items:center;
+}
+.spot-box view .tag text{  
+  font-size: 24rpx;
+  background: #f16f41;
+  color: #fff;
+  padding: 6rpx 10rpx;
+  border-radius: 4rpx;
+  margin-right:20rpx;
+  display:inline-block;
+}
+.spot-box view .tag text.verify{
+  background: #FF9900;
+}
+.spot-box view .tag text.game{
+  background: #0075F6;
+}
+.spot-box view .tag text.game{
+  background: #00CD99;
+}
+
+.spot-box view .info-box{
+  font-size: 26rpx;
+    color: #787878;
+}

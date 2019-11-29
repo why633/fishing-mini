@@ -1,0 +1,45 @@
+.dealWith  .dealBox{
+   height: 100%;
+   justify-content:space-around;
+}
+
+.app-title{
+  font-size:34rpx;
+  margin:24rpx 0px;
+}
+.dealWith  .dealBox view{
+  border-bottom:2rpx solid #ddd;
+  line-height:100rpx;
+  margin-bottom:-3rpx;
+  text-align:center;
+}
+.dealWith  .dealBox  .active{
+  border-bottom: 2rpx solid #0a3255;
+  color:#0a3255
+}
+
+
+.application-box{
+  flex-wrap: nowrap;
+  align-items: center;
+  padding:24rpx 0rpx;
+  border-bottom: 1rpx solid #ddd;
+  width: 100%;
+}
+.application-box image{
+  max-height:200rpx;
+  width:200rpx;
+  box-sizing: border-box;
+}
+.application-box .application-info{
+  width: 100%;
+  margin-left: 24rpx;
+}
+
+.application-box .application-info .event text{
+  font-size: 35rpx;
+}
+.application-box .application-info view.num text{
+  color: #86888f;
+  font-size: 30rpx;
+}

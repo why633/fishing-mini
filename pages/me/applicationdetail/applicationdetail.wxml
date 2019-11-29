@@ -1,0 +1,51 @@
+<view class="container" >
+    <view class="box flex-column-box application-box" style="padding-top: 12rpx;">
+        <view class="flex-row-box">
+          <text class="label">订单编号</text>
+          <text>{{ application.code }}</text>
+        </view>
+        <view class="flex-row-box">
+          <text class="label">{{ application.event.type == 'game' ? '赛事' : '活动'}}名称</text>
+          <text>{{ application.event.name }}</text>
+        </view>
+        <view class="flex-row-box">
+          <text class="label">所属钓场</text>
+          <text>{{ application.event.spot.name }}</text>
+        </view>
+        <view class="flex-row-box">
+          <text class="label">{{ application.event.type == 'game' ? '赛事' : '活动'}}日期</text>
+          <text>{{ application.event.timeString }}</text>
+        </view>
+        <view class="flex-row-box">
+          <text class="label">报名人数</text>
+          <text>{{ application.count }}</text>
+        </view>
+        <view class="flex-row-box">
+          <text class="label">报名金额</text>
+          <text>{{ application.money }}元</text>
+        </view>
+        <view class="flex-row-box">
+          <text class="label">订单状态</text>
+          <text>{{ payok ? "已付款" : application.status }}</text>
+        </view>
+        <view class="flex-row-box">
+          <text class="label">核销状态</text>
+          <text>{{ application.check ? "已核销" : '未核销' }}</text>
+        </view>
+    </view>
+    <view class="box op-box">
+        <view class="flex-row-box btn-box">
+          <view>
+            <button bindtap="event" class="btn" style="margin-right:12rpx;">{{ application.event.type == 'game' ? '赛事' : '活动'}}详情</button>
+          </view>
+          <view>
+           <button disabled="{{ payok }}" bindtap="pay" class="btn wechat" style="margin-left:12rpx;">微信支付</button>
+          </view>
+        </view>
+        <view class="flex-row-box c" wx:if="{{ payok && !application.check}}" style="align-items: center;justify-content: center;">
+          <image class="qr" src="{{qrurl}}" />
+          <text style="font-size: 32rpx;color:#B8B8B8;margin-bottom: 10px;">订单核销码</text>
+        </view>
+    </view>
+
+</view>

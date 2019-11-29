@@ -1,0 +1,210 @@
+page {
+ 
+}
+.swiper{
+  position:relative;
+}
+
+.icon-box view{
+  align-items:center;
+}
+.icon-box view image{
+  width:66rpx;
+  height:66rpx;
+  margin-bottom:15rpx;
+}
+.icon-box view text{
+  font-size:26rpx;
+}
+
+.dealWith  .dealBox{
+   height: 100%;
+   justify-content:space-around;
+}
+
+.app-title{
+  font-size:34rpx;
+  margin:24rpx 0px;
+}
+.dealWith  .dealBox view{
+  border-bottom:2rpx solid #ddd;
+  line-height:100rpx;
+  margin-bottom:-3rpx;
+  text-align:center;
+}
+.dealWith  .dealBox  .active{
+  border-bottom: 2rpx solid #0a3255;
+  color:#0a3255
+}
+.dealWith .content{
+  border-top:1rpx solid #ddd;
+  padding:20rpx 2%;
+}
+.dealWith .content .info{
+  max-width:60%;
+  padding:0rpx 10rpx;
+}
+.dealWith .content .top{
+  font-weight:bold;
+  font-size:30rpx;
+  height:50rpx;
+  width:100%;
+  word-wrap: break-word;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap
+}
+.dealWith .content .topnew{
+  font-weight:bold;
+  font-size:30rpx;
+  height:50rpx;
+  width:100%;
+}
+.dealWith .content .bottom{
+  font-size:29rpx;
+  overflow:hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  width:100%;
+}
+.dealWith .content image{
+  width:35%;
+  max-height:150rpx;
+}
+.buy-icon{
+  height:40rpx;
+  width:161rpx;
+}
+
+.article-box {
+  display: flex;
+  flex-direction:column;
+  width:100%;
+  padding-bottom: 12rpx;
+}
+.article-box .title{
+    margin: 0px;
+    font-size:33rpx;
+}
+.article-box   image{
+    height:76px;
+    margin: 16rpx 0px;
+    width:32%;
+}
+.article-box  .date{
+    font-size:26rpx;
+    color: #86888f;
+}
+
+.article-s-box{
+  width:100%;
+  padding-bottom: 14rpx;
+}
+
+.article-s-box .date{
+    font-size:26rpx;
+    color: #86888f;
+}
+.article-s-box  .main{
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+    width:100%;
+    padding-bottom: 14rpx;
+}
+
+.article-s-box  .main .title{
+    margin: 0px;
+    padding:0px 12rpx 0px 0px;
+    font-size:33rpx;
+}
+.article-s-box image{
+  max-width: 33.3%;
+  max-height: 140rpx;
+}
+
+.event-box{
+  width:49%;
+  display: inline-block;
+  position:relative;
+}
+.event-box image{
+  width:95%;
+}
+.event-box .event-info{
+  position: absolute;
+  width: 95%;
+  height: 95%;
+  top: 0px;
+  padding:12rpx 12rpx 0rpx 12rpx;
+}
+.event-box .event-info .tag{
+  font-size: 24rpx;
+  color: #fff;
+  width: 80rpx;
+  text-align: center;
+  padding: 6rpx;
+}
+.event-box .event-info .game{
+  background: #017ed2;
+}
+.event-box .event-info .activity{
+  background: #f16f41;
+}
+.event-box .event-info .info{
+  position: absolute;
+  bottom: 38rpx;
+  width: 90%;
+  box-sizing: border-box;
+}
+.event-box .event-info .info .title{
+  display:block;
+  width:100%;
+  font-size:24rpx;
+  color:#fff;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.event-box .event-info .info .time{
+  font-size:18rpx;
+  color:#fff;
+}
+
+
+
+.spot-box{
+  width:24.5%;
+  display: inline-block;
+  position:relative;
+}
+.spot-box image{
+  width:95%;
+}
+.spot-box .spot-info{
+  position: absolute;
+  width: 95%;
+  height: 95%;
+  top: 0px;
+  padding:12rpx 12rpx 0rpx 12rpx;
+}
+
+.spot-box .spot-info .info{
+  position: absolute;
+  bottom: 38rpx;
+  width: 90%;
+  box-sizing: border-box;
+}
+.spot-box .spot-info .info .title{
+  display:block;
+  width:100%;
+  font-size:24rpx;
+  color:#fff;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+

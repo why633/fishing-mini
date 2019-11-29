@@ -1,0 +1,3 @@
+<view class="fixed-view" bindtap="go">
+	<image src="/assets/backhome.png"/>
+</view>

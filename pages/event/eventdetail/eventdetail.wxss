@@ -1,0 +1,85 @@
+
+page {
+ 
+}
+.swiper{
+  position:relative;
+}
+
+.infos-box{
+  border-bottom:24rpx solid #F4F4F4;
+  padding-bottom: 24rpx;
+}
+.infos-box .title{
+    font-size:34rpx;
+    margin:16rpx 0rpx;
+}
+.infos-box .info{
+    padding:8rpx 0rpx;
+}
+
+.infos-box .info text{
+    font-size:28rpx;
+}
+
+.infos-box .info .label{
+  color:#787878;
+  margin-right:32rpx;
+}
+
+.infos-box .info .content{
+  
+}
+
+.app-title{
+  font-size:34rpx;
+  margin:24rpx 0px;
+}
+
+.bottom-box{
+  position: fixed;
+  bottom:0rpx;
+  width:100%;
+  backgroud: #fff;
+}
+
+.buy-box{
+  align-items:center;
+  background:#fff;
+  padding:24rpx;
+  justify-content:space-between;
+  font-size:32rpx;
+}
+
+.cycle-box {
+  font-size:24rpx;
+  color:#fff;
+  background:#0a3255;
+  padding:12rpx;
+  text-align:center;
+  justify-content:center;
+}
+
+.buy-box .plain-btn{
+  padding: 12rpx;
+  align-items: center;
+  display: flex;
+}
+.buy-box view .plain-btn image{
+  width:40rpx;
+  height: 40rpx;
+}
+.buy-box view .number{
+  margin: 0rpx 12rpx;
+}
+.buy-box .button{
+  margin:0rpx;
+  font-size: 32rpx;
+  background:#FF9900;
+  border-radius: 12rpx;
+  color:#fff;
+}
+
+#backhome{
+  
+}

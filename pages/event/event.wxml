@@ -1,0 +1,46 @@
+<view class="container" >
+  <scroll-view bindscrolltolower="loadMore" scroll-y style="height:100%;">
+    <view class="week-box flex-row-box">
+  		<block wx:for="{{weeks}}" wx:key="{{index}}">
+        	<view class="{{ item.key == day ? 'day active': 'day' }}" data-day="{{ item.key }}" bindtap="tapDay">
+        	{{ item.date }}
+        	</view>
+    	</block>
+    </view>
+    <view class="tab-box flex-row-box">
+        <view class="{{tab=='game' ? 'active' : ''}}" data-tab="game" bindtap="tapType">赛事</view>
+        <view class="{{tab=='activity' ? 'active' : ''}}" data-tab="activity" bindtap="tapType">活动</view>
+    </view>
+    <view class="flex-column-box">
+    	<block wx:for="{{ events }}" wx:key="{{index}}">
+   	 		<view class="event-box flex-row-box" data-id="{{ item._id }}" bindtap="go">
+    			<image src="{{ item.icon || item.posters[0] }}" mode="widthFix"/>
+    			<view class="flex-column-box" style="margin-left: 13px;min-height:258rpx;justify-content: space-between;">
+	                <view class="info">
+	                  <text class="title">{{item.name}}</text>
+	                </view>
+	                <view class="tag">
+	                  <text class="{{ item.type }}">{{ item.type == 'game' ? '赛事' : '活动' }}</text>
+	                  <text class="{{ item.spot.spotType == '黑坑' ? 'type heikeng' : (item.spot.spotType == '路亚' ? 'type luya': ( item.spot.spotType == '海钓' ? 'type haidiao' : (item.spot.spotType == '自然水域' ? 'type ziran' : 'type')))}}">{{ item.spot.spotType }}</text>
+	                  <text class="{{ item.end ? 'end' : 'going'}}">{{ item.end ? '已过期' : '报名中' }}</text>
+	                </view>
+	                <view class="flex-column-box">
+	                  <view class="info-box">
+	                    <text>上限：{{ item.count }}人</text>
+	                  </view>
+	                  <view class="info-box">
+	                    <text>费用：{{ item.money + '元/人' }}</text>
+	                  </view>
+	                  <view class="info-box">
+	                    <text>时间：{{ item.timeString }}</text>
+	                  </view>
+	                </view>
+    			</view>
+    		</view>
+    	</block>
+    </view>
+    <view wx:if="{{ events.length === 0 }}" class="box flex-row-box tip" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">暂无内容</view>
+    <view wx:if="{{ events.length != 0  && events.length < total }}" class="tip box flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">下拉刷新</view>
+    <view wx:if="{{ events.length != 0  && events.length >= total }}" class="tip box flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">没有更多了</view>
+  </scroll-view>
+</view>

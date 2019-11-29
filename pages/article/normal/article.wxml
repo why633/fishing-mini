@@ -1,0 +1,21 @@
+<import src="../../../wxParse/wxParse.wxml"/>
+<view class="container" style="background:#fff">
+ 	<view class="fixed-view" bindtap="backhome">
+    	<image src="/assets/backhome.png"/>
+  	</view>
+	<view class="box">
+		<view class="top" style="margin:15rpx 0rpx">
+			<text>{{ title }}</text>
+		</view>
+		<view class="bottom flex-row-box" style="justify-content:space-between;margin:15rpx 0rpx;border-bottom:1rpx solid #eef;padding-bottom:26rpx;">
+			<text>{{ date  }}</text>
+			<view class="flex-row-box">
+				<image src="/assets/view.png"/>
+				<text style="margin-left:10rpx;">阅读{{ times }}次</text>
+			</view>
+		</view>
+	</view>
+	<view class="box content">
+		<template is="wxParse" data="{{wxParseData:article.nodes}}" />
+	</view>
+</view>

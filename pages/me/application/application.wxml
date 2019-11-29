@@ -1,0 +1,26 @@
+<view class="container" >
+  <scroll-view bindscrolltolower="loadMore" scroll-y style="height:100%;">
+    <view class="dealWith">
+      <view class="dealBox flex-row-box" style="background:#fff;border-bottom:1px solid #ddd;">
+        <view class="{{tab=='未付款' ? 'active' : ''}}" data-tab="未付款" bindtap="tapName">未付款</view>
+        <view class="{{tab=='已付款' ? 'active' : ''}}" data-tab="已付款" bindtap="tapName">已付款</view>
+      </view>
+      <view class="box" style="padding-top:7px">
+      <block wx:for="{{ applications }}" wx:key="{{index}}">
+        <view class="application-box flex-row-box" data-id="{{item._id}}" bindtap="go">
+          <image src="{{ item.event.icon || item.event.posters[0] }}" mode="widthFix"/>
+          <view class="flex-column-box application-info">
+            <view class="event"><text>{{ item.event.name }}</text></view>
+            <view class="num"><text class="label">订单号：</text><text>{{ item.code }}</text></view>
+            <view class="num"><text class="label">实付款：</text><text>{{ item.money + '/' + item.count + '人' }}</text></view>
+            <view class="num"><text class="label">座位号：</text><text style="color:#f44336">{{ item.nums.length ? item.nums : '未分配' }}</text></view>
+          </view>
+        </view>
+      </block>
+      </view>
+      <view wx:if="{{ applications.length === 0 }}" class="box tip flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">暂无内容</view>
+      <view wx:if="{{ applications.length != 0  && applications.length < total }}" class="box tip flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">下拉刷新</view>
+      <view wx:if="{{ applications.length != 0  && applications.length >= total }}" class="box tip flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">没有更多了</view>
+    </view>
+  </scroll-view>
+</view>

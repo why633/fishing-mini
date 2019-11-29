@@ -1,0 +1,82 @@
+.container{
+	background:#F4F4F4;
+}
+.user-none-info{
+	justify-content:space-between;
+	align-items:center;
+}
+.user-none-info image{
+	width:100rpx;
+	height:100rpx;
+	border-radius:100rpx;
+	margin: 24rpx auto;
+	background-color: #F4F4F4;
+}
+.user-info{
+	background:#0a3255;	
+	padding:24rpx 36rpx;
+	justify-content:space-between;
+	align-items:center;
+}
+.user-info image{
+	width:122rpx;
+	height:122rpx;
+	border-radius:122rpx;
+	margin-right:14rpx;
+}
+.user-info view{
+	background:#0a3255;	
+}
+.user-info view text{
+	font-size: 24rpx;
+	color:#fff;
+}
+.user-info view text.nickname{
+	font-size: 36rpx;
+}
+.user-info .arrow{
+	width:36rpx;
+	height:36rpx;
+}
+.relate-box{
+	border-bottom: 24rpx solid #F4F4F4;
+}
+.relate-box view{
+	width:50%;	
+	text-align:center;
+	padding:24rpx;
+}
+
+.relate-box view text{
+	font-size:26rpx;	
+}
+.relate-box view text.num{
+	font-size:32rpx;
+	font-weight:bold;	
+}
+
+.item-box{
+	align-items:center;
+	justify-content:space-between;
+}
+.item-box .item-info{
+	width:100%;
+	border-bottom:1px solid #ddd;
+	height:84rpx;
+	justify-content: space-between;
+	font-size:32rpx;
+	align-items:center;
+}
+.item-box .item-info view{
+	align-items:center;
+	display:flex;
+}
+.item-box .item-info image.icon{
+	width: 50rpx;
+	height: 50rpx;
+	margin-right:24rpx;
+} 
+.item-box .item-info image.arrow{
+	width:36rpx;
+	height:36rpx;
+}

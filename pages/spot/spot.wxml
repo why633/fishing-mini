@@ -1,0 +1,63 @@
+<view class="container" >
+  <scroll-view bindscrolltolower="loadMore" scroll-y style="height:100%;">
+    <view class="swiper box" style="padding:24rpx;" wx:if="{{ imgUrls.length }}">
+        <swiper
+          indicator-dots="{{indicatorDots}}"
+          indicator-color="{{color}}"
+          autoplay="{{autoplay}}"
+          interval="{{interval}}"
+          duration="{{duration}}"
+          style="height:{{systemWidth/2}}px;"
+        >
+        <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+          <swiper-item>
+            <image src="{{item.file}}" data-type="{{item.type}}" data-id="{{item.id}}" bindtap="swiperNav" class="slide-image"  style="width:100%; height:{{systemWidth/2}}px;"/>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="box icon-box flex-row-box">
+      <view  class="flex-row-box" bindtap="goSpot">
+        <image src="/assets/spot_icon.png"/>
+        <view class="info">
+           <text class="title">发现钓场</text>
+           <text>好钓鱼 钓好鱼</text>
+        </view>
+      </view>
+      <view class="flex-row-box" bindtap="goEvent">
+        <image src="/assets/activity_icon.png"/>
+        <view class="info">
+           <text class="title">钓场活动</text>
+           <text>又好玩 又有趣</text>
+        </view>
+      </view>
+    </view>
+    <view class="box">
+      <view class='app-title'>钓鱼广场</view>
+      <view class="flex-row-box article-box">
+        <block wx:for="{{ articles }}" wx:key="{{ item._id }}">
+          <view class="article-info" style="width:{{ systemWidth / 2 - 18 }}px" data-id="{{ item._id }}" bindtap="go">
+            <image src="{{ item.icon }}" mode="widthFix"/>
+            <view class="flex-column-box meta">
+              <text class="title">{{ item.title }}</text>
+              <view class="flex-row-box" style="justify-content:space-between;align-items:center;">
+                <view class="flex-row-box user-info" style="align-items:center;">
+                  <image src="{{ item.user.headimgurl || '/assets/user_icon.png' }}"/>
+                  <text class="nickname">{{ item.user.nickname || '用户-' + item.user.uniqID }}</text>
+                </view>
+                <view class="flex-row-box" style="align-items:center;">
+                  <image src="/assets/good.png" />
+                  <text class="favor">{{ item.favor || 0 }}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view wx:if="{{ articles.length === 0 }}" class="box tip flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">暂无文章</view>
+    <view wx:if="{{ articles.length != 0  && articles.length < total }}" class="box tip flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">下拉刷新</view>
+    <view wx:if="{{ articles.length != 0  && articles.length >= total }}" class="box tip flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">没有更多了</view>
+
+  </scroll-view>
+</view>

@@ -1,0 +1,18 @@
+@import "../../../wxParse/wxParse.wxss";
+text{
+	font-size:30rpx;
+}
+.box{
+	padding:0rpx 4%;
+}
+.box .top text{
+	font-size: 41rpx;
+}
+.box .bottom text{
+	color:#a9a9a9;
+	font-size:29rpx;	
+}
+.box .bottom view image{
+	width:40rpx;
+	height:40rpx;
+}

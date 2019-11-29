@@ -1,0 +1,27 @@
+<view class="container">
+	<van-cell-group>
+	  
+	  <van-field
+	    value="{{ phone }}"
+	    label="手机号"
+	    placeholder="请输入手机号"
+	    error-message="{{ error }}"
+	    bind:change="onChange"
+	  />
+	  <van-field
+	    value="{{ sms }}"
+	    center
+	    clearable
+	    label="短信验证码"
+	    placeholder="请输入短信验证码"
+	    use-button-slot
+	    bind:change="onCodeChange"
+	  >
+	    <van-button slot="button" size="small" type="primary" disabled="{{ disabled }}" bind:click="send">{{ sendTxt }}</van-button>
+	  </van-field>
+	 
+	</van-cell-group>
+	<view class="box">
+		<button class="btn" bindtap="bind" disabled="{{ godisable }}">提交</button>
+	</view>
+</view>

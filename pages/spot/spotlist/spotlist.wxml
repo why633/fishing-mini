@@ -1,0 +1,45 @@
+<view class="container" >
+  <view class="box" style="margin:24rpx 0rpx;">
+      <view class='search' style="width:100%">
+          <input type='text' placeholder='请输入钓场关键词' placeholder-style="color:#333;" value="{{inputValue}}" bindinput='inputBind' bindconfirm='query' style="width:100%" ></input>
+          <view class="flex-row-box" bindtap='query' style="align-items:center;">
+            <image src='/assets/search.png' ></image>
+          </view>
+      </view>
+  </view>
+  <scroll-view bindscrolltolower="loadMore" scroll-y style="height:100%;">
+    <view class="flex-column-box box">
+        <block wx:for="{{ spots }}" wx:key="{{index}}">
+            <view class="spot-box flex-row-box" data-id="{{ item._id }}" bindtap="go">
+                <image src="{{ item.icon || item.posters[0] }}" mode="widthFix"/>
+                <view class="flex-column-box" style="margin-left: 13px;justify-content: space-between;width:100%;">
+                    <view class="info">
+                      <text class="title">{{item.name}}</text>
+                    </view>
+                    <view class="flex-row-box star-tag-box" style="justify-content: space-between;align-items:center;">
+                      <view class="stars-box">
+                        <block wx:for="{{ item.stars }}" wx:key="{{index}}">
+                          <image class="star" src="{{ item }}"/>
+                        </block>
+                      </view>
+                      <view class="tag flex-row-box">
+                        <text wx:if="{{item.verify}}" class="verify">认证</text>
+                        <text wx:if="{{item.game}}" class="game">赛事</text>
+                        <text wx:if="{{item.activity}}" class="activity">活动</text>
+                      </view>
+                    </view>
+                    <view class="flex-column-box">
+                      <view class="info-box">
+                        <text>{{ item.address }}</text>
+                      </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view wx:if="{{ spots.length === 0 }}" class="box flex-row-box tip" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">暂无内容</view>
+    <view wx:if="{{ spots.length != 0  && spots.length < total }}" class="tip box flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">下拉刷新</view>
+    <view wx:if="{{ spots.length != 0  && spots.length >= total }}" class="tip box flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">没有更多了</view>
+
+  </scroll-view>
+</view>

@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/spot/spotdetail/spotdetail",
+    "pages/spot/spotlist/spotlist",
+    "pages/event/event",
+    "pages/me/applicationdetail/applicationdetail",
+    "pages/me/me",
+    "pages/me/application/application",
+    "pages/event/eventdetail/eventdetail",
+    "pages/spot/spot",
+    "pages/article/normal/article",
+    "pages/article/fish/article",
+    "pages/me/bind/bind"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0a3255",
+    "navigationBarTitleText": "钓鱼排行榜",
+    "navigationBarTextStyle": "white"
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wxa88502b7ddf52fbb"
+  ],
+  "tabBar": {
+    "backgroundColor": "#fff",
+    "color": "#0a3255",
+    "selectedColor": "#63b5e3",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/assets/home.png",
+        "selectedIconPath": "/assets/home_select.png"
+      },
+      {
+        "pagePath": "pages/spot/spot",
+        "text": "钓场",
+        "iconPath": "/assets/spot.png",
+        "selectedIconPath": "/assets/spot_select.png"
+      },
+      {
+        "pagePath": "pages/event/event",
+        "text": "活动",
+        "iconPath": "/assets/brand.png",
+        "selectedIconPath": "/assets/brand_select.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "/assets/user.png",
+        "selectedIconPath": "/assets/user_select.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

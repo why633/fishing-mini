@@ -1,0 +1,101 @@
+<view class="container" >
+  <scroll-view bindscrolltolower="loadMore" scroll-y style="height:100%;">
+    <view class="swiper box" style="padding:0rpx;height:{{systemWidth/2}}px;">
+        <swiper
+          indicator-dots="{{indicatorDots}}"
+          indicator-color="{{color}}"
+          autoplay="{{autoplay}}"
+          interval="{{interval}}"
+          duration="{{duration}}"
+          style="height:{{systemWidth/2}}px;"
+        >
+        <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+          <swiper-item>
+            <image src="{{item.file}}" data-type="{{item.type}}" data-id="{{item.id}}" bindtap="swiperNav" class="slide-image"  style="width:100%; height:{{systemWidth/2}}px;"/>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="box icon-box flex-row-box" style="margin:20rpx 0rpx;padding-top:10rpx;justify-content:space-between">
+      <view class="flex-column-box" data-id="0" bindtap="link">
+        <image src="/assets/game_main_icon.png"/>
+        <text>赛事报名</text>
+      </view>
+      <view class="flex-column-box" data-id="1" bindtap="link">
+        <image src="/assets/activity_icon.png"/>
+        <text>积分商城</text>
+      </view>
+      <view class="flex-column-box" data-id="2" bindtap="link">
+        <image src="/assets/spot_icon.png"/>
+        <text>发现钓场</text>
+      </view>
+      <view class="flex-column-box" data-id="3" bindtap="link">
+        <image src="/assets/class_icon.png"/>
+        <text>钓技课堂</text>
+      </view>
+    </view>
+    <view class="box">
+      <view class='app-title'>热门赛事/活动</view>
+      <scroll-view scroll-x style="height:100%;display: flex;white-space: nowrap;">
+        <block wx:for="{{ events }}" wx:key="{{ item._id }}">
+          <view class="event-box" style="height:{{systemWidth/4}}px" data-id="{{item._id}}" bindtap="goEvent">
+            <image src="{{ item.posters[0] }}" mode="widthFix" style="max-height:100%"/>
+            <view class="event-info">
+              <view class="tag {{item.type}}">{{ item.type == 'game' ? '赛事' : '活动'}}</view>
+              <view class="info flex-column-box">
+                <text class="title">{{item.name}}</text>
+                <text class="time">{{item.timeString}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+    <view class="box">
+      <view class='app-title'>热门钓场</view>
+      <scroll-view scroll-x style="height:100%;display: flex;white-space: nowrap;">
+        <block wx:for="{{ spots }}" wx:key="{{ item._id }}">
+          <view class="spot-box" style="height:{{systemWidth/8}}px" data-id="{{item._id}}" bindtap="goSpot">
+            <image src="{{ item.posters[0] }}" mode="widthFix" style="max-height:100%"/>
+            <view class="spot-info">
+              <view class="info flex-column-box">
+                <text class="title">{{item.name}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+    <view class="dealWith">
+      <view class="dealBox flex-row-box" style="background:#fff;border-bottom:1px solid #ddd;">
+        <view class="{{tab=='最热' ? 'active' : ''}}" data-tab="最热" bindtap="tapName">最热</view>
+        <view class="{{tab=='最新' ? 'active' : ''}}" data-tab="最新" bindtap="tapName">最新</view>
+      </view>
+      <view class="box" style="padding-top:7px">
+      <block wx:for="{{ tabArticles }}" wx:key="{{index}}">
+        <view class="article-box" data-id="{{ item._id }}" bindtap="go" wx:if="{{ item.images && item.images.length>=3}}">
+          <text class="title">{{item.title}}</text>
+          <view class="flex-row-box" style="justify-content: space-between;">
+            <image src="{{ item.images[0] }}"/>
+            <image src="{{ item.images[1] }}"/>
+            <image src="{{ item.images[2] }}"/>
+          </view>
+          <view class="date">{{ item.createdAt }}</view>
+        </view>
+        <view wx:else class="article-s-box" data-id="{{ item._id }}" bindtap="go">
+          <view class="main">
+              <view class="flex-column-box" style="justify-content: space-around;">
+                <text class="title">{{item.title}}</text>
+                <view class="date">{{ item.createdAt }}</view>
+              </view>
+              <image wx:if="{{ item.images && item.images[0] }}" src="{{ item.images[0] }}"/> 
+          </view>
+        </view>
+      </block>
+      </view>
+      <view wx:if="{{ tabArticles.length === 0 }}" class="box tip flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">暂无内容</view>
+      <view wx:if="{{ tabArticles.length != 0  && tabArticles.length < total }}" class="box tip flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">下拉刷新</view>
+      <view wx:if="{{ tabArticles.length != 0  && tabArticles.length >= total }}" class="box tip flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">没有更多了</view>
+    </view>
+  </scroll-view>
+</view>

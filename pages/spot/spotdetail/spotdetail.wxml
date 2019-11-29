@@ -1,0 +1,185 @@
+<view class="container" >
+ <view class="fixed-view" bindtap="backhome">
+    <image src="/assets/backhome.png"/>
+  </view>
+  <scroll-view bindscrolltolower="loadMore" scroll-y style="height:100%;">
+    <view class="swiper box" style="padding:24rpx;" wx:if="{{ imgUrls.length }}">
+        <swiper
+          indicator-dots="{{indicatorDots}}"
+          indicator-color="{{color}}"
+          autoplay="{{autoplay}}"
+          interval="{{interval}}"
+          duration="{{duration}}"
+          style="height:{{systemWidth/2}}px;"
+        >
+        <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+          <swiper-item>
+            <image src="{{item}}" data-type="{{item}}" data-id="{{item}}"  class="slide-image"  style="width:100%; height:{{systemWidth/2}}px;"/>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="infos-box flex-column-box box">
+        <text class="title">{{ spot.name }}</text>
+        <view class="flex-row-box star-tag-box" style="justify-content: space-between;align-items:center;">
+          <view class="stars-box">
+            <block wx:for="{{ stars }}" wx:key="{{index}}">
+              <image  class="star" src="{{ item }}"/>
+            </block>
+          </view>
+          <view class="tag flex-row-box">
+            <text class="{{ spot.spotType == '黑坑' ? 'type heikeng' : (spot.spotType == '路亚' ? 'type luya': ( spot.spotType == '海钓' ? 'type haidiao' : (spot.spotType == '自然水域' ? 'type ziran' : 'type')))}}">{{ spot.spotType }}</text>
+            <text wx:if="{{spot.verify}}" class="verify">认证</text>
+            <text wx:if="{{spot.game}}" class="game">赛事</text>
+            <text wx:if="{{spot.activity}}" class="activity">活动</text>
+          </view>
+        </view>
+        <view class="flex-row-box stat-box">
+          <view class="flex-row-box stat">
+            <image src="/assets/hdcc.png" />
+            <view class="flex-column-box">
+              <text class="num">{{ eventCount }}</text>
+              <text class="label">活动场次</text>
+            </view>
+          </view>
+          <view class="flex-row-box stat">
+            <image src="/assets/bmrc.png" />
+            <view class="flex-column-box">
+              <text class="num">{{ applicationCount }}</text>
+              <text class="label">报名人次</text>
+            </view>
+          </view>
+          <view class="flex-row-box stat">
+            <image src="/assets/gzrc.png" />
+            <view class="flex-column-box">
+              <text class="num">{{ favorCount }}</text>
+              <text class="label">关注人次</text>
+            </view>
+          </view>
+        </view>
+        <view class="info flex-row-box">
+            <text class="label">地址</text>
+            <text class="content">{{ spot ? spot.address || '~' : '~' }}</text>
+        </view>
+         <view class="info flex-row-box">
+            <text class="label">电话</text>
+            <text class="content">{{ spot ? spot.phone || '~' : '~' }}</text>
+        </view>
+    </view>
+
+    <view class="dealWith">
+      <view class="dealBox flex-row-box" style="background:#fff;border-bottom:1px solid #ddd;">
+        <view class="{{tab=='活动|赛事' ? 'active' : ''}}" data-tab="活动|赛事" bindtap="tapName">活动|赛事</view>
+        <view class="{{tab=='简介' ? 'active' : ''}}" data-tab="简介" bindtap="tapName">简介</view>
+        <view class="{{tab=='渔获' ? 'active' : ''}}" data-tab="渔获" bindtap="tapName">渔获</view>
+      </view>
+      <view wx:if="{{tab == '活动|赛事'}}">
+        <view class="flex-column-box">
+          <block wx:for="{{ events }}" wx:key="{{index}}">
+            <view class="event-box flex-row-box" data-id="{{ item._id }}" bindtap="go">
+              <image src="{{ item.icon || item.posters[0] }}" mode="widthFix"/>
+              <view class="flex-column-box" style="margin-left: 13px;min-height:258rpx;justify-content: space-between;">
+                      <view class="info">
+                        <text class="title">{{item.name}}</text>
+                      </view>
+                      <view class="tag">
+                        <text class="{{ item.type }}">{{ item.type == 'game' ? '赛事' : '活动' }}</text>
+                        <text class="{{ item.spot.spotType == '黑坑' ? 'type heikeng' : (item.spot.spotType == '路亚' ? 'type luya': ( item.spot.spotType == '海钓' ? 'type haidiao' : (item.spot.spotType == '自然水域' ? 'type ziran' : 'type')))}}">{{ item.spot.spotType }}</text>
+                        <text class="{{ item.end ? 'end' : 'going'}}">{{ item.end ? '已过期' : '报名中' }}</text>
+                      </view>
+                      <view class="flex-column-box">
+                        <view class="info-box">
+                          <text>上限：{{ item.count }}人</text>
+                        </view>
+                        <view class="info-box">
+                          <text>费用：{{ item.money + '元/人' }}</text>
+                        </view>
+                        <view class="info-box">
+                          <text>时间：{{ item.timeString }}</text>
+                        </view>
+                      </view>
+              </view>
+            </view>
+          </block>
+        </view>
+        <view wx:if="{{ events.length === 0 }}" class="box flex-row-box tip" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">暂无内容</view>
+        <view wx:if="{{ events.length != 0  && events.length < total }}" class="tip box flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">下拉刷新</view>
+        <view wx:if="{{ events.length != 0  && events.length >= total }}" class="tip box flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">没有更多了</view>
+      </view>
+      <view wx:if="{{tab=='渔获'}}" class="box" style="padding-top:24rpx;">
+        <view class="flex-row-box article-box">
+          <block wx:for="{{ articles }}" wx:key="{{ item._id }}">
+            <view class="article-info" style="width:{{ systemWidth / 2 - 18 }}px" data-id="{{item._id}}" bindtap="go">
+              <image src="{{ item.icon }}" mode="widthFix"/>
+              <view class="flex-column-box meta">
+                <text class="title">{{ item.title }}</text>
+                <view class="flex-row-box" style="justify-content:space-between;align-items:center;">
+                  <view class="flex-row-box user-info" style="align-items:center;">
+                    <image src="{{ item.user.headimgurl || '/assets/user_icon.png' }}"/>
+                    <text class="nickname">{{ item.user.nickname || '用户-' + item.user.uniqID }}</text>
+                  </view>
+                  <view class="flex-row-box" style="align-items:center;">
+                    <image src="/assets/good.png" />
+                    <text class="favor">{{ item.favor || 0 }}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+        <view wx:if="{{ articles.length === 0 }}" class="box flex-row-box tip" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">暂无内容</view>
+        <view wx:if="{{ articles.length != 0  && articles.length < total }}" class="tip box flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">下拉刷新</view>
+        <view wx:if="{{ articles.length != 0  && articles.length >= total }}" class="tip box flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">没有更多了</view>
+      </view>
+      <view wx:if="{{tab=='简介'}}" class="box">
+        <view class='app-title'>钓场概况</view>
+        <view class="table">
+          <view class="col flex-row-box">
+            <view class="info flex-row-box">
+              <view class="label">总面积</view>
+              <view class="content">{{ spot.waterSquare }}亩</view>
+            </view>
+            <view class="info flex-row-box">
+             <view class="label">池塘数</view>
+              <view class="content">{{ spot.waterCount }}个</view>
+            </view>
+          </view>
+          <view class="col flex-row-box">
+            <view class="info flex-row-box">
+              <view class="label">钓位数</view>
+              <view class="content">{{  spot.spotCount }}个</view>
+            </view>
+            <view class="info flex-row-box">
+             <view class="label">钓位间距</view>
+             <view class="content">{{  spot.spotDistance }}米</view>
+            </view>
+          </view>
+          <view class="col flex-row-box">
+            <view class="info flex-row-box">
+              <view class="label">平均水深</view>
+              <view class="content">{{ spot.waterDepth }}米</view>
+            </view>
+            <view class="info flex-row-box">
+             <view class="label">限杆长度</view>
+              <view class="content">{{ spot.rodLong }}米</view>
+            </view>
+          </view>
+        </view>
+        <view class='app-title'>鱼种</view>
+        <block  wx:for="{{ spot.fishes }}" wx:key="{{index}}">
+          <view class="fish">
+            {{ item }}
+          </view>
+        </block>
+        <view class='app-title'>注意事项</view>
+        <view style="font-size:30rpx;margin-bottom:15rpx; white-space: pre-line;">
+            {{ spot.content }}
+        </view>
+        <button class="btn">
+          发渔获
+        </button>
+      </view>
+    </view>
+
+  </scroll-view>
+</view>

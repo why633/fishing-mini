@@ -1,0 +1,24 @@
+.application-box{
+	font-size:34rpx;
+}
+.application-box view {
+	height:80rpx;
+}
+.application-box view text{
+	display: inline-block;
+	line-height:80rpx;
+}
+.application-box view .label{
+	color:#B8B8B8;
+	margin-right: 24rpx;
+}
+
+.wechat{
+	background:#44b549;
+}
+
+.op-box .btn-box view{
+	justify-content:space-between;
+	width: 50%;
+}
+

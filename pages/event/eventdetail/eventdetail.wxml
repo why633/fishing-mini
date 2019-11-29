@@ -1,0 +1,69 @@
+<view class="container" >
+  <view class="fixed-view" bindtap="backhome">
+    <image src="/assets/backhome.png"/>
+  </view>
+  <scroll-view  scroll-y style="height:100%;">
+    <view class="swiper box" style="padding:24rpx;" wx:if="{{ imgUrls.length }}">
+        <swiper
+          indicator-dots="{{indicatorDots}}"
+          indicator-color="{{color}}"
+          autoplay="{{autoplay}}"
+          interval="{{interval}}"
+          duration="{{duration}}"
+          style="height:{{systemWidth/2}}px;"
+        >
+        <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+          <swiper-item>
+            <image src="{{item}}" data-type="{{item}}" data-id="{{item}}"  class="slide-image"  style="width:100%; height:{{systemWidth/2}}px;"/>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="infos-box flex-column-box box">
+        <text class="title">{{ event.name }}</text>
+        <view class="info flex-row-box">
+            <text class="label">{{ event.type == 'game' ? "赛事" : '活动'}}时间</text>
+            <text class="content">{{ event.timeString }}</text>
+        </view>
+         <view class="info flex-row-box">
+            <text class="label">报名截止</text>
+            <text class="content">{{ event.endTimeString || event.timeString }}</text>
+        </view>
+         <view class="info flex-row-box">
+            <text class="label">地址信息</text>
+            <text class="content">{{ event.spot ? event.spot.address || '~' : '~' }}</text>
+        </view>
+         <view class="info flex-row-box">
+            <text class="label">联系电话</text>
+            <text class="content">{{ event.spot ? event.spot.phone || '~' : '~' }}</text>
+        </view>
+
+    </view>
+    <view class="box" style="margin-bottom:280rpx;">
+        <view class='app-title'>{{ event.type == 'game' ? "赛事" : '活动'}}简介</view>
+        <view style="font-size:30rpx; white-space: pre-line;">
+            {{ event.content }}
+        </view>
+    </view>
+    <view class="flex-column-box bottom-box">
+    <view class="box cycle-box flex-row-box">
+        {{ time }}
+    </view>
+    <view class="box flex-row-box buy-box">
+        <view class="flex-row-box" style="align-items:center;">
+            <text>数量</text>
+            <view class="plain-btn" bindtap="sub">
+                <image src="/assets/sub.png" />
+            </view>
+            <view class="number">
+            {{ count }}
+            </view>
+            <view class="plain-btn" bindtap="plus">
+                <image src="/assets/plus.png" />
+            </view>
+        </view>
+        <button class="button" disabled="{{ user == event.user || event.end }}" bindtap="createApplication">¥{{ currentMoney }} 立即报名</button>
+    </view>
+    </view>
+  </scroll-view>
+</view>
