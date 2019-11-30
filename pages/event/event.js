@@ -86,11 +86,11 @@ Page({
 
   onLoad: function() {
     const self = this;
-    store.spotSwipers((data) => {
-      self.setData({
-        imgUrls: (data.swipers || [])
-      });
-    });
+    // store.spotSwipers((data) => {
+    //   self.setData({
+    //     imgUrls: (data.swipers || [])
+    //   });
+    // });
     store.getEvent({ type: this.data.tab, day: this.data.day, skip:0, limit: self.data.limit },(data) => {
         self.setData({
           events: self.data.events.concat((data.events || [])),

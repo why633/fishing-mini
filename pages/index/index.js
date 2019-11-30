@@ -1,4 +1,4 @@
-import { getData, showToast, globalTabindex} from '../../utils/util.js'
+import { getData, showToast, globalTabindex } from '../../utils/util.js'
 import conf from "../../config.js";
 // adaptPadding,
 import * as store from '../../store/index.js'
@@ -17,67 +17,85 @@ Page({
     duration: 1000,
     systemWidth: 0,
     inputValue: '',
-    tabArticles:[],
-    events:[],
-    spots:[],
+    tabArticles: [],
+    events: [],
+    spots: [],
     tab: '最热',
     limit: 10,
     total: 0,
     skip: 0,
-    width:0,
-    tabs:[]
+    width: 0,
+    tabs: []
   },
 
   onReady: function (e) {
-    wx.showShareMenu ({withShareTicket: true});
+    wx.showShareMenu({ withShareTicket: true });
   },
 
-  go(event) {
+  go (event) {
     //let article = event.currentTarget.dataset.id;
     return wx.navigateTo({
       url: '../article/normal/article?article=' + event.currentTarget.dataset.id
     })
   },
 
-  swiperNav(event) {
+  swiperNav (event) {
     console.dir(event);
     let type = event.currentTarget.dataset.type;
     let id = event.currentTarget.dataset.id;
     let url = null;
-    if(type == 'activity' || type == 'game') {
+    /* if (type == 'activity' || type == 'game') {
       url = '../event/eventdetail/eventdetail?id=' + id
     }
-    if(type == 'spot') {
+    if (type == 'spot') {
       url = '../spot/spotdetail/spotdetail?id=' + id
     }
-    if(type == 'article') {
+    if (type == 'article') {
       url = '../article/normal/article?article=' + id
-    } 
-    if(url) {
+    }
+    if (url) {
       return wx.navigateTo({
         url
       });
     } else {
-      showToast("开发中，敬请期待","none");
+      showToast("开发中，敬请期待", "none");
+    } */
+
+    // type 1：钓场，2：活动，3：赛事，4：文章
+    if (type == '2' || type == '3') {
+      url = '../event/eventdetail/eventdetail?id=' + id
+    }
+    if (type == '1') {
+      url = '../spot/spotdetail/spotdetail?id=' + id
+    }
+    if (type == '4') {
+      url = '../article/normal/article?id=' + id
+    }
+    if (url) {
+      return wx.navigateTo({
+        url
+      });
+    } else {
+      showToast("开发中，敬请期待", "none");
     }
   },
 
-  goEvent(event) {
-     return wx.navigateTo({
+  goEvent (event) {
+    return wx.navigateTo({
       url: '../event/eventdetail/eventdetail?id=' + event.currentTarget.dataset.id
     })
   },
 
-  goSpot(event) {
-     return wx.navigateTo({
+  goSpot (event) {
+    return wx.navigateTo({
       url: '../spot/spotdetail/spotdetail?id=' + event.currentTarget.dataset.id
     })
   },
 
-  link(event) {
+  link (event) {
     let links = ['../event/event', undefined, '../spot/spotlist/spotlist', undefined];
-    if(links[event.currentTarget.dataset.id]) {
-      if(event.currentTarget.dataset.id == 0) wx.switchTab({
+    if (links[event.currentTarget.dataset.id]) {
+      if (event.currentTarget.dataset.id == 0) wx.switchTab({
         url: links[event.currentTarget.dataset.id]
       })
       else return wx.navigateTo({
@@ -87,54 +105,61 @@ Page({
       showToast("开发中，敬请期待", 'none')
     }
   },
- 
-  tapName:function (event) {
+
+  tapName: function (event) {
     console.dir(event.currentTarget.dataset.tab);
     let self = this;
-    this.setData({ tab: event.currentTarget.dataset.tab, tabArticles: [] });
-    store.tabArticle({ tab:event.currentTarget.dataset.tab, skip:0, limit: self.data.limit },(data) => {
-        self.setData({
-          tabArticles: self.data.tabArticles.concat((data.articles || [])),
-          total: data.total,
-          skip: data.skip
-        })
-      });
+    // this.setData({ tab: event.currentTarget.dataset.tab, tabArticles: [] });
+    this.setData({ tab: event.currentTarget.dataset.tab });
+    store.tabArticle({ tab: event.currentTarget.dataset.tab, skip: 0, limit: self.data.limit }, (data) => {
+      self.setData({
+        tabArticles: self.data.tabArticles.concat((data.articles || [])),
+        total: data.total,
+        skip: data.skip
+      })
+    });
   },
 
-  loadMore:function (event) {
+  loadMore: function (event) {
     let self = this;
-    store.tabArticle({ tab:this.data.tab, skip: self.data.skip + 1, limit: self.data.limit },(data) => {
-        self.setData({
-          tabArticles: self.data.tabArticles.concat((data.articles || [])),
-          total: data.total,
-          skip: data.skip
+    store.tabArticle({ tab: this.data.tab, skip: self.data.skip + 1, limit: self.data.limit }, (data) => {
+      self.setData({
+        tabArticles: self.data.tabArticles.concat((data.articles || [])),
+        total: data.total,
+        skip: data.skip
       });
     });
   },
 
-  onLoad: function() {
+  onLoad: function () {
     const self = this;
     store.swipers((data) => {
       self.setData({
-        imgUrls: (data.swipers || []),
+        // imgUrls: (data.swipers || []),
         events: (data.events || []),
-        spots:(data.spots || [])
+        spots: (data.spots || [])
       });
     });
-    store.tabArticle({ tab: this.data.tab, skip:0, limit: self.data.limit },(data) => {
-        self.setData({
-          tabArticles: self.data.tabArticles.concat((data.articles || [])),
-          total: data.total,
-          skip: data.skip
-        })
+    store.tabArticle({ tab: this.data.tab, skip: 0, limit: self.data.limit }, (data) => {
+      self.setData({
+        tabArticles: self.data.tabArticles.concat((data.articles || [])),
+        total: data.total,
+        skip: data.skip
+      })
     });
+    store.swiperData({ bannerType: 1 }, (res) => {
+      console.log(res)
+      self.setData({
+        imgUrls: (res.data || []),
+      })
+    })
   },
 
-  onHide() {
-   
+  onHide () {
+
   },
 
-  onShow() {
+  onShow () {
     this.setData({
       systemWidth: wx.getSystemInfoSync().windowWidth,
       width: wx.getSystemInfoSync().windowWidth * 0.96 - 20

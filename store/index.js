@@ -1,4 +1,4 @@
-import { Get, Post } from '../utils/http.js'
+import { Get, Post, $get } from '../utils/http.js'
 import moment from '../utils/moment.js'
 import { showToast } from '../utils/util'
 
@@ -303,7 +303,34 @@ export function getBindCode(body, cb, failcb) {
 }
 
 
+/* 渔悦接口 */
 
+// 获取轮播图
+export function swiperData(params, cb, failcb) {
+  return $get({
+    url: '/info/homepage/getBanner',
+    data: params,
+    success(data) {
+      cb(data)
+    },
+    fail(error) {
+      failcb && failcb()
+    }
+  })
+}
+// 获取资讯详情
+export function detailInfo(params, cb, failcb) {
+  return $get({
+    url: '/info/detailInfo/getById',
+    data: params,
+    success(data) {
+      cb(data)
+    },
+    fail(error) {
+      failcb && failcb()
+    }
+  })
+}
 
 
 

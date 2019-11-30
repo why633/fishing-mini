@@ -11,7 +11,7 @@
         >
         <block wx:for="{{imgUrls}}" wx:key="{{index}}">
           <swiper-item>
-            <image src="{{item.file}}" data-type="{{item.type}}" data-id="{{item.id}}" bindtap="swiperNav" class="slide-image"  style="width:100%; height:{{systemWidth/2}}px;"/>
+            <image src="{{item.icon}}" data-type="{{item.type}}" data-id="{{item.targetId}}" bindtap="swiperNav" class="slide-image"  style="width:100%; height:{{systemWidth/2}}px;"/>
           </swiper-item>
         </block>
       </swiper>

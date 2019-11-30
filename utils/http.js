@@ -42,11 +42,51 @@ const Request = param => {
     if (param.fail) param.fail(null, 'timeout')
   }, 10 * 1000)
 }
+
+const $Request = param => {
+  let headers = { "Content-Type": 'application/json', "Authorization": "Bearer " + getData("sessionID")  }
+  Object.assign(headers, param.header);
+  var timeout
+  const requestObj = wx.request({
+    header: headers,
+    method: param.type || 'GET',
+    url: param.url || '',
+    data: param.data || {},
+    success: (res) => {
+      clearTimeout(timeout)
+      if(res.data.code === 401) {
+        remoData('sessionID');
+        // showToast('token失效，重新登录', 'none');
+      }
+      if(res.data.code !== 200) {
+         showToast(res.data.message, 'none');
+      }
+      (typeof param.success == "function") && param.success(res.data, "");
+    },
+    fail: (err) => {
+      clearTimeout(timeout);
+      (typeof param.fail == "function") && param.fail(null, err.errMsg);
+    }
+  });
+
+  timeout = setTimeout(() => {
+    requestObj.abort()
+    if (param.fail) param.fail(null, 'timeout')
+  }, 10 * 1000)
+}
+
 // 请求方法
 const method = (type, param) => {
   param.type = type
   param.url = cof.HOST + 'api' + param.url;
   Request(param);
+}
+
+// 渔悦请求方法
+const $method = (type, param) => {
+  param.type = type
+  param.url = cof.FISHING_HOST + param.url;
+  $Request(param);
 }
 
 /**
@@ -62,6 +102,11 @@ const method = (type, param) => {
 const Get = param => method("GET", param) // get请求
 const Post = param => method("POST", param) // post请求
 const Put = param => method("PUT", param) // Put请求
+
+
+const $get = param => $method("GET", param) // 渔悦测试接口
+
+
 /**
  * 上传文件
  * @param url 上传的url地址
@@ -111,5 +156,6 @@ export {
   Put,
   Request,
   Upload,
-  downFile
+  downFile,
+  $get
 };
