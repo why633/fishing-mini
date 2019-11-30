@@ -1,4 +1,4 @@
-import { Get, Post, $get } from '../utils/http.js'
+import { Get, Post, $get, $post } from '../utils/http.js'
 import moment from '../utils/moment.js'
 import { showToast } from '../utils/util'
 
@@ -318,6 +318,7 @@ export function swiperData(params, cb, failcb) {
     }
   })
 }
+
 // 获取资讯详情
 export function detailInfo(params, cb, failcb) {
   return $get({
@@ -332,8 +333,86 @@ export function detailInfo(params, cb, failcb) {
   })
 }
 
+// 获取活动赛事列表
+export function searchEvent(params, cb, failcb) {
+  return $get({
+    url: '/event/searchEvent/getByCity',
+    data: params,
+    success(data) {
+      cb(data)
+    },
+    fail(error) {
+      failcb && failcb()
+    }
+  })
+}
 
+// 获取热门钓场
+export function hotSpot(params, cb, failcb) {
+  return $post({
+    url: '/spot/hot/info',
+    data: params,
+    success(data) {
+      cb(data)
+    },
+    fail(error) {
+      failcb && failcb()
+    }
+  })
+}
 
+// 获取资讯列表
+export function article(params, cb, failcb) {
+  return $get({
+    url: '/info/shortInfo/getNewHot',
+    data: params,
+    success(data) {
+      cb(data)
+    },
+    fail(error) {
+      failcb && failcb()
+    }
+  })
+}
 
+// 获取渔获列表
+export function fishCatch(params, cb, failcb) {
+  return $get({
+    url: '/info/list/fishCatchBySpot',
+    data: params,
+    success(data) {
+      cb(data)
+    },
+    fail(error) {
+      failcb && failcb()
+    }
+  })
+}
 
+// 获取钓场列表
+export function spotList(params, cb, failcb) {
+  return $post({
+    url: '/spot/info',
+    data: params,
+    success(data) {
+      cb(data)
+    },
+    fail(error) {
+      failcb && failcb()
+    }
+  })
+}
 
+// 获取钓场详情信息
+export function spotInfo(params, cb, failcb) {
+  return $get({
+    url: '/spot/api/byId',
+    data: params,
+    success(data) {
+      cb(data)
+    },
+    fail(error) {
+      failcb && failcb()
+    }
+  })
+}

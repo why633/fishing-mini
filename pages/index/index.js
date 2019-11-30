@@ -23,7 +23,7 @@ Page({
     tab: '最热',
     limit: 10,
     total: 0,
-    skip: 0,
+    skip: 1,
     width: 0,
     tabs: []
   },
@@ -44,22 +44,6 @@ Page({
     let type = event.currentTarget.dataset.type;
     let id = event.currentTarget.dataset.id;
     let url = null;
-    /* if (type == 'activity' || type == 'game') {
-      url = '../event/eventdetail/eventdetail?id=' + id
-    }
-    if (type == 'spot') {
-      url = '../spot/spotdetail/spotdetail?id=' + id
-    }
-    if (type == 'article') {
-      url = '../article/normal/article?article=' + id
-    }
-    if (url) {
-      return wx.navigateTo({
-        url
-      });
-    } else {
-      showToast("开发中，敬请期待", "none");
-    } */
 
     // type 1：钓场，2：活动，3：赛事，4：文章
     if (type == '2' || type == '3') {
@@ -111,24 +95,24 @@ Page({
     let self = this;
     // this.setData({ tab: event.currentTarget.dataset.tab, tabArticles: [] });
     this.setData({ tab: event.currentTarget.dataset.tab });
-    store.tabArticle({ tab: event.currentTarget.dataset.tab, skip: 0, limit: self.data.limit }, (data) => {
+    store.article({ order: this.data.tab == '最热' ? 'hot' : 'time', pageNo: 1 }, (res) => {
       self.setData({
-        tabArticles: self.data.tabArticles.concat((data.articles || [])),
-        total: data.total,
-        skip: data.skip
+        tabArticles: self.data.tabArticles.concat((res.data.list || [])),
+        total: res.data.page.totalCount,
+        skip: res.data.page.pageNo
       })
-    });
+    })
   },
 
   loadMore: function (event) {
     let self = this;
-    store.tabArticle({ tab: this.data.tab, skip: self.data.skip + 1, limit: self.data.limit }, (data) => {
+    store.article({ order: this.data.tab == '最热' ? 'hot' : 'time', pageNo: self.data.skip + 1 }, (res) => {
       self.setData({
-        tabArticles: self.data.tabArticles.concat((data.articles || [])),
-        total: data.total,
-        skip: data.skip
-      });
-    });
+        tabArticles: self.data.tabArticles.concat((res.data.list || [])),
+        total: res.data.page.totalCount,
+        skip: res.data.page.pageNo
+      })
+    })
   },
 
   onLoad: function () {
@@ -140,17 +124,25 @@ Page({
         spots: (data.spots || [])
       });
     });
-    store.tabArticle({ tab: this.data.tab, skip: 0, limit: self.data.limit }, (data) => {
-      self.setData({
-        tabArticles: self.data.tabArticles.concat((data.articles || [])),
-        total: data.total,
-        skip: data.skip
-      })
-    });
+    // 顶部轮播数据获取
     store.swiperData({ bannerType: 1 }, (res) => {
-      console.log(res)
       self.setData({
         imgUrls: (res.data || []),
+      })
+    })
+    // 热门钓场数据获取
+    store.hotSpot({ areaId: 110100, pageSize: 6 }, (res) => {
+      console.log(res)
+      self.setData({
+        spots: (res.data.list || [])
+      });
+    })
+    // 获取资讯列表
+    store.article({ order: this.data.tab == '最热' ? 'hot' : 'time' }, (res) => {
+      self.setData({
+        tabArticles: self.data.tabArticles.concat((res.data.list || [])),
+        total: res.data.page.totalCount,
+        skip: res.data.page.pageNo
       })
     })
   },

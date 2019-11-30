@@ -10,8 +10,8 @@
   <scroll-view bindscrolltolower="loadMore" scroll-y style="height:100%;">
     <view class="flex-column-box box">
         <block wx:for="{{ spots }}" wx:key="{{index}}">
-            <view class="spot-box flex-row-box" data-id="{{ item._id }}" bindtap="go">
-                <image src="{{ item.icon || item.posters[0] }}" mode="widthFix"/>
+            <view class="spot-box flex-row-box" data-id="{{ item.id }}" bindtap="go">
+                <image src="{{ item.icon || item.posters }}" mode="widthFix"/>
                 <view class="flex-column-box" style="margin-left: 13px;justify-content: space-between;width:100%;">
                     <view class="info">
                       <text class="title">{{item.name}}</text>
@@ -23,9 +23,9 @@
                         </block>
                       </view>
                       <view class="tag flex-row-box">
-                        <text wx:if="{{item.verify}}" class="verify">认证</text>
-                        <text wx:if="{{item.game}}" class="game">赛事</text>
-                        <text wx:if="{{item.activity}}" class="activity">活动</text>
+                        <text wx:if="{{item.attestation==2}}" class="verify">认证</text>
+                        <text wx:if="{{item.game==2}}" class="game">赛事</text>
+                        <text wx:if="{{item.activity==2}}" class="activity">活动</text>
                       </view>
                     </view>
                     <view class="flex-column-box">

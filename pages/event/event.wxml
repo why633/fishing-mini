@@ -1,3 +1,4 @@
+<wxs src="../../utils/dateFormat.wxs" module="dateFormat" />
 <view class="container" >
   <scroll-view bindscrolltolower="loadMore" scroll-y style="height:100%;">
     <view class="week-box flex-row-box">
@@ -8,31 +9,31 @@
     	</block>
     </view>
     <view class="tab-box flex-row-box">
-        <view class="{{tab=='game' ? 'active' : ''}}" data-tab="game" bindtap="tapType">赛事</view>
-        <view class="{{tab=='activity' ? 'active' : ''}}" data-tab="activity" bindtap="tapType">活动</view>
+        <view class="{{tab=='2' ? 'active' : ''}}" data-tab="2" bindtap="tapType">赛事</view>
+        <view class="{{tab=='1' ? 'active' : ''}}" data-tab="1" bindtap="tapType">活动</view>
     </view>
     <view class="flex-column-box">
     	<block wx:for="{{ events }}" wx:key="{{index}}">
    	 		<view class="event-box flex-row-box" data-id="{{ item._id }}" bindtap="go">
-    			<image src="{{ item.icon || item.posters[0] }}" mode="widthFix"/>
+    			<image src="{{ item.coverImage }}" mode="widthFix"/>
     			<view class="flex-column-box" style="margin-left: 13px;min-height:258rpx;justify-content: space-between;">
 	                <view class="info">
 	                  <text class="title">{{item.name}}</text>
 	                </view>
 	                <view class="tag">
-	                  <text class="{{ item.type }}">{{ item.type == 'game' ? '赛事' : '活动' }}</text>
-	                  <text class="{{ item.spot.spotType == '黑坑' ? 'type heikeng' : (item.spot.spotType == '路亚' ? 'type luya': ( item.spot.spotType == '海钓' ? 'type haidiao' : (item.spot.spotType == '自然水域' ? 'type ziran' : 'type')))}}">{{ item.spot.spotType }}</text>
-	                  <text class="{{ item.end ? 'end' : 'going'}}">{{ item.end ? '已过期' : '报名中' }}</text>
+	                  <text class="{{ item.type==2?'game':'' }}">{{ item.type == '2' ? '赛事' : '活动' }}</text>
+	                  <text class="{{ item.spotType == '1' ? 'type heikeng' : (item.spotType == '2' ? 'type luya': ( item.spotType == '4' ? 'type haidiao' : (item.spotType == '3' ? 'type ziran' : 'type')))}}">{{ item.spotType == '1' ? '黑坑' : (item.spotType == '2' ? '路亚': ( item.spotType == '4' ? '海钓' : (item.spotType == '3' ? '自然水域':'')))}}</text>
+	                  <text class="{{ item.isPast ? 'end' : 'going'}}">{{ item.isPast ? '已过期' : '报名中' }}</text>
 	                </view>
 	                <view class="flex-column-box">
 	                  <view class="info-box">
-	                    <text>上限：{{ item.count }}人</text>
+	                    <text>上限：{{ item.peopleNumber }}人</text>
 	                  </view>
 	                  <view class="info-box">
 	                    <text>费用：{{ item.money + '元/人' }}</text>
 	                  </view>
 	                  <view class="info-box">
-	                    <text>时间：{{ item.timeString }}</text>
+	                    <text>时间：{{ dateFormat.dateFormat(item.startTime, 'yyyy年MM月dd日 hh:mm') }}</text>
 	                  </view>
 	                </view>
     			</view>

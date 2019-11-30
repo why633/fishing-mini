@@ -11,7 +11,7 @@
         >
         <block wx:for="{{imgUrls}}" wx:key="{{index}}">
           <swiper-item>
-            <image src="{{item.file}}" data-type="{{item.type}}" data-id="{{item.id}}" bindtap="swiperNav" class="slide-image"  style="width:100%; height:{{systemWidth/2}}px;"/>
+            <image src="{{item.posters}}" data-type="{{item.type}}" data-id="{{item.id}}" bindtap="swiperNav" class="slide-image"  style="width:100%; height:{{systemWidth/2}}px;"/>
           </swiper-item>
         </block>
       </swiper>
@@ -35,19 +35,19 @@
     <view class="box">
       <view class='app-title'>钓鱼广场</view>
       <view class="flex-row-box article-box">
-        <block wx:for="{{ articles }}" wx:key="{{ item._id }}">
-          <view class="article-info" style="width:{{ systemWidth / 2 - 18 }}px" data-id="{{ item._id }}" bindtap="go">
-            <image src="{{ item.icon }}" mode="widthFix"/>
+        <block wx:for="{{ articles }}" wx:key="{{ item.id }}">
+          <view class="article-info" style="width:{{ systemWidth / 2 - 18 }}px" data-id="{{ item.id }}" bindtap="go">
+            <image src="{{ item.coverImage }}" mode="widthFix"/>
             <view class="flex-column-box meta">
               <text class="title">{{ item.title }}</text>
               <view class="flex-row-box" style="justify-content:space-between;align-items:center;">
                 <view class="flex-row-box user-info" style="align-items:center;">
-                  <image src="{{ item.user.headimgurl || '/assets/user_icon.png' }}"/>
-                  <text class="nickname">{{ item.user.nickname || '用户-' + item.user.uniqID }}</text>
+                  <image src="{{ item.userHeadImg || '/assets/user_icon.png' }}"/>
+                  <text class="nickname">{{ item.userNickName || '用户-' + item.id }}</text>
                 </view>
                 <view class="flex-row-box" style="align-items:center;">
                   <image src="/assets/good.png" />
-                  <text class="favor">{{ item.favor || 0 }}</text>
+                  <text class="favor">{{ item.likeCount || 0 }}</text>
                 </view>
               </view>
             </view>

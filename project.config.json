@@ -48,12 +48,26 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
 					"name": "活动",
 					"pathName": "pages/event/event",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "钓场",
+					"pathName": "pages/spot/spot",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "钓场列表",
+					"pathName": "pages/spot/spotlist/spotlist",
 					"scene": null
 				}
 			]

@@ -103,8 +103,9 @@ const Get = param => method("GET", param) // get请求
 const Post = param => method("POST", param) // post请求
 const Put = param => method("PUT", param) // Put请求
 
-
-const $get = param => $method("GET", param) // 渔悦测试接口
+// 渔悦接口
+const $get = param => $method("GET", param)
+const $post = param => $method("POST", param)
 
 
 /**
@@ -157,5 +158,6 @@ export {
   Request,
   Upload,
   downFile,
-  $get
+  $get,
+  $post
 };
