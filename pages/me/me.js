@@ -1,8 +1,8 @@
 import { getData, showToast, globalTabindex, setData, remoData} from '../../utils/util.js'
-import conf from "../../config.js";
+// import conf from "../../config.js";
 // adaptPadding,
 import * as store from '../../store/index.js'
-import moment from '../../utils/moment.js'
+// import moment from '../../utils/moment.js'
 
 const app = getApp()
 //获取应用实例
@@ -112,19 +112,20 @@ Page({
     wx.login({
       success: res => {
        let code = res.code;
+       console.log(code)
        if(code) {
-          store.bindWechat(Object.assign(e.detail.userInfo, { encryptedData: e.detail.encryptedData, iv: e.detail.iv, code: code }), (data) => {
-            if(data.status !== 'ok') {
-                return showToast(data.status && data.status.message ?  data.status.message : '绑定失败, 稍后再试', 'none');
-            }
-            setData('sessionID', data.token);
-            self.setData({ user: data.user, hasUserInfo: true });
-            app.globalData.user = data.user;
-            showToast('绑定成功', 'none');
-            if(!data.user.phone) wx.navigateTo({
-              url: './bind/bind'
-            })
-          });
+          // store.bindWechat(Object.assign(e.detail.userInfo, { encryptedData: e.detail.encryptedData, iv: e.detail.iv, code: code }), (data) => {
+          //   if(data.status !== 'ok') {
+          //       return showToast(data.status && data.status.message ?  data.status.message : '绑定失败, 稍后再试', 'none');
+          //   }
+          //   setData('sessionID', data.token);
+          //   self.setData({ user: data.user, hasUserInfo: true });
+          //   app.globalData.user = data.user;
+          //   showToast('绑定成功', 'none');
+          //   if(!data.user.phone) wx.navigateTo({
+          //     url: './bind/bind'
+          //   })
+          // });
        } else {
          showToast('授权失败,稍后重试', 'none')
        }
