@@ -88,6 +88,13 @@
 					"pathName": "pages/event/eventdetail/eventdetail",
 					"query": "id=19",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "绑定",
+					"pathName": "pages/me/bind/bind",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
