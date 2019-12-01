@@ -14,8 +14,8 @@
     </view>
     <view class="flex-column-box">
     	<block wx:for="{{ events }}" wx:key="{{index}}">
-   	 		<view class="event-box flex-row-box" data-id="{{ item._id }}" bindtap="go">
-    			<image src="{{ item.coverImage }}" mode="widthFix"/>
+   	 		<view class="event-box flex-row-box" data-id="{{ item.id }}" bindtap="go">
+    			<image src="{{ item.coverImage }}" mode="aspectFill"/>
     			<view class="flex-column-box" style="margin-left: 13px;min-height:258rpx;justify-content: space-between;">
 	                <view class="info">
 	                  <text class="title">{{item.name}}</text>

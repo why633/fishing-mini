@@ -31,14 +31,14 @@
     <view class="box">
       <view class='app-title'>热门赛事/活动</view>
       <scroll-view scroll-x style="height:100%;display: flex;white-space: nowrap;">
-        <block wx:for="{{ events }}" wx:key="{{ item._id }}">
-          <view class="event-box" style="height:{{systemWidth/4}}px" data-id="{{item._id}}" bindtap="goEvent">
-            <image src="{{ item.posters[0] }}" mode="widthFix" style="max-height:100%" />
+        <block wx:for="{{ events }}" wx:key="{{ item.id }}">
+          <view class="event-box" style="height:{{systemWidth/4}}px" data-id="{{item.id}}" bindtap="goEvent">
+            <image src="{{ item.coverImage }}" mode="widthFix" style="max-height:100%" />
             <view class="event-info">
-              <view class="tag {{item.type}}">{{ item.type == 'game' ? '赛事' : '活动'}}</view>
+              <view class="tag {{item.type == 2 ? 'game' : 'activity'}}">{{ item.type == '2' ? '赛事' : '活动'}}</view>
               <view class="info flex-column-box">
                 <text class="title">{{item.name}}</text>
-                <text class="time">{{item.timeString}}</text>
+                <text class="time">{{dateFormat.dateFormat(item.startTime)}}</text>
               </view>
             </view>
           </view>
@@ -67,7 +67,7 @@
       </view>
       <view class="box" style="padding-top:7px">
         <block wx:for="{{ tabArticles }}" wx:key="{{index}}">
-          <view class="article-box" data-id="{{ item._id }}" bindtap="go" wx:if="{{ item.images && item.images.length>=3}}">
+          <view class="article-box" data-id="{{ item.id }}" bindtap="go" wx:if="{{ item.images && item.images.length>=3}}">
             <text class="title">{{item.title}}</text>
             <view class="flex-row-box" style="justify-content: space-between;">
               <image src="{{ item.images[0] }}" />

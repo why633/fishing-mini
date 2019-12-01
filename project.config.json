@@ -47,8 +47,12 @@
 			"currentL": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
-			"current": 2,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -68,6 +72,21 @@
 					"id": -1,
 					"name": "钓场列表",
 					"pathName": "pages/spot/spotlist/spotlist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "钓场详情",
+					"pathName": "pages/spot/spotdetail/spotdetail",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "活动详情",
+					"pathName": "pages/event/eventdetail/eventdetail",
+					"query": "id=19",
 					"scene": null
 				}
 			]

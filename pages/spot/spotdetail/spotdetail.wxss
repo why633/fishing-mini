@@ -138,8 +138,8 @@ page {
   border-bottom:1px solid #ddd;
 }
 .event-box image{
-  max-width: 258rpx;
-  height: 100%;
+  width: 258rpx;
+  height: 258rpx;
   box-sizing: border-box;
 }
 .event-box .title{

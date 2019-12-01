@@ -35,7 +35,7 @@ Page({
   go (event) {
     //let article = event.currentTarget.dataset.id;
     return wx.navigateTo({
-      url: '../article/normal/article?article=' + event.currentTarget.dataset.id
+      url: '../article/normal/article?id=' + event.currentTarget.dataset.id
     })
   },
 
@@ -93,8 +93,8 @@ Page({
   tapName: function (event) {
     console.dir(event.currentTarget.dataset.tab);
     let self = this;
-    // this.setData({ tab: event.currentTarget.dataset.tab, tabArticles: [] });
-    this.setData({ tab: event.currentTarget.dataset.tab });
+    this.setData({ tab: event.currentTarget.dataset.tab, tabArticles: [] });
+    // this.setData({ tab: event.currentTarget.dataset.tab });
     store.article({ order: this.data.tab == '最热' ? 'hot' : 'time', pageNo: 1 }, (res) => {
       self.setData({
         tabArticles: self.data.tabArticles.concat((res.data.list || [])),
@@ -120,8 +120,7 @@ Page({
     store.swipers((data) => {
       self.setData({
         // imgUrls: (data.swipers || []),
-        events: (data.events || []),
-        spots: (data.spots || [])
+        // events: (data.events || [])
       });
     });
     // 顶部轮播数据获取
@@ -130,9 +129,15 @@ Page({
         imgUrls: (res.data || []),
       })
     })
-    // 热门钓场数据获取
-    store.hotSpot({ areaId: 110100, pageSize: 6 }, (res) => {
+    // 热门赛事活动轮播数据获取
+    store.searchEvent({ areaId: 110100, pageNo: 1, pageSize: 8 }, (res) => {
       console.log(res)
+      self.setData({
+        events: self.data.events.concat((res.data.list || []))
+      })
+    })
+    // 热门钓场轮播数据获取
+    store.hotSpot({ areaId: 110100, pageSize: 6 }, (res) => {
       self.setData({
         spots: (res.data.list || [])
       });

@@ -23,7 +23,8 @@ Page({
     interval: 5000,
     adinterval: 5000,
     duration: 1000,
-    systemWidth: 0
+    systemWidth: 0,
+    eventInfo: {}
   },
 
   onReady: function (e) {
@@ -59,19 +60,27 @@ Page({
   },
 
   onLoad: function(opt) {
-    let { id="5d64f976f1b44e00067d6549", scene } = opt;
-    if(scene) id = scene;
-    this.setData({ id });
+    // let { id="5d64f976f1b44e00067d6549", scene } = opt;
+    // if(scene) id = scene;
+    this.setData({ id: opt.id });
     const self = this;
-    store.getEventInfo({ id, user: app.globalData.user ?  app.globalData.user._id: null },(data) => {
-        self.timeInterval(data.event.timeX);
-        self.setData({
-          event: data.event,
-          application: data.application ? data.application:  null,
-          imgUrls: data.event.posters || [],
-          currentMoney: parseFloat(data.event.money || 0).toFixed(2)
-        })
-    });
+    // store.getEventInfo({ id, user: app.globalData.user ?  app.globalData.user._id: null },(data) => {
+    //     self.timeInterval(data.event.timeX);
+    //     self.setData({
+    //       event: data.event,
+    //       application: data.application ? data.application:  null,
+    //       imgUrls: data.event.posters || [],
+    //       currentMoney: parseFloat(data.event.money || 0).toFixed(2)
+    //     })
+    // });
+    store.eventInfo({eventId: opt.id}, (res)=>{
+      const resData = res.data
+      self.timeInterval(resData.endTime);
+      self.setData({
+        imgUrls: [resData.coverImage] || [],
+        eventInfo: resData
+      })
+    })
   },
 
   plus() {

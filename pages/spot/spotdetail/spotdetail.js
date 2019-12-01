@@ -1,10 +1,6 @@
-import { getData, showToast, globalTabindex } from '../../../utils/util.js'
-import conf from "../../../config.js";
 // adaptPadding,
 import * as store from '../../../store/index.js'
-import moment from '../../../utils/moment.js'
 
-const app = getApp()
 //获取应用实例
 Page({
   data: {
@@ -23,71 +19,88 @@ Page({
     articles: [],
     tab: "活动|赛事",
     systemWidth: 0,
-    eventCount: 0,
-    applicationCount: 0,
-    favorCount: 0,
     stars: [],
     limit: 10,
     total: 0,
-    skip: 0,
+    skip: 1,
+    fishCatchPageNo: 1,
+    fishCatchTotalCount	: 0,
     infoData: {}
   },
   onReady: function (e) {
     wx.showShareMenu({ withShareTicket: true });
   },
   onLoad: function (opt) {
-    let { id = "5d244606ba79a10006726961", scene } = opt;
-    if (scene) id = scene;
-    this.setData({ id });
+    // let { id = "5d244606ba79a10006726961", scene } = opt;
+    // if (scene) id = scene;
+    // this.setData({ id });
     const self = this;
-    store.getSpotInfo({ id }, (data) => {
-      self.setData({
-        spot: data.spot,
-        imgUrls: data.spot.posters || [],
-        stars: self.stars(data.spot.star || 0),
-        eventCount: data.eventCount || 0,
-        applicationCount: data.applicationCount || 0,
-        favorCount: data.favorCount || 0
-      })
-    });
-    store.getEvent({ spot: id, skip: 0, limit: self.data.limit }, (data) => {
-      self.setData({
-        events: self.data.events.concat((data.events || [])),
-        total: data.total,
-        skip: data.skip
-      });
-    });
-
+    // store.getSpotInfo({ id }, (data) => {
+    //   self.setData({
+    //     spot: data.spot,
+    //     imgUrls: data.spot.posters || [],
+    //     stars: self.stars(data.spot.star || 0),
+    //     eventCount: data.eventCount || 0,
+    //     applicationCount: data.applicationCount || 0,
+    //     favorCount: data.favorCount || 0
+    //   })
+    // });
+    // store.getEvent({ spot: id, skip: 0, limit: self.data.limit }, (data) => {
+    //   self.setData({
+    //     events: self.data.events.concat((data.events || [])),
+    //     total: data.total,
+    //     skip: data.skip
+    //   });
+    // });
+    // 钓场信息
     store.spotInfo({ spotId: opt.id }, (res) => {
+      const resData = res.data
+      this.setData({
+        id: resData.id,
+        imgUrls: [resData.icon],
+        stars: self.stars(resData.star || 0),
+        infoData: resData,
+        fishes: resData.fishes.split(',')
+      })
+      self.getEventList()
+    })
+    
+  },
+  // 活动、赛事列表
+  getEventList () {
+    store.searchEventBySpotId({ pageNo: this.data.skip, spotId: this.data.id }, (res) => {
+      this.setData({
+        events: this.data.events.concat((res.data.list || [])),
+        total: res.data.page.totalCount,
+        skip: res.data.page.pageNo
+      })
+    })
+  },
+  // 获取鱼获列表
+  getFishCatch () {
+    store.fishCatch({ pageNo: this.data.fishCatchPageNo, spotId: this.data.id  }, (res)=>{
       console.log(res)
       const resData = res.data
       this.setData({
-        imgUrls: [resData.posters],
-      })
+        articles: this.data.articles.concat((resData.list || [])),
+        fishCatchTotalCount: resData.page.totalCount,
+        fishCatchPageNo: resData.page.pageNo
+      });
     })
   },
 
   tapName: function (event) {
     console.dir(event.currentTarget.dataset.tab);
     let self = this;
-    this.setData({ tab: event.currentTarget.dataset.tab, events: [], articles: [] });
+    this.setData({ tab: event.currentTarget.dataset.tab, events: [], articles: [], skip: 1 });
     if (event.currentTarget.dataset.tab == '活动|赛事') {
-      store.getEvent({ spot: this.data.spot._id, skip: 0, limit: self.data.limit }, (data) => {
-        self.setData({
-          events: self.data.events.concat((data.events || [])),
-          total: data.total,
-          skip: data.skip
-        });
-      });
+      self.getEventList()
     }
     if (event.currentTarget.dataset.tab == '渔获') {
-      store.fishArticle({ spot: this.data.spot._id, skip: 0, limit: self.data.limit }, (data) => {
-        self.setData({
-          articles: self.data.articles.concat((data.articles || [])),
-          total: data.total,
-          skip: data.skip
-        });
-      });
+      this.setData({
+        fishCatchPageNo: 1
+      })
+      self.getFishCatch()
     }
   },
   go (event) {
@@ -98,22 +111,23 @@ Page({
   loadMore: function (event) {
     let self = this;
     if (this.data.tab == '活动|赛事') {
-      store.getEvent({ spot: this.data.spot._id, skip: self.data.skip + 1, limit: self.data.limit }, (data) => {
-        self.setData({
-          events: self.data.events.concat((data.events || [])),
-          total: data.total,
-          skip: data.skip
-        });
+      self.setData({
+        skip: this.data.skip+1
       });
+      self.getEventList()
     }
     if (this.data.tab == '渔获') {
-      store.fishArticle({ spot: this.data.spot._id, skip: self.data.skip + 1, limit: self.data.limit }, (data) => {
-        self.setData({
-          articles: self.data.articles.concat((data.articles || [])),
-          total: data.total,
-          skip: data.skip
-        });
-      });
+      // store.fishArticle({ spot: this.data.spot._id, skip: self.data.skip + 1, limit: self.data.limit }, (data) => {
+      //   self.setData({
+      //     articles: self.data.articles.concat((data.articles || [])),
+      //     total: data.total,
+      //     skip: data.skip
+      //   });
+      // });
+      this.setData({
+        fishCatchPageNo: self.data.fishCatchPageNo + 1
+      })
+      self.getFishCatch()
     }
   },
   backhome () {

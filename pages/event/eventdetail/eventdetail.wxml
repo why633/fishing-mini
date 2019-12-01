@@ -1,3 +1,4 @@
+<wxs src="../../../utils/dateFormat.wxs" module="dateFormat" />
 <view class="container" >
   <view class="fixed-view" bindtap="backhome">
     <image src="/assets/backhome.png"/>
@@ -20,29 +21,29 @@
       </swiper>
     </view>
     <view class="infos-box flex-column-box box">
-        <text class="title">{{ event.name }}</text>
+        <text class="title">{{ eventInfo.name }}</text>
         <view class="info flex-row-box">
-            <text class="label">{{ event.type == 'game' ? "赛事" : '活动'}}时间</text>
-            <text class="content">{{ event.timeString }}</text>
+            <text class="label">{{ eventInfo.type == '2' ? '赛事' : '活动'}}时间</text>
+            <text class="content">{{ dateFormat.dateFormat(eventInfo.startTime, 'yyyy年MM月dd日 hh:mm') }}</text>
         </view>
          <view class="info flex-row-box">
             <text class="label">报名截止</text>
-            <text class="content">{{ event.endTimeString || event.timeString }}</text>
+            <text class="content">{{ dateFormat.dateFormat(eventInfo.endTime, 'yyyy年MM月dd日 hh:mm') }}</text>
         </view>
          <view class="info flex-row-box">
             <text class="label">地址信息</text>
-            <text class="content">{{ event.spot ? event.spot.address || '~' : '~' }}</text>
+            <text class="content">{{ eventInfo.address ? eventInfo.address || '~' : '~' }}</text>
         </view>
          <view class="info flex-row-box">
             <text class="label">联系电话</text>
-            <text class="content">{{ event.spot ? event.spot.phone || '~' : '~' }}</text>
+            <text class="content">{{ eventInfo.phone ? eventInfo.phone || '~' : '~' }}</text>
         </view>
 
     </view>
     <view class="box" style="margin-bottom:280rpx;">
-        <view class='app-title'>{{ event.type == 'game' ? "赛事" : '活动'}}简介</view>
+        <view class='app-title'>{{ eventInfo.type == '2' ? "赛事" : '活动'}}简介</view>
         <view style="font-size:30rpx; white-space: pre-line;">
-            {{ event.content }}
+            {{ eventInfo.content }}
         </view>
     </view>
     <view class="flex-column-box bottom-box">
@@ -62,7 +63,7 @@
                 <image src="/assets/plus.png" />
             </view>
         </view>
-        <button class="button" disabled="{{ user == event.user || event.end }}" bindtap="createApplication">¥{{ currentMoney }} 立即报名</button>
+        <button class="button" disabled="{{ eventInfo.isPast==1 }}" bindtap="createApplication">¥{{ eventInfo.money }} 立即报名</button>
     </view>
     </view>
   </scroll-view>

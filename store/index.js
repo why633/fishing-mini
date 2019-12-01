@@ -347,6 +347,35 @@ export function searchEvent(params, cb, failcb) {
   })
 }
 
+// 根据钓场id获取活动赛事列表
+export function searchEventBySpotId(params, cb, failcb) {
+  return $get({
+    url: '/event/searchEvent/getBySpotId',
+    data: params,
+    success(data) {
+      cb(data)
+    },
+    fail(error) {
+      failcb && failcb()
+    }
+  })
+}
+
+// 获取活动赛事详情
+export function eventInfo(params, cb, failcb) {
+  return $get({
+    url: '/event/searchEvent/getByEventId',
+    data: params,
+    success(data) {
+      cb(data)
+    },
+    fail(error) {
+      failcb && failcb()
+    }
+  })
+}
+
+
 // 获取热门钓场
 export function hotSpot(params, cb, failcb) {
   return $post({

@@ -1,3 +1,4 @@
+<wxs src="../../../utils/dateFormat.wxs" module="dateFormat" />
 <view class="container" >
  <view class="fixed-view" bindtap="backhome">
     <image src="/assets/backhome.png"/>
@@ -20,7 +21,7 @@
       </swiper>
     </view>
     <view class="infos-box flex-column-box box">
-        <text class="title">{{ spot.name }}</text>
+        <text class="title">{{ infoData.name }}</text>
         <view class="flex-row-box star-tag-box" style="justify-content: space-between;align-items:center;">
           <view class="stars-box">
             <block wx:for="{{ stars }}" wx:key="{{index}}">
@@ -28,42 +29,42 @@
             </block>
           </view>
           <view class="tag flex-row-box">
-            <text class="{{ spot.spotType == '黑坑' ? 'type heikeng' : (spot.spotType == '路亚' ? 'type luya': ( spot.spotType == '海钓' ? 'type haidiao' : (spot.spotType == '自然水域' ? 'type ziran' : 'type')))}}">{{ spot.spotType }}</text>
-            <text wx:if="{{spot.verify}}" class="verify">认证</text>
-            <text wx:if="{{spot.game}}" class="game">赛事</text>
-            <text wx:if="{{spot.activity}}" class="activity">活动</text>
+            <text class="{{ infoData.spotType == '1' ? 'type heikeng' : (infoData.spotType == '2' ? 'type luya': ( infoData.spotType == '4' ? 'type haidiao' : (infoData.spotType == '3' ? 'type ziran' : 'type')))}}">{{ infoData.spotType == '1' ? '黑坑' : (infoData.spotType == '2' ? '路亚': ( infoData.spotType == '海钓' ? 'type haidiao' : (infoData.spotType == '3' ? '自然水域' : ''))) }}</text>
+            <text wx:if="{{infoData.attestation==2}}" class="verify">认证</text>
+            <text wx:if="{{infoData.game==2}}" class="game">赛事</text>
+            <text wx:if="{{infoData.activity==2}}" class="activity">活动</text>
           </view>
         </view>
         <view class="flex-row-box stat-box">
           <view class="flex-row-box stat">
             <image src="/assets/hdcc.png" />
             <view class="flex-column-box">
-              <text class="num">{{ eventCount }}</text>
+              <text class="num">{{ infoData.activityCount }}</text>
               <text class="label">活动场次</text>
             </view>
           </view>
           <view class="flex-row-box stat">
             <image src="/assets/bmrc.png" />
             <view class="flex-column-box">
-              <text class="num">{{ applicationCount }}</text>
+              <text class="num">{{ infoData.enrollCount }}</text>
               <text class="label">报名人次</text>
             </view>
           </view>
           <view class="flex-row-box stat">
             <image src="/assets/gzrc.png" />
             <view class="flex-column-box">
-              <text class="num">{{ favorCount }}</text>
+              <text class="num">{{ infoData.collectCount }}</text>
               <text class="label">关注人次</text>
             </view>
           </view>
         </view>
         <view class="info flex-row-box">
             <text class="label">地址</text>
-            <text class="content">{{ spot ? spot.address || '~' : '~' }}</text>
+            <text class="content">{{ infoData.address ? infoData.address || '~' : '~' }}</text>
         </view>
          <view class="info flex-row-box">
             <text class="label">电话</text>
-            <text class="content">{{ spot ? spot.phone || '~' : '~' }}</text>
+            <text class="content">{{ infoData.phone ? infoData.phone || '~' : '~' }}</text>
         </view>
     </view>
 
@@ -76,26 +77,26 @@
       <view wx:if="{{tab == '活动|赛事'}}">
         <view class="flex-column-box">
           <block wx:for="{{ events }}" wx:key="{{index}}">
-            <view class="event-box flex-row-box" data-id="{{ item._id }}" bindtap="go">
-              <image src="{{ item.icon || item.posters[0] }}" mode="widthFix"/>
+            <view class="event-box flex-row-box" data-id="{{ item.id }}" bindtap="go">
+              <image src="{{ item.coverImage }}" mode="aspectFill"/>
               <view class="flex-column-box" style="margin-left: 13px;min-height:258rpx;justify-content: space-between;">
                       <view class="info">
                         <text class="title">{{item.name}}</text>
                       </view>
                       <view class="tag">
-                        <text class="{{ item.type }}">{{ item.type == 'game' ? '赛事' : '活动' }}</text>
-                        <text class="{{ item.spot.spotType == '黑坑' ? 'type heikeng' : (item.spot.spotType == '路亚' ? 'type luya': ( item.spot.spotType == '海钓' ? 'type haidiao' : (item.spot.spotType == '自然水域' ? 'type ziran' : 'type')))}}">{{ item.spot.spotType }}</text>
-                        <text class="{{ item.end ? 'end' : 'going'}}">{{ item.end ? '已过期' : '报名中' }}</text>
+                        <text class="{{ item.type==1?'active':'game' }}">{{ item.type == '2' ? '赛事' : '活动' }}</text>
+                        <text class="{{ item.spotType == '1' ? 'type heikeng' : (item.spot.spotType == '2' ? 'type luya': ( item.spot.spotType == '4' ? 'type haidiao' : (item.spot.spotType == '3' ? 'type ziran' : 'type'))) }}">{{ item.spotType == '1' ? '黑坑' : (item.spot.spotType == '2' ? '路亚': ( item.spot.spotType == '4' ? '海钓' : (item.spot.spotType == '3' ? '自然水域' : ''))) }}</text>
+                        <text class="{{ item.isPast==1 ? 'end' : 'going'}}">{{ item.isPast ? '已过期' : '报名中' }}</text>
                       </view>
                       <view class="flex-column-box">
                         <view class="info-box">
-                          <text>上限：{{ item.count }}人</text>
+                          <text>上限：{{ item.peopleNumber }}人</text>
                         </view>
                         <view class="info-box">
                           <text>费用：{{ item.money + '元/人' }}</text>
                         </view>
                         <view class="info-box">
-                          <text>时间：{{ item.timeString }}</text>
+                          <text>时间：{{ dateFormat.dateFormat(item.startTime, 'yyyy年MM月dd日 hh:mm') }}</text>
                         </view>
                       </view>
               </view>
@@ -109,18 +110,18 @@
       <view wx:if="{{tab=='渔获'}}" class="box" style="padding-top:24rpx;">
         <view class="flex-row-box article-box">
           <block wx:for="{{ articles }}" wx:key="{{ item._id }}">
-            <view class="article-info" style="width:{{ systemWidth / 2 - 18 }}px" data-id="{{item._id}}" bindtap="go">
-              <image src="{{ item.icon }}" mode="widthFix"/>
+            <view class="article-info" style="width:{{ systemWidth / 2 - 18 }}px" data-id="{{item.id}}" bindtap="go">
+              <image src="{{ item.coverImage }}" mode="widthFix"/>
               <view class="flex-column-box meta">
                 <text class="title">{{ item.title }}</text>
                 <view class="flex-row-box" style="justify-content:space-between;align-items:center;">
                   <view class="flex-row-box user-info" style="align-items:center;">
-                    <image src="{{ item.user.headimgurl || '/assets/user_icon.png' }}"/>
-                    <text class="nickname">{{ item.user.nickname || '用户-' + item.user.uniqID }}</text>
+                    <image src="{{ item.userHeadImg|| '/assets/user_icon.png' }}"/>
+                    <text class="nickname">{{ item.userNickName || '用户-' + item.id }}</text>
                   </view>
                   <view class="flex-row-box" style="align-items:center;">
                     <image src="/assets/good.png" />
-                    <text class="favor">{{ item.favor || 0 }}</text>
+                    <text class="favor">{{ item.likeCount || 0 }}</text>
                   </view>
                 </view>
               </view>
@@ -137,47 +138,47 @@
           <view class="col flex-row-box">
             <view class="info flex-row-box">
               <view class="label">总面积</view>
-              <view class="content">{{ spot.waterSquare }}亩</view>
+              <view class="content">{{ infoData.waterSquare }}亩</view>
             </view>
             <view class="info flex-row-box">
              <view class="label">池塘数</view>
-              <view class="content">{{ spot.waterCount }}个</view>
+              <view class="content">{{ infoData.waterCount }}个</view>
             </view>
           </view>
           <view class="col flex-row-box">
             <view class="info flex-row-box">
               <view class="label">钓位数</view>
-              <view class="content">{{  spot.spotCount }}个</view>
+              <view class="content">{{  infoData.spotCount }}个</view>
             </view>
             <view class="info flex-row-box">
              <view class="label">钓位间距</view>
-             <view class="content">{{  spot.spotDistance }}米</view>
+             <view class="content">{{  infoData.spotDistance }}米</view>
             </view>
           </view>
           <view class="col flex-row-box">
             <view class="info flex-row-box">
               <view class="label">平均水深</view>
-              <view class="content">{{ spot.waterDepth }}米</view>
+              <view class="content">{{ infoData.waterDepth }}米</view>
             </view>
             <view class="info flex-row-box">
              <view class="label">限杆长度</view>
-              <view class="content">{{ spot.rodLong }}米</view>
+              <view class="content">{{ infoData.rodLong }}米</view>
             </view>
           </view>
         </view>
         <view class='app-title'>鱼种</view>
-        <block  wx:for="{{ spot.fishes }}" wx:key="{{index}}">
+        <block  wx:for="{{ fishes }}" wx:key="{{index}}">
           <view class="fish">
             {{ item }}
           </view>
         </block>
         <view class='app-title'>注意事项</view>
         <view style="font-size:30rpx;margin-bottom:15rpx; white-space: pre-line;">
-            {{ spot.content }}
+            {{ infoData.content }}
         </view>
-        <button class="btn">
+        <!-- <button class="btn">
           发渔获
-        </button>
+        </button> -->
       </view>
     </view>
 
