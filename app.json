@@ -11,9 +11,7 @@
     "pages/spot/spot",
     "pages/article/normal/article",
     "pages/article/fish/article",
-    "pages/me/bind/bind",
-    "pages/draw/draw"
-
+    "pages/me/bind/bind"
   ],
   "window": {
     "backgroundTextStyle": "light",
