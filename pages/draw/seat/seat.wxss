@@ -1,0 +1,20 @@
+.seat {
+  height: 100%;
+  background: #fff;
+  position: relative;
+}
+
+.seatNum {
+  width: 300rpx;
+  height: 300rpx;
+  background: pink;
+  margin: 200rpx auto 100rpx;
+}
+
+.btn {
+  width: 70%;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #dcdfe6;
+  color: #606266;
+}

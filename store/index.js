@@ -445,3 +445,17 @@ export function spotInfo(params, cb, failcb) {
     }
   })
 }
+
+// 解密手机号
+export function decryptPhone(params, cb, failcb) {
+  return $post({
+    url: '/user/userLogin/decryptPhone',
+    data: params,
+    success(data) {
+      cb(data)
+    },
+    fail(error) {
+      failcb && failcb()
+    }
+  })
+}

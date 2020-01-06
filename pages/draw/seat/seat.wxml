@@ -1,0 +1,7 @@
+<view class="seat">
+  <view class="seatNum">
+    <text>座位号</text>
+    <text>{{phone}}</text>
+  </view>
+  <button class="btn">关闭</button>
+</view>

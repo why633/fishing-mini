@@ -1,3 +1,7 @@
 <view class="draw">
-  <text>摇号</text>
+  <view class="logo">
+    <image class="image" src="/assets/seat.png" mode="widthFix"/>
+  </view>
+  <text>{{phone}}</text>
+  <button class="btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">摇 号</button>
 </view>
