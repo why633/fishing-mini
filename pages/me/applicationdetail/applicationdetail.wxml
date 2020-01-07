@@ -2,27 +2,27 @@
     <view class="box flex-column-box application-box" style="padding-top: 12rpx;">
         <view class="flex-row-box">
           <text class="label">订单编号</text>
-          <text>{{ application.code }}</text>
+          <text>{{ applicationInfo.applicationCode }}</text>
         </view>
         <view class="flex-row-box">
-          <text class="label">{{ application.event.type == 'game' ? '赛事' : '活动'}}名称</text>
-          <text>{{ application.event.name }}</text>
+          <text class="label">{{ applicationInfo.eventType == '1' ? '活动' : '赛事' }}名称</text>
+          <text>{{ applicationInfo.eventName }}</text>
         </view>
         <view class="flex-row-box">
           <text class="label">所属钓场</text>
           <text>{{ application.event.spot.name }}</text>
         </view>
         <view class="flex-row-box">
-          <text class="label">{{ application.event.type == 'game' ? '赛事' : '活动'}}日期</text>
-          <text>{{ application.event.timeString }}</text>
+          <text class="label">{{ applicationInfo.eventType == '1' ? '活动' : '赛事' }}日期</text>
+          <text>{{ applicationInfo.startDate }}</text>
         </view>
         <view class="flex-row-box">
           <text class="label">报名人数</text>
-          <text>{{ application.count }}</text>
+          <text>{{ applicationInfo.peopleNumber }}</text>
         </view>
         <view class="flex-row-box">
           <text class="label">报名金额</text>
-          <text>{{ application.money }}元</text>
+          <text>{{ applicationInfo.tranAmount }}元</text>
         </view>
         <view class="flex-row-box">
           <text class="label">订单状态</text>

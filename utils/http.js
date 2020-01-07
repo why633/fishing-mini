@@ -44,7 +44,7 @@ const Request = param => {
 }
 
 const $Request = param => {
-  let headers = { "Content-Type": 'application/json', "Authorization": "Bearer " + getData("sessionID")  }
+  let headers = { "Content-Type": 'application/json', "token": getData("sessionID")  }
   Object.assign(headers, param.header);
   var timeout
   const requestObj = wx.request({

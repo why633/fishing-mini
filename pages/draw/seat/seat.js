@@ -1,6 +1,8 @@
+import * as store from '../../../store/index.js'
 Page({
   data: {
-    phone: '123'
+    phone: '',
+    seat: '10'
   },
 
   onReady: function (e) {
@@ -12,6 +14,7 @@ Page({
     this.setData({
       phone: e.phone
     })
+    this.lotNumber()
   },
 
   onHide () {
@@ -20,5 +23,24 @@ Page({
 
   onShow () {
 
+  },
+  // 摇号
+  lotNumber () {
+    const params = {
+      phone: this.data.phone,
+      eventId: 9
+    }
+    store.lotNumber(params, (res) => {
+      console.log(res)
+      this.setData({
+        seat: res.data.value
+      })
+    })
+  },
+  // 关闭
+  close () {
+    wx.switchTab({
+      url: '../../index/index'
+    });
   }
 })

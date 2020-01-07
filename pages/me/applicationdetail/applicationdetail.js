@@ -25,9 +25,15 @@ Page({
   },
 
   onLoad: function(opt) {
+    console.log(JSON.parse(opt.event))
+    this.setData({
+      applicationInfo: JSON.parse(opt.event)
+    })
+    return
     let { id } = opt
     this.setData({
-      qrurl: conf.HOST + 'api/wallet/qr/' + id
+      // qrurl: conf.HOST + 'api/wallet/qr/' + id
+      qrurl: conf.FISHING_HOST + 'api/wallet/qr/' + id
     })
     const self = this;
     store.getApplicationInfo({ id },(data) => {

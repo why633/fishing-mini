@@ -459,3 +459,61 @@ export function decryptPhone(params, cb, failcb) {
     }
   })
 }
+
+// 小程序登录
+export function programLogin(params, cb, failcb) {
+  return $get({
+    url: '/user/userLogin/programLogin',
+    data: params,
+    success(data) {
+      cb(data)
+    },
+    fail(error) {
+      failcb && failcb()
+    }
+  })
+}
+
+// 摇号
+export function lotNumber(params, cb, failcb) {
+  return $get({
+    url: '/event/lotNumber/manual',
+    data: params,
+    success(data) {
+      cb(data)
+    },
+    fail(error) {
+      failcb && failcb()
+    }
+  })
+}
+
+// 报名
+export function applicationGame(params, cb, failcb) {
+  return $post({
+    url: '/order/application/apply/game',
+    data: params,
+    success(data) {
+      cb(data)
+    },
+    fail(error) {
+      failcb && failcb()
+    }
+  })
+}
+
+// 我的订单
+export function applicationList(params, cb, failcb) {
+  return $get({
+    url: '/order/application/enroll/list',
+    data: params,
+    success(data) {
+      cb(data)
+    },
+    fail(error) {
+      failcb && failcb()
+    }
+  })
+}
+
+

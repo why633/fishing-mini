@@ -1,15 +1,18 @@
 import * as store from '../../store/index.js'
+import { setData } from '../../utils/util.js'
 Page({
   data: {
     phone: ''
   },
 
   onReady: function (e) {
-    // wx.login({
-    //   success (res) {
-    //     console.log(res)
-    //   }
-    // })
+    let _this = this
+    wx.login({
+      success (res) {
+        console.log(res)
+        _this.programLogin(res.code)
+      }
+    })
   },
 
   onLoad: function () {
@@ -23,6 +26,7 @@ Page({
   onShow () {
 
   },
+  // 获取手机号
   getPhoneNumber (e) {
     let _this = this
     wx.login({
@@ -43,6 +47,13 @@ Page({
           })
         })
       }
+    })
+  },
+  // 小程序登录
+  programLogin (wxCode) {
+    store.programLogin({wxCode: wxCode}, (res) => {
+      console.log(res)
+      setData('sessionID', res.data.token);
     })
   }
 })

@@ -1,7 +1,7 @@
 <view class="seat">
   <view class="seatNum">
-    <text>座位号</text>
-    <text>{{phone}}</text>
+    <view>座位号</view>
+    <view class="seat">{{seat}}</view>
   </view>
-  <button class="btn">关闭</button>
+  <button class="btn" bindtap="close">关闭</button>
 </view>

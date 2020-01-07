@@ -52,7 +52,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 10,
 			"list": [
 				{
 					"id": -1,
@@ -107,6 +107,28 @@
 					"id": -1,
 					"name": "摇号",
 					"pathName": "pages/draw/draw",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "座位号",
+					"pathName": "pages/draw/seat/seat",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "订单详情",
+					"pathName": "pages/me/applicationdetail/applicationdetail",
+					"query": "event= \"{\"address\":\"穆家峪镇娄子峪村\",\"applicationCode\":\"A202001071602076835261\",\"check\":1,\"count\":1,\"createTime\":1578384127583,\"endDate\":1578441633000,\"eventId\":2230,\"eventName\":\"偷驴 日场 鲤鱼 日月潭老鬼垂钓园\",\"eventType\":1,\"icon\":\"http://apps.rhino-rack.com.cn/1567896408988.jpg\",\"lat\":\"40.427358\",\"lng\":\"116.992557\",\"peopleNumber\":100,\"price\":50,\"seatNumber\":\"\",\"spotId\":26,\"spotType\":1,\"spotUserId\":57,\"startDate\":1578443433000,\"status\":1,\"tranAmount\":50}\"",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的订单",
+					"pathName": "pages/me/application/application",
+					"query": "",
 					"scene": null
 				}
 			]
