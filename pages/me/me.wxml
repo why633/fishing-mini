@@ -1,17 +1,17 @@
 <view class="container" >
   <view class="box flex-row-box user-info" wx:if="{{hasUserInfo}}">
     <view class="flex-row-box">
-        <image src="{{ user.headimgurl || '/assets/user_icon.png'}}"/>
+        <image src="{{ user.headImg || '/assets/user_icon.png'}}"/>
         <view class="flex-column-box">
-            <text class="nickname">{{ user.nickname || '用户-' + user.uniqID }}</text>
-            <text>{{'ID:' + user.uniqID }}</text>
+            <text class="nickname">{{ user.nickName || '用户-' + user.id }}</text>
+            <text>{{'ID:' + user.id }}</text>
             <text>{{'签名:' + (user.sign || '暂无签名')}}</text>
         </view>
     </view>
     <image class="arrow" src="/assets/arrow_icon.png" />
   </view>
   <view class="box flex-row-box user-none-info" wx:else>
-     <image src="{{ user.headimgurl || '/assets/user_icon.png'}}"/>
+     <image src="{{ user.headImg || '/assets/user_icon.png'}}"/>
   </view>
   
   <view class="flex-row-box relate-box" style="background:#fff;">

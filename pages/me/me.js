@@ -142,14 +142,16 @@ Page({
           store.programLogin({ wxCode: res.code }, (data) => {
             console.log(data)
             setData('sessionID', data.data.token);
-            let user = {
-              headimgurl: data.data.headImgUrl,
-              nickname: data.data.nickName,
-              uniqID: data.data.id,
-              sign: data.data.forbiddenWords,
-              favorate: data.data.favorate,
-              fans: data.data.fans
-            }
+            const user = data.data
+            // let user = {
+            //   headimgurl: data.data.headImgUrl,
+            //   nickname: data.data.nickName,
+            //   uniqID: data.data.id,
+            //   sign: data.data.forbiddenWords,
+            //   favorate: data.data.favorate,
+            //   fans: data.data.fans,
+            //   phone: data.data.phone
+            // }
             self.setData({ user: user, hasUserInfo: true });
             app.globalData.user = user
             showToast('登录成功', 'none');

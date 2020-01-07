@@ -39,7 +39,12 @@ Page({
         url: '../../me/me'
       })
     }
-
+    if (!app.globalData.user || !app.globalData.user.phone) {
+      showToast("账户状态错误，请绑定手机再报名", 'none');
+      return wx.navigateTo({
+        url: '../../me/bind/bind'
+      })
+    }
     const params = {
       eventId: this.data.id,
       count: this.data.count,
@@ -47,10 +52,15 @@ Page({
     }
     console.log(JSON.stringify(params))
     store.applicationGame(JSON.stringify(params), (res => {
+      console.log(res)
       console.log(JSON.stringify(res.data))
-      wx.navigateTo({
-        url: '../../me/applicationdetail/applicationdetail?event=' + JSON.stringify(res.data)
-      })
+      if (res.code == 200) {
+        wx.navigateTo({
+          url: '../../me/applicationdetail/applicationdetail?event=' + JSON.stringify(res.data)
+        })
+      } else {
+        showToast(res.message, 'none')
+      }
     }))
     // if( !app.globalData.user ) {
     //   showToast("账户状态错误，请绑定手机再报名", 'none');
@@ -76,19 +86,10 @@ Page({
   onLoad: function (opt) {
     // let { id="5d64f976f1b44e00067d6549", scene } = opt;
     // if(scene) id = scene;
-    const event = JSON.parse(opt.event)
-    this.setData({ id: event.id });
+    console.log(opt)
+    this.setData({ id: opt.id });
     const self = this;
-    // store.getEventInfo({ id, user: app.globalData.user ?  app.globalData.user._id: null },(data) => {
-    //     self.timeInterval(data.event.timeX);
-    //     self.setData({
-    //       event: data.event,
-    //       application: data.application ? data.application:  null,
-    //       imgUrls: data.event.posters || [],
-    //       currentMoney: parseFloat(data.event.money || 0).toFixed(2)
-    //     })
-    // });
-    store.eventInfo({ eventId: event.id }, (res) => {
+    store.eventInfo({ eventId: opt.id }, (res) => {
       const resData = res.data
       self.timeInterval(resData.endTime);
       self.setData({

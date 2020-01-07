@@ -38,16 +38,17 @@ Page({
     let self = this;
     this.setData({ tab: event.currentTarget.dataset.tab, applications: [] });
     store.applicationList({ payStatus: self.data.tab, pageNo: self.data.pageNo, pageSize: self.data.pageSize }, (data) => {
+      console.log(data)
       self.setData({
-        applications: self.data.applications.concat((data.data || [])),
-        total: data.data.length
+        applications: self.data.applications.concat((self.data.tab == '1' ? data.data : data.data.list || [])),
+        total: self.data.tab == '1' ? data.data.length : data.data.list.length
       })
     });
   },
 
   go (event) {
     wx.navigateTo({
-      url: '../applicationdetail/applicationdetail?id=' + event.currentTarget.dataset.id
+      url: '../applicationdetail/applicationdetail?event=' + JSON.stringify(event.currentTarget.dataset.event)
     })
   },
 
@@ -58,10 +59,11 @@ Page({
     this.setData({
       pageNo: this.data.pageNo + 1
     })
-    store.applicationList({ payStatus: event.currentTarget.dataset.tab, pageNo: self.data.pageNo, pageSize: self.data.pageSize }, (data) => {
+    let self = this
+    store.applicationList({ payStatus: self.currentTarget.dataset.tab, pageNo: self.data.pageNo, pageSize: self.data.pageSize }, (data) => {
       self.setData({
-        applications: self.data.applications.concat((data.data || [])),
-        total: data.data.length
+        applications: self.data.applications.concat((self.data.tab == '1' ? data.data : data.data.list || [])),
+        total: self.data.tab == '1' ? data.data.length : data.data.list.length
       })
     })
   },

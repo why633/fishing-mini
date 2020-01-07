@@ -516,4 +516,29 @@ export function applicationList(params, cb, failcb) {
   })
 }
 
-
+// 绑定手机号
+export function bindPhoneNum(params, cb, failcb) {
+  return $get({
+    url: '/user/userLogin/bindPhone',
+    data: params,
+    success(data) {
+      cb(data)
+    },
+    fail(error) {
+      failcb && failcb()
+    }
+  })
+}
+// 获取验证吗
+export function sendCode(params, cb, failcb) {
+  return $get({
+    url: '/user/userLogin/sendCode',
+    data: params,
+    success(data) {
+      cb(data)
+    },
+    fail(error) {
+      failcb && failcb()
+    }
+  })
+}

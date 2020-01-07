@@ -7,7 +7,7 @@
       </view>
       <view class="box" style="padding-top:7px">
       <block wx:for="{{ applications }}" wx:key="{{index}}">
-        <view class="application-box flex-row-box" data-id="{{item.eventId}}" bindtap="go">
+        <view class="application-box flex-row-box" data-event="{{item}}" bindtap="go">
           <image src="{{ item.icon }}" mode="widthFix"/>
           <view class="flex-column-box application-info">
             <view class="event"><text>{{ item.eventName }}</text></view>

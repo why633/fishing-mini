@@ -52,9 +52,8 @@ Page({
   },
 
   go (e) {
-    console.log(e.currentTarget.dataset)
     return wx.navigateTo({
-      url: './eventdetail/eventdetail?event=' + JSON.stringify(e.currentTarget.dataset.event)
+      url: './eventdetail/eventdetail?id=' + e.currentTarget.dataset.id
     });
   },
 

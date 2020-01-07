@@ -8,7 +8,7 @@ const app = getApp()
 //获取应用实例
 Page({
   data: {
-    application:{},
+    applicationInfo:{},
     systemWidth: 0,
     qrurl: null,
     payok: false,
@@ -20,7 +20,7 @@ Page({
 
   event() {
     wx.navigateTo({
-      url: '../../event/eventdetail/eventdetail?id=' + this.data.application.event._id
+      url: '../../event/eventdetail/eventdetail?id=' + this.data.applicationInfo.eventId
     });
   },
 
@@ -29,19 +29,6 @@ Page({
     this.setData({
       applicationInfo: JSON.parse(opt.event)
     })
-    return
-    let { id } = opt
-    this.setData({
-      // qrurl: conf.HOST + 'api/wallet/qr/' + id
-      qrurl: conf.FISHING_HOST + 'api/wallet/qr/' + id
-    })
-    const self = this;
-    store.getApplicationInfo({ id },(data) => {
-        self.setData({
-          application: data.application,
-          payok: data.application.status === '已付款'
-        })
-    });
   },
 
   pay() {
