@@ -10,7 +10,7 @@ Page({
   data: {
     applications: [],
     events: [],
-    tab: '未付款',
+    tab: '1',
     pageSize: 10,
     total: 0,
     pageNo: 1,
@@ -36,7 +36,7 @@ Page({
   tapName: function (event) {
     console.dir(event.currentTarget.dataset.tab);
     let self = this;
-    this.setData({ tab: event.currentTarget.dataset.tab == '未付款' ? '1' : '2', applications: [] });
+    this.setData({ tab: event.currentTarget.dataset.tab, applications: [] });
     store.applicationList({ payStatus: self.data.tab, pageNo: self.data.pageNo, pageSize: self.data.pageSize }, (data) => {
       self.setData({
         applications: self.data.applications.concat((data.data || [])),

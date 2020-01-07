@@ -2,8 +2,8 @@
   <scroll-view bindscrolltolower="loadMore" scroll-y style="height:100%;">
     <view class="dealWith">
       <view class="dealBox flex-row-box" style="background:#fff;border-bottom:1px solid #ddd;">
-        <view class="{{tab=='未付款' ? 'active' : ''}}" data-tab="未付款" bindtap="tapName">未付款</view>
-        <view class="{{tab=='已付款' ? 'active' : ''}}" data-tab="已付款" bindtap="tapName">已付款</view>
+        <view class="{{tab=='1' ? 'active' : ''}}" data-tab="1" bindtap="tapName">未付款</view>
+        <view class="{{tab=='2' ? 'active' : ''}}" data-tab="2" bindtap="tapName">已付款</view>
       </view>
       <view class="box" style="padding-top:7px">
       <block wx:for="{{ applications }}" wx:key="{{index}}">
