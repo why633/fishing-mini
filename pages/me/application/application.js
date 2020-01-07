@@ -11,9 +11,9 @@ Page({
     applications: [],
     events: [],
     tab: '未付款',
-    limit: 10,
+    pageSize: 10,
     total: 0,
-    skip: 0,
+    pageNo: 1,
     width: 0,
     systemWidth: 0
   },
@@ -24,12 +24,11 @@ Page({
 
   onLoad: function (opt) {
     const self = this;
-    store.applicationList({ payStatus: '1' }, (data) => {
+    store.applicationList({ payStatus: '1', pageSize: self.data.pageSize, pageNo: self.data.pageNo }, (data) => {
       console.log(data)
       self.setData({
         applications: self.data.applications.concat((data.data || [])),
-        total: data.total,
-        skip: data.skip
+        total: data.data.length
       })
     });
   },
@@ -37,12 +36,11 @@ Page({
   tapName: function (event) {
     console.dir(event.currentTarget.dataset.tab);
     let self = this;
-    this.setData({ tab: event.currentTarget.dataset.tab, applications: [] });
-    store.getApplication({ status: event.currentTarget.dataset.tab, skip: 0, limit: self.data.limit }, (data) => {
+    this.setData({ tab: event.currentTarget.dataset.tab == '未付款' ? '1' : '2', applications: [] });
+    store.applicationList({ payStatus: self.data.tab, pageNo: self.data.pageNo, pageSize: self.data.pageSize }, (data) => {
       self.setData({
-        applications: self.data.applications.concat((data.applications || [])),
-        total: data.total,
-        skip: data.skip
+        applications: self.data.applications.concat((data.data || [])),
+        total: data.data.length
       })
     });
   },
@@ -55,6 +53,17 @@ Page({
 
   onHide () {
 
+  },
+  onReachBottom () {
+    this.setData({
+      pageNo: this.data.pageNo + 1
+    })
+    store.applicationList({ payStatus: event.currentTarget.dataset.tab, pageNo: self.data.pageNo, pageSize: self.data.pageSize }, (data) => {
+      self.setData({
+        applications: self.data.applications.concat((data.data || [])),
+        total: data.data.length
+      })
+    })
   },
 
   onShow () {
