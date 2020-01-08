@@ -24,7 +24,8 @@ const Request = param => {
       clearTimeout(timeout)
       if(res.statusCode === 401) {
         remoData('sessionID');
-        // showToast('token失效，重新登录', 'none');
+        remoData('userInfo');
+        showToast('token失效，重新登录', 'none');
       }
       if(res.data.status !== 'ok') {
          showToast(res.data.message, 'none');

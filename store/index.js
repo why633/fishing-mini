@@ -558,3 +558,17 @@ export function payApplication(params, cb, failcb) {
   })
 }
 
+// 获取我的信息
+export function getMyUserInfo(params, cb, failcb) {
+  return $get({
+    url: '/user/userInfo/getUserPage',
+    data: params,
+    success(data) {
+      cb(data)
+    },
+    fail(error) {
+      failcb && failcb()
+    }
+  })
+}
+

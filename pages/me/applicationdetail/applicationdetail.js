@@ -39,14 +39,11 @@ Page({
       payType: 4
     }, (res) => {
       const paramsData = JSON.parse(res.data.value)
-      const options = {
-
-      }
-      console.log(options)
+      console.log(paramsData)
       wx.requestPayment({
-        timeStamp: paramsData.timestamp,
-        nonceStr: paramsData.noncestr,
-        package: 'prepay_id=' + paramsData.package,
+        timeStamp: paramsData.timeStamp,
+        nonceStr: paramsData.nonceStr,
+        package: paramsData.package,
         signType: paramsData.signType,
         paySign: paramsData.sign,
         success: function (res) {

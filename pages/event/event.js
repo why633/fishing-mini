@@ -17,7 +17,7 @@ Page({
     skip: 1,
     width: 0,
     weeks: [],
-    day: moment().format('YYYYMMDD')
+    day: moment().format('YYYY-MM-DD')
   },
 
   onReady: function (e) {
@@ -26,7 +26,7 @@ Page({
 
     while (cc < 7) {
       let temp = moment().add(cc, 'days')
-      let d = temp.format('YYYYMMDD');
+      let d = temp.format('YYYY-MM-DD');
       weeks.push({
         key: d,
         date: '周' + WEEKS[temp.day()],
@@ -42,7 +42,7 @@ Page({
   tapType: function (event) {
     let self = this;
     this.setData({ tab: event.currentTarget.dataset.tab, events: [] });
-    store.searchEvent({ areaId: 110100, type: this.data.tab, pageNo: 1, day: this.data.day }, (res) => {
+    store.searchEvent({ areaId: 110100, type: this.data.tab, pageNo: 1, startTime: this.data.day }, (res) => {
       self.setData({
         events: self.data.events.concat((res.data.list || [])),
         total: res.data.page.totalCount,
@@ -61,7 +61,7 @@ Page({
     console.log(event.currentTarget.dataset)
     let self = this;
     this.setData({ day: event.currentTarget.dataset.day, events: [] });
-    store.searchEvent({ areaId: 110100, type: this.data.tab, pageNo: 1, day: event.currentTarget.dataset.day }, (res) => {
+    store.searchEvent({ areaId: 110100, type: this.data.tab, pageNo: 1, startTime: event.currentTarget.dataset.day }, (res) => {
       self.setData({
         events: self.data.events.concat((res.data.list || [])),
         total: res.data.page.totalCount,
@@ -72,7 +72,7 @@ Page({
 
   loadMore: function (event) {
     let self = this;
-    store.searchEvent({ areaId: 110100, type: this.data.tab, pageNo: self.data.skip + 1, day: this.data.day }, (res) => {
+    store.searchEvent({ areaId: 110100, type: this.data.tab, pageNo: self.data.skip + 1, startTime: this.data.day }, (res) => {
       console.log(res)
       self.setData({
         events: self.data.events.concat((res.data.list || [])),
@@ -84,7 +84,7 @@ Page({
 
   onLoad: function () {
     const self = this;
-    store.searchEvent({ areaId: 110100, type: this.data.tab, pageNo: 1, day: this.data.day }, (res) => {
+    store.searchEvent({ areaId: 110100, type: this.data.tab, pageNo: 1, startTime: this.data.day }, (res) => {
       console.log(res)
       self.setData({
         events: self.data.events.concat((res.data.list || [])),

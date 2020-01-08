@@ -1,51 +1,55 @@
-<view class="container" >
-    <view class="box flex-column-box application-box" style="padding-top: 12rpx;">
-        <view class="flex-row-box">
-          <text class="label">订单编号</text>
-          <text>{{ applicationInfo.applicationCode }}</text>
-        </view>
-        <view class="flex-row-box">
-          <text class="label">{{ applicationInfo.eventType == '1' ? '活动' : '赛事' }}名称</text>
-          <text>{{ applicationInfo.eventName }}</text>
-        </view>
-        <view class="flex-row-box">
-          <text class="label">所属钓场</text>
-          <text>{{ application.event.spot.name }}</text>
-        </view>
-        <view class="flex-row-box">
-          <text class="label">{{ applicationInfo.eventType == '1' ? '活动' : '赛事' }}日期</text>
-          <text>{{ applicationInfo.startDate }}</text>
-        </view>
-        <view class="flex-row-box">
-          <text class="label">报名人数</text>
-          <text>{{ applicationInfo.peopleNumber }}</text>
-        </view>
-        <view class="flex-row-box">
-          <text class="label">报名金额</text>
-          <text>{{ applicationInfo.tranAmount }}元</text>
-        </view>
-        <view class="flex-row-box">
-          <text class="label">订单状态</text>
-          <text>{{ payok ? "已付款" : application.status }}</text>
-        </view>
-        <view class="flex-row-box">
-          <text class="label">核销状态</text>
-          <text>{{ application.check ? "已核销" : '未核销' }}</text>
-        </view>
+<wxs src="../../../utils/dateFormat.wxs" module="dateFormat" />
+<view class="container">
+  <view class="box flex-column-box application-box" style="padding-top: 12rpx;">
+    <view class="flex-row-box">
+      <text class="label">订单编号</text>
+      <text>{{ applicationInfo.applicationCode }}</text>
     </view>
-    <view class="box op-box">
-        <view class="flex-row-box btn-box">
-          <view>
-            <button bindtap="event" class="btn" style="margin-right:12rpx;">{{ application.event.type == 'game' ? '赛事' : '活动'}}详情</button>
-          </view>
-          <view>
-           <button disabled="{{ payok }}" bindtap="pay" class="btn wechat" style="margin-left:12rpx;">微信支付</button>
-          </view>
-        </view>
-        <view class="flex-row-box c" wx:if="{{ payok && !application.check}}" style="align-items: center;justify-content: center;">
-          <image class="qr" src="{{qrurl}}" />
-          <text style="font-size: 32rpx;color:#B8B8B8;margin-bottom: 10px;">订单核销码</text>
-        </view>
+    <view class="flex-row-box">
+      <text class="label">{{ applicationInfo.eventType == '1' ? '活动' : '赛事' }}名称</text>
+      <text>{{ applicationInfo.eventName }}</text>
     </view>
-
+    <!-- <view class="flex-row-box">
+      <text class="label">所属钓场</text>
+      <text>{{ application.event.spot.name }}</text>
+    </view> -->
+    <view class="flex-row-box">
+      <text class="label">{{ applicationInfo.eventType == '1' ? '活动' : '赛事' }}日期</text>
+      <text>{{ dateFormat.dateFormat(applicationInfo.startDate, 'yyyy年MM月dd日 hh:mm') }}</text>
+    </view>
+    <view class="flex-row-box">
+      <text class="label">报名人数</text>
+      <text>{{ applicationInfo.peopleNumber }}</text>
+    </view>
+    <view class="flex-row-box">
+      <text class="label">报名金额</text>
+      <text>{{ applicationInfo.tranAmount }}元</text>
+    </view>
+    <view class="flex-row-box">
+      <text class="label">订单状态</text>
+      <text>{{ payok ? "已付款" : (applicationInfo.status==1?"未付款":(applicationInfo.status==2?"已付款":"已退款")) }}</text>
+    </view>
+    <view class="flex-row-box">
+      <text class="label">核销状态</text>
+      <text>{{ applicationInfo.check==2 ? "已核销" : '未核销' }}</text>
+    </view>
+  </view>
+  <view class="box op-box">
+    <view class="flex-row-box btn-box">
+      <view>
+        <button bindtap="event" class="btn" style="margin-right:12rpx;">
+          {{ applicationInfo.eventType == 'game' ? '赛事' : '活动'}}详情
+        </button>
+      </view>
+      <view>
+        <button disabled="{{ payok||!(applicationInfo.status==1) }}" bindtap="pay" class="btn wechat" style="margin-left:12rpx;">
+          微信支付
+        </button>
+      </view>
+    </view>
+    <!-- <view class="flex-row-box c" wx:if="{{ payok && !application.check}}" style="align-items: center;justify-content: center;">
+      <image class="qr" src="{{qrurl}}" />
+      <text style="font-size: 32rpx;color:#B8B8B8;margin-bottom: 10px;">订单核销码</text>
+    </view> -->
+  </view>
 </view>

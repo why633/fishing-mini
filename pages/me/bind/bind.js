@@ -86,7 +86,7 @@ Page({
       phone,
       code: sms
     }, (res) => {
-      app.globalData.user = res.data
+      setData('userInfo', res.data);
       wx.navigateBack();
       wx.hideLoading();
     });

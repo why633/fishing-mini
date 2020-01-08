@@ -33,8 +33,10 @@ Page({
   onLoad: function () {
     let self = this;
     if (getData('sessionID')) {
+      console.log(getData('userInfo'))
       this.setData({
-        user: app.globalData.user
+        user: getData('userInfo'),
+        hasUserInfo: true
       })
     } else {
       this.setData({
@@ -143,17 +145,9 @@ Page({
             console.log(data)
             setData('sessionID', data.data.token);
             const user = data.data
-            // let user = {
-            //   headimgurl: data.data.headImgUrl,
-            //   nickname: data.data.nickName,
-            //   uniqID: data.data.id,
-            //   sign: data.data.forbiddenWords,
-            //   favorate: data.data.favorate,
-            //   fans: data.data.fans,
-            //   phone: data.data.phone
-            // }
             self.setData({ user: user, hasUserInfo: true });
-            app.globalData.user = user
+            // app.globalData.user = user
+            setData('userInfo', user);
             showToast('登录成功', 'none');
           })
         } else {
@@ -163,8 +157,9 @@ Page({
     })
   },
   logout () {
-    app.globalData.user = null;
+    // app.globalData.user = null;
     remoData('sessionID');
+    remoData('userInfo');
     this.setData({
       user: null, hasUserInfo: false
     })

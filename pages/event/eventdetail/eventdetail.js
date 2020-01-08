@@ -32,14 +32,15 @@ Page({
   },
 
   createApplication () {
-    console.log(getData('sessionID'))
+    // 判断是否授权登录
     if (!getData('sessionID')) {
       showToast("登录状态错误，请绑定微信后再试", 'none');
       return wx.switchTab({
         url: '../../me/me'
       })
     }
-    if (!app.globalData.user || !app.globalData.user.phone) {
+    // 判断是否绑定手机号
+    if (!getData('userInfo') || !getData('userInfo').phone) {
       showToast("账户状态错误，请绑定手机再报名", 'none');
       return wx.navigateTo({
         url: '../../me/bind/bind'
@@ -50,7 +51,7 @@ Page({
       count: this.data.count,
       tranAmount: this.data.eventInfo.money * this.data.count
     }
-    console.log(JSON.stringify(params))
+    // 报名
     store.applicationGame(JSON.stringify(params), (res => {
       console.log(res)
       console.log(JSON.stringify(res.data))
