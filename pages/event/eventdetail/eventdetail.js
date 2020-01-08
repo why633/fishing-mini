@@ -40,7 +40,8 @@ Page({
       })
     }
     // 判断是否绑定手机号
-    if (!getData('userInfo') || !getData('userInfo').phone) {
+    console.log(getData('userInfo'))
+    if (!getData('userInfo').phone) {
       showToast("账户状态错误，请绑定手机再报名", 'none');
       return wx.navigateTo({
         url: '../../me/bind/bind'

@@ -21,11 +21,15 @@ const Request = param => {
     url: param.url || '',
     data: param.data || {},
     success: (res) => {
+      console.log(res)
       clearTimeout(timeout)
       if(res.statusCode === 401) {
         remoData('sessionID');
         remoData('userInfo');
         showToast('token失效，重新登录', 'none');
+        return wx.switchTab({
+          url: '../../me/me'
+        })
       }
       if(res.data.status !== 'ok') {
          showToast(res.data.message, 'none');
@@ -54,10 +58,20 @@ const $Request = param => {
     url: param.url || '',
     data: param.data || {},
     success: (res) => {
+      console.log(res)
       clearTimeout(timeout)
-      if(res.data.code === 401) {
+      if(res.data.code === 4001) {
         remoData('sessionID');
-        // showToast('token失效，重新登录', 'none');
+        remoData('userInfo');
+        showToast('token失效，重新登录', 'none');
+        return wx.switchTab({
+          url: '../../me/me',
+          success: function (e) {
+            let page = getCurrentPages().pop();
+            if (page == undefined || page == null) return
+            page.onLoad()
+          }
+        })
       }
       if(res.data.code !== 200) {
          showToast(res.data.message, 'none');

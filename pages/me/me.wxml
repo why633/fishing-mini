@@ -14,7 +14,7 @@
      <image src="{{ user.headImg || '/assets/user_icon.png'}}"/>
   </view>
   
-  <view class="flex-row-box relate-box" style="background:#fff;">
+  <!-- <view class="flex-row-box relate-box" style="background:#fff;">
     <view class="flex-column-box">
         <text class="num">{{ user.favorate || 0 }}</text>
         <text>关注</text>
@@ -23,7 +23,7 @@
         <text class="num">{{ user.fans || 0 }}</text>
         <text>粉丝</text>
     </view>
-  </view>
+  </view> -->
   <view class="flex-column-box item-box box" style="border-bottom: 24rpx solid #F4F4F4;">
     <view class="item-info flex-row-box">
         <view bindtap="goApplication">

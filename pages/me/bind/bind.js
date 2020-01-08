@@ -23,7 +23,6 @@ Page({
   },
 
   onLoad: function (opt) {
-    console.dir(app.globalData.user);
     if (!getData('sessionID')) {
       showToast("登录状态错误，请绑定微信后再试", 'none');
       return wx.navigateBack()
@@ -81,12 +80,16 @@ Page({
       })
       return showToast('验证码不能为空', 'none')
     }
-    console.dir(app.globalData.user)
     store.bindPhoneNum({
       phone,
       code: sms
     }, (res) => {
+      setData('sessionID', res.data.token);
       setData('userInfo', res.data);
+      wx.showToast('绑定成功', 'none');
+      wx.showLoading({
+        title: '数据同步中...',
+      });
       wx.navigateBack();
       wx.hideLoading();
     });
@@ -119,43 +122,43 @@ Page({
     // });
   },
 
-send() {
-  if (!/^1[3456789]\d{9}$/.test(this.data.phone)) {
-    return showToast('手机号格式错误', 'none')
+  send () {
+    if (!/^1[3456789]\d{9}$/.test(this.data.phone)) {
+      return showToast('手机号格式错误', 'none')
+    }
+    this.setData({
+      disabled: true
+    })
+    let c = 60;
+    let interval = setInterval(() => {
+      c -= 1;
+      this.setData({
+        sendTxt: (c < 0 ? 0 : c) + ' 秒后重新获取'
+      });
+    }, 1000);
+    setTimeout(() => {
+      clearInterval(interval);
+      this.setData({
+        sendTxt: '重新获取',
+        disabled: false
+      });
+    }, 1000 * 60)
+    store.sendCode({
+      phone: this.data.phone,
+      type: 2
+    }, (data) => {
+      console.dir(data);
+    });
+  },
+
+  onHide () {
+
+  },
+
+  onShow () {
+    this.setData({
+      systemWidth: wx.getSystemInfoSync().windowWidth,
+      width: wx.getSystemInfoSync().windowWidth * 0.96 - 20
+    })
   }
-  this.setData({
-    disabled: true
-  })
-  let c = 60;
-  let interval = setInterval(() => {
-    c -= 1;
-    this.setData({
-      sendTxt: (c < 0 ? 0 : c) + ' 秒后重新获取'
-    });
-  }, 1000);
-  setTimeout(() => {
-    clearInterval(interval);
-    this.setData({
-      sendTxt: '重新获取',
-      disabled: false
-    });
-  }, 1000 * 60)
-  store.sendCode({
-    phone: this.data.phone,
-    type: 2
-  }, (data) => {
-    console.dir(data);
-  });
-},
-
-onHide() {
-
-},
-
-onShow() {
-  this.setData({
-    systemWidth: wx.getSystemInfoSync().windowWidth,
-    width: wx.getSystemInfoSync().windowWidth * 0.96 - 20
-  })
-}
 })
