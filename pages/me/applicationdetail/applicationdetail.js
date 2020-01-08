@@ -46,7 +46,7 @@ Page({
       wx.requestPayment({
         timeStamp: paramsData.timestamp,
         nonceStr: paramsData.noncestr,
-        package: paramsData.package,
+        package: 'prepay_id=' + paramsData.package,
         signType: paramsData.signType,
         paySign: paramsData.sign,
         success: function (res) {
