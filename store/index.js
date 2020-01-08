@@ -529,6 +529,7 @@ export function bindPhoneNum(params, cb, failcb) {
     }
   })
 }
+
 // 获取验证吗
 export function sendCode(params, cb, failcb) {
   return $get({
@@ -542,3 +543,18 @@ export function sendCode(params, cb, failcb) {
     }
   })
 }
+
+// 报名付款
+export function payApplication(params, cb, failcb) {
+  return $post({
+    url: '/order/application/enroll/pay',
+    data: params,
+    success(data) {
+      cb(data)
+    },
+    fail(error) {
+      failcb && failcb()
+    }
+  })
+}
+
