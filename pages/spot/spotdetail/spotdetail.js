@@ -31,29 +31,14 @@ Page({
     wx.showShareMenu({ withShareTicket: true });
   },
   onLoad: function (opt) {
-    // let { id = "5d244606ba79a10006726961", scene } = opt;
-    // if (scene) id = scene;
-    // this.setData({ id });
     const self = this;
-    // store.getSpotInfo({ id }, (data) => {
-    //   self.setData({
-    //     spot: data.spot,
-    //     imgUrls: data.spot.posters || [],
-    //     stars: self.stars(data.spot.star || 0),
-    //     eventCount: data.eventCount || 0,
-    //     applicationCount: data.applicationCount || 0,
-    //     favorCount: data.favorCount || 0
-    //   })
-    // });
-    // store.getEvent({ spot: id, skip: 0, limit: self.data.limit }, (data) => {
-    //   self.setData({
-    //     events: self.data.events.concat((data.events || [])),
-    //     total: data.total,
-    //     skip: data.skip
-    //   });
-    // });
     // 钓场信息
-    store.spotInfo({ spotId: opt.id }, (res) => {
+    let spotId = opt.id;
+    console.log(decodeURIComponent(opt.scene))
+    if (opt.scene) {
+      this.setData({ spotId: decodeURIComponent(opt.scene) })
+    }
+    store.spotInfo({ spotId: spotId }, (res) => {
       const resData = res.data
       this.setData({
         id: resData.id,

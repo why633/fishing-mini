@@ -84,14 +84,29 @@ Page({
       phone,
       code: sms
     }, (res) => {
-      setData('sessionID', res.data.token);
-      setData('userInfo', res.data);
-      wx.showToast('绑定成功', 'none');
-      wx.showLoading({
-        title: '数据同步中...',
-      });
-      wx.navigateBack();
-      wx.hideLoading();
+      console.log(res.code != 200)
+      console.log(res.message)
+      self.setData({
+        godisable: false
+      })
+      if (res.code != 200) {
+        wx.showToast({
+          title: res.message,
+          icon: 'none',
+          duration: 500
+        })
+        console.log('失败')
+      } else {
+        console.log('成功')
+        setData('sessionID', res.data.token);
+        setData('userInfo', res.data);
+        wx.showToast('绑定成功', 'none');
+        wx.showLoading({
+          title: '数据同步中...',
+        });
+        wx.navigateBack();
+        wx.hideLoading();
+      }
     });
     // store.bindPhone({
     //   phone,

@@ -52,7 +52,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 11,
 			"list": [
 				{
 					"id": -1,
@@ -130,6 +130,13 @@
 					"pathName": "pages/me/application/application",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "pages/spot/spotdetail/spotdetail",
+					"pathName": "pages/spot/spotdetail/spotdetail",
+					"query": "scene=id%3D19",
+					"scene": 1011
 				}
 			]
 		}

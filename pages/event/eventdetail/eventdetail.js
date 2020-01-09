@@ -90,6 +90,9 @@ Page({
     // if(scene) id = scene;
     console.log(opt)
     this.setData({ id: opt.id });
+    if (opt.scene) {
+      this.setData({ id: decodeURIComponent(opt.scene) })
+    }
     const self = this;
     store.eventInfo({ eventId: opt.id }, (res) => {
       const resData = res.data

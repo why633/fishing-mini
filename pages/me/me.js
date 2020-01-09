@@ -82,6 +82,7 @@ Page({
   },
 
   onShow () {
+    this.onLoad();
     this.setData({
       systemWidth: wx.getSystemInfoSync().windowWidth,
       width: wx.getSystemInfoSync().windowWidth * 0.96 - 20
