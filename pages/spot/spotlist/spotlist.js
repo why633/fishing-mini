@@ -27,7 +27,7 @@ Page({
   query: function (event) {
     var self = this;
     this.setData({ spots: [] });
-    store.spotList({ spotName: this.data.inputValue || '', pageNo: 1, pageSize: self.data.limit }, (res) => {
+    store.getSpotList({ searchType: '1', key: this.data.inputValue, pageNo: 1, pageSize: self.data.limit }, (res) => {
       console.log(res)
       self.setData({
         spots: self.data.spots.concat((res.data.list || [])).map(x => {
@@ -38,6 +38,17 @@ Page({
         skip: res.data.page.pageNo
       })
     })
+    // store.spotList({ spotName: this.data.inputValue || '', pageNo: 1, pageSize: self.data.limit }, (res) => {
+    //   console.log(res)
+    //   self.setData({
+    //     spots: self.data.spots.concat((res.data.list || [])).map(x => {
+    //       x.stars = self.stars(x.star);
+    //       return x;
+    //     }),
+    //     total: res.data.page.totalCount,
+    //     skip: res.data.page.pageNo
+    //   })
+    // })
   },
 
   inputBind: function (event) {
@@ -48,7 +59,7 @@ Page({
 
   loadMore: function (event) {
     let self = this;
-    store.spotList({ spotName: this.data.inputValue || '', pageNo: self.data.skip + 1, pageSize: self.data.limit }, (res) => {
+    store.getSpotList({ searchType: '1', key: this.data.inputValue, pageNo: self.data.skip, pageSize: self.data.limit }, (res) => {
       console.log(res)
       self.setData({
         spots: self.data.spots.concat((res.data.list || [])).map(x => {
@@ -59,6 +70,17 @@ Page({
         skip: res.data.page.pageNo
       })
     })
+    // store.spotList({ spotName: this.data.inputValue || '', pageNo: self.data.skip + 1, pageSize: self.data.limit }, (res) => {
+    //   console.log(res)
+    //   self.setData({
+    //     spots: self.data.spots.concat((res.data.list || [])).map(x => {
+    //       x.stars = self.stars(x.star);
+    //       return x;
+    //     }),
+    //     total: res.data.page.totalCount,
+    //     skip: res.data.page.pageNo
+    //   })
+    // })
   },
 
   stars (num) {
@@ -79,7 +101,7 @@ Page({
 
   onLoad: function () {
     const self = this;
-    store.spotList({ pageNo: self.data.skip, pageSize: self.data.limit }, (res) => {
+    store.getSpotList({ searchType: '1', pageNo: self.data.skip, pageSize: self.data.limit }, (res) => {
       console.log(res)
       self.setData({
         spots: self.data.spots.concat((res.data.list || [])).map(x => {
@@ -90,6 +112,17 @@ Page({
         skip: res.data.page.pageNo
       })
     })
+    // store.spotList({ pageNo: self.data.skip, pageSize: self.data.limit }, (res) => {
+    //   console.log(res)
+    //   self.setData({
+    //     spots: self.data.spots.concat((res.data.list || [])).map(x => {
+    //       x.stars = self.stars(x.star);
+    //       return x;
+    //     }),
+    //     total: res.data.page.totalCount,
+    //     skip: res.data.page.pageNo
+    //   })
+    // })
   },
 
   onHide () {

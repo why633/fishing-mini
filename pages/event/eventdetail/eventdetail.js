@@ -87,12 +87,12 @@ Page({
 
   onLoad: function (opt) {
     let eventId = opt.id
-    this.setData({
-      id: eventId
-    })
     if (opt.scene) {
       eventId = decodeURIComponent(opt.scene)
     }
+    this.setData({
+      id: eventId
+    })
     const self = this;
     store.eventInfo({ eventId: eventId }, (res) => {
       const resData = res.data
