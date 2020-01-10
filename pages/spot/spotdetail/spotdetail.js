@@ -34,9 +34,11 @@ Page({
     const self = this;
     // 钓场信息
     let spotId = opt.id;
-    console.log(decodeURIComponent(opt.scene))
+    this.setData({
+      id: spotId
+    })
     if (opt.scene) {
-      this.setData({ spotId: decodeURIComponent(opt.scene) })
+      spotId = decodeURIComponent(opt.scene)
     }
     store.spotInfo({ spotId: spotId }, (res) => {
       const resData = res.data

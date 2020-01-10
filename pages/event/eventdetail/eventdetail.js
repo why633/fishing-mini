@@ -86,15 +86,15 @@ Page({
   },
 
   onLoad: function (opt) {
-    // let { id="5d64f976f1b44e00067d6549", scene } = opt;
-    // if(scene) id = scene;
-    console.log(opt)
-    this.setData({ id: opt.id });
+    let eventId = opt.id
+    this.setData({
+      id: eventId
+    })
     if (opt.scene) {
-      this.setData({ id: decodeURIComponent(opt.scene) })
+      eventId = decodeURIComponent(opt.scene)
     }
     const self = this;
-    store.eventInfo({ eventId: opt.id }, (res) => {
+    store.eventInfo({ eventId: eventId }, (res) => {
       const resData = res.data
       self.timeInterval(resData.endTime);
       self.setData({
