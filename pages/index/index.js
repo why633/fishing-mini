@@ -20,7 +20,7 @@ Page({
     tabArticles: [],
     events: [],
     spots: [],
-    tab: '最热',
+    tab: '热门资讯',
     limit: 10,
     total: 0,
     skip: 1,
@@ -95,7 +95,7 @@ Page({
     let self = this;
     this.setData({ tab: event.currentTarget.dataset.tab, tabArticles: [] });
     // this.setData({ tab: event.currentTarget.dataset.tab });
-    store.article({ order: this.data.tab == '最热' ? 'hot' : 'time', pageNo: 1 }, (res) => {
+    store.article({ order: this.data.tab == '热门资讯' ? 'hot' : 'time', pageNo: 1 }, (res) => {
       self.setData({
         tabArticles: self.data.tabArticles.concat((res.data.list || [])),
         total: res.data.page.totalCount,
@@ -106,7 +106,7 @@ Page({
 
   loadMore: function (event) {
     let self = this;
-    store.article({ order: this.data.tab == '最热' ? 'hot' : 'time', pageNo: self.data.skip + 1 }, (res) => {
+    store.article({ order: this.data.tab == '热门资讯' ? 'hot' : 'time', pageNo: self.data.skip + 1 }, (res) => {
       self.setData({
         tabArticles: self.data.tabArticles.concat((res.data.list || [])),
         total: res.data.page.totalCount,
@@ -143,7 +143,7 @@ Page({
       });
     })
     // 获取资讯列表
-    store.article({ order: this.data.tab == '最热' ? 'hot' : 'time' }, (res) => {
+    store.article({ order: this.data.tab == '热门资讯' ? 'hot' : 'time' }, (res) => {
       self.setData({
         tabArticles: self.data.tabArticles.concat((res.data.list || [])),
         total: res.data.page.totalCount,

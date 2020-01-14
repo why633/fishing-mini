@@ -1,16 +1,16 @@
 <wxs src="../../utils/dateFormat.wxs" module="dateFormat" />
 <view class="container">
   <scroll-view bindscrolltolower="loadMore" scroll-y style="height:100%;">
-    <view class="swiper box" style="padding:0rpx;height:{{systemWidth/2}}px;">
-      <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{color}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:{{systemWidth/2}}px;">
+    <view class="swiper box" style="padding:0rpx;height:250rpx;">
+      <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{color}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:100%;">
         <block wx:for="{{imgUrls}}" wx:key="{{index}}">
           <swiper-item>
-            <image src="{{item.icon}}" data-type="{{item.type}}" data-id="{{item.targetId}}" bindtap="swiperNav" class="slide-image" style="width:100%; height:{{systemWidth/2}}px;" />
+            <image src="{{item.icon}}" data-type="{{item.type}}" data-id="{{item.targetId}}" bindtap="swiperNav" class="slide-image" style="width:100%; height:100%;" />
           </swiper-item>
         </block>
       </swiper>
     </view>
-    <view class="box icon-box flex-row-box" style="margin:20rpx 0rpx;padding-top:10rpx;justify-content:space-between">
+    <!-- <view class="box icon-box flex-row-box" style="margin:20rpx 0rpx;padding-top:10rpx;justify-content:space-between">
       <view class="flex-column-box" data-id="0" bindtap="link">
         <image src="/assets/game_main_icon.png" />
         <text>赛事报名</text>
@@ -27,15 +27,23 @@
         <image src="/assets/class_icon.png" />
         <text>钓技课堂</text>
       </view>
+    </view> -->
+    <view class="block-wrap">
+      <image src="/assets/game_signup.png" mode='widthFix' />
+      <image src="/assets/score_store.png" mode='widthFix' data-id="1" bindtap="link" />
+      <image src="/assets/sell_fish.png" mode='widthFix' />
+      <image src="/assets/branch_game.png" mode='widthFix' />
     </view>
-    <view class="box">
+    <!-- <view class="box">
       <view class='app-title'>热门赛事/活动</view>
       <scroll-view scroll-x style="height:100%;display: flex;white-space: nowrap;">
         <block wx:for="{{ events }}" wx:key="{{ item.id }}">
           <view class="event-box" style="height:{{systemWidth/4}}px" data-id="{{item.id}}" bindtap="goEvent">
             <image src="{{ item.coverImage }}" mode="widthFix" style="max-height:100%" />
             <view class="event-info">
-              <view class="tag {{item.type == 2 ? 'game' : 'activity'}}">{{ item.type == '2' ? '赛事' : '活动'}}</view>
+              <view class="tag {{item.type == 2 ? 'game' : 'activity'}}">
+                {{ item.type == '2' ? '赛事' : '活动'}}
+              </view>
               <view class="info flex-column-box">
                 <text class="title">{{item.name}}</text>
                 <text class="time">{{dateFormat.dateFormat(item.startTime)}}</text>
@@ -59,10 +67,10 @@
           </view>
         </block>
       </scroll-view>
-    </view>
+    </view> -->
     <view class="dealWith">
-      <view class="dealBox flex-row-box" style="background:#fff;border-bottom:1px solid #ddd;">
-        <view class="{{tab=='最热' ? 'active' : ''}}" data-tab="最热" bindtap="tapName">最热</view>
+      <view class="dealBox flex-row-box">
+        <view class="{{tab=='热门资讯' ? 'active' : ''}}" data-tab="热门资讯" bindtap="tapName">热门资讯</view>
         <view class="{{tab=='最新' ? 'active' : ''}}" data-tab="最新" bindtap="tapName">最新</view>
       </view>
       <view class="box" style="padding-top:7px">
@@ -74,7 +82,9 @@
               <image src="{{ item.images[1] }}" />
               <image src="{{ item.images[2] }}" />
             </view>
-            <view class="date">{{ dateFormat.dateFormat(item.createTime, 'yy/MM月dd日 hh:mm') }}</view>
+            <view class="date">
+              {{ dateFormat.dateFormat(item.createTime, 'yy/MM月dd日 hh:mm') }}
+            </view>
           </view>
           <view wx:else class="article-s-box" data-id="{{ item._id }}" bindtap="go">
             <view class="main">

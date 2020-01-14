@@ -19,7 +19,8 @@ page {
 
 .dealWith  .dealBox{
    height: 100%;
-   justify-content:space-around;
+   padding: 20rpx;
+   /* justify-content:space-around; */
 }
 
 .app-title{
@@ -27,14 +28,15 @@ page {
   margin:24rpx 0px;
 }
 .dealWith  .dealBox view{
-  border-bottom:2rpx solid #ddd;
+  /* border-bottom:2rpx solid #ddd; */
   line-height:100rpx;
   margin-bottom:-3rpx;
   text-align:center;
+  margin-right: 60rpx;
 }
 .dealWith  .dealBox  .active{
   border-bottom: 2rpx solid #0a3255;
-  color:#0a3255
+  /* color:#0a3255 */
 }
 .dealWith .content{
   border-top:1rpx solid #ddd;
@@ -205,6 +207,18 @@ page {
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
+}
+
+.block-wrap{
+  padding: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.block-wrap image{
+  /* flex: 1; */
+  width: 49%;
+  margin-bottom: 2%;
 }
 
 

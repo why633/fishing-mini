@@ -33,8 +33,8 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "/assets/home.png",
-        "selectedIconPath": "/assets/home_select.png"
+        "iconPath": "/assets/index.png",
+        "selectedIconPath": "/assets/index_select.png"
       },
       {
         "pagePath": "pages/spot/spot",
@@ -51,8 +51,8 @@
       {
         "pagePath": "pages/me/me",
         "text": "我的",
-        "iconPath": "/assets/user.png",
-        "selectedIconPath": "/assets/user_select.png"
+        "iconPath": "/assets/me.png",
+        "selectedIconPath": "/assets/me_select.png"
       }
     ]
   },
