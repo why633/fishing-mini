@@ -1,0 +1,18 @@
+.sellFish{
+  min-height: 100%;
+  background: #fff;
+}
+.content{
+  padding: 0 30rpx;
+}
+.canvas-code{
+  margin: 60rpx auto;
+}
+.title{
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid gray;
+}
+.text{
+  text-align: center;
+}

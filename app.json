@@ -13,7 +13,10 @@
     "pages/article/fish/article",
     "pages/me/bind/bind",
     "pages/draw/draw",
-    "pages/draw/seat/seat"
+    "pages/draw/seat/seat",
+    "pages/score/score",
+    "pages/branchGame/branchGame",
+    "pages/sellFish/sellFish"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,15 +41,15 @@
       },
       {
         "pagePath": "pages/spot/spot",
-        "text": "钓场",
-        "iconPath": "/assets/spot.png",
-        "selectedIconPath": "/assets/spot_select.png"
+        "text": "发现",
+        "iconPath": "/assets/find.png",
+        "selectedIconPath": "/assets/find_select.png"
       },
       {
-        "pagePath": "pages/event/event",
-        "text": "活动",
-        "iconPath": "/assets/brand.png",
-        "selectedIconPath": "/assets/brand_select.png"
+        "pagePath": "pages/score/score",
+        "text": "积分",
+        "iconPath": "/assets/score.png",
+        "selectedIconPath": "/assets/score_select.png"
       },
       {
         "pagePath": "pages/me/me",

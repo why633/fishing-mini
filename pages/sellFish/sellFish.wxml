@@ -1,0 +1,7 @@
+<view class="sellFish">
+  <view class="content">
+    <view class="title">扫码向我付钱</view>
+    <canvas class="canvas-code"canvas-id="myQrcode" style="background:#fff;width: 200px;height: 200px;"/>
+    <view class="text">对方转账后，请到账单明细查看转账记录</view>
+  </view>
+</view>

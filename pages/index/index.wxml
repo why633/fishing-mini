@@ -28,11 +28,18 @@
         <text>钓技课堂</text>
       </view>
     </view> -->
+    <view class="message dealWith">
+      <view class="icon"></view><text class="message-text">暂无广播消息</text>
+    </view>
     <view class="block-wrap">
-      <image src="/assets/game_signup.png" mode='widthFix' />
+      <!-- 赛事报名 -->
+      <image src="/assets/game_signup.png" mode='widthFix' data-id="0" bindtap="link" />
+      <!-- 积分商城 -->
       <image src="/assets/score_store.png" mode='widthFix' data-id="1" bindtap="link" />
-      <image src="/assets/sell_fish.png" mode='widthFix' />
-      <image src="/assets/branch_game.png" mode='widthFix' />
+      <!-- 卖鱼 -->
+      <image src="/assets/sell_fish.png" mode='widthFix' data-id="2" bindtap="link"/>
+      <!-- 品牌赛事 -->
+      <image src="/assets/branch_game.png" mode='widthFix' data-id="3" bindtap="link" />
     </view>
     <!-- <view class="box">
       <view class='app-title'>热门赛事/活动</view>

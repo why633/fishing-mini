@@ -1,0 +1,8 @@
+.score{
+  min-height: 100%;
+  background: #fff;
+}
+.content{
+  text-align: center;
+  padding-top: 100rpx;
+}

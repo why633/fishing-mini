@@ -221,4 +221,22 @@ page {
   margin-bottom: 2%;
 }
 
+.message{
+  height: 80rpx;
+  border-radius: 10rpx;
+  margin: 30rpx 20rpx;
+  background: #f3f2f7;
+  color: #adacb1;
+}
+.icon{
+  width: 40rpx;
+  height: 40rpx;
+  background: red;
+  margin-top: 20rpx;
+  float: left;
+}
+.message-text{
+  font-size: 28rpx;
+  line-height: 80rpx;
+}
 

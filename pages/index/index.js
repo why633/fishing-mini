@@ -77,9 +77,9 @@ Page({
   },
 
   link (event) {
-    let links = ['../event/event', undefined, '../spot/spotlist/spotlist', undefined];
+    let links = ['../event/event', undefined, '../sellFish/sellFish', '../branchGame/branchGame'];
     if (links[event.currentTarget.dataset.id]) {
-      if (event.currentTarget.dataset.id == 0) wx.switchTab({
+      if (event.currentTarget.dataset.id == 0) wx.navigateTo({
         url: links[event.currentTarget.dataset.id]
       })
       else return wx.navigateTo({
