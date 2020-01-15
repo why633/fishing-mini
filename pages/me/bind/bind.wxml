@@ -1,6 +1,5 @@
 <view class="container">
 	<van-cell-group>
-	  
 	  <van-field
 	    value="{{ phone }}"
 	    label="手机号"

@@ -34,13 +34,6 @@ Page({
 
   loadMore: function (event) {
     let self = this;
-    // store.fishArticle({ skip: self.data.skip + 1, limit: self.data.limit }, (data) => {
-    //   self.setData({
-    //     articles: self.data.articles.concat((data.articles || [])),
-    //     total: data.total,
-    //     skip: data.skip
-    //   });
-    // });
     store.fishCatch({ pageNo: this.data.skip + 1, pageSize: this.data.limit, spotId: 1 }, (res) => {
       console.log(res)
       self.setData({
@@ -56,15 +49,6 @@ Page({
     let type = event.currentTarget.dataset.type;
     let id = event.currentTarget.dataset.id;
     let url = '../spot/spotdetail/spotdetail?id=' + id;
-    // if (type == 'activity' || type == 'game') {
-    //   url = '../event/eventdetail/eventdetail?id=' + id
-    // }
-    // if (type == 'spot') {
-    //   url = '../spot/spotdetail/spotdetail?id=' + id
-    // }
-    // if (type == 'article') {
-    //   url = '../article/normal/article?article=' + id
-    // }
     if (url) {
       return wx.navigateTo({
         url

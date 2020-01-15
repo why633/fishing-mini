@@ -104,13 +104,6 @@ Page({
       self.getEventList()
     }
     if (this.data.tab == '渔获') {
-      // store.fishArticle({ spot: this.data.spot._id, skip: self.data.skip + 1, limit: self.data.limit }, (data) => {
-      //   self.setData({
-      //     articles: self.data.articles.concat((data.articles || [])),
-      //     total: data.total,
-      //     skip: data.skip
-      //   });
-      // });
       this.setData({
         fishCatchPageNo: self.data.fishCatchPageNo + 1
       })

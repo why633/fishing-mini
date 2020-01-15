@@ -1,8 +1,5 @@
 import { getData, showToast, globalTabindex, setData, remoData } from '../../utils/util.js'
-// import conf from "../../config.js";
-// adaptPadding,
 import * as store from '../../store/index.js'
-// import moment from '../../utils/moment.js'
 
 const app = getApp()
 //获取应用实例
@@ -70,7 +67,6 @@ Page({
     })
   },
   logout () {
-    // app.globalData.user = null;
     remoData('sessionID');
     remoData('userInfo');
     this.setData({

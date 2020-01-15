@@ -9,10 +9,6 @@
       <text class="label">{{ applicationInfo.eventType == '1' ? '活动' : '赛事' }}名称</text>
       <text>{{ applicationInfo.eventName }}</text>
     </view>
-    <!-- <view class="flex-row-box">
-      <text class="label">所属钓场</text>
-      <text>{{ application.event.spot.name }}</text>
-    </view> -->
     <view class="flex-row-box">
       <text class="label">{{ applicationInfo.eventType == '1' ? '活动' : '赛事' }}日期</text>
       <text>{{ dateFormat.dateFormat(applicationInfo.startDate, 'yyyy年MM月dd日 hh:mm') }}</text>
@@ -47,9 +43,5 @@
         </button>
       </view>
     </view>
-    <!-- <view class="flex-row-box c" wx:if="{{ payok && !application.check}}" style="align-items: center;justify-content: center;">
-      <image class="qr" src="{{qrurl}}" />
-      <text style="font-size: 32rpx;color:#B8B8B8;margin-bottom: 10px;">订单核销码</text>
-    </view> -->
   </view>
 </view>

@@ -57,24 +57,6 @@ Page({
         }
       })
     })
-    // store.payEvent({
-    //   id: this.data.application._id,
-    //   payType: 'wechat'
-    // }, (data) => {
-    //   if (data && data.payObj) {
-    //     wx.requestPayment(Object.assign(data.payObj, {
-    //       success: function (res) {
-    //         self.setData({
-    //           payok: 1,
-    //         })
-    //       },
-    //       fail: function (res) {
-    //       },
-    //       complete: function (res) {
-    //       }
-    //     }))
-    //   }
-    // })
   },
 
   onHide () {

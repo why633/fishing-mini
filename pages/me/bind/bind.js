@@ -27,15 +27,6 @@ Page({
       showToast("登录状态错误，请绑定微信后再试", 'none');
       return wx.navigateBack()
     }
-    // if(!getData('sessionID')) {
-    //   showToast("登录状态错误，请绑定微信后再试", 'none');
-    //   return wx.navigateBack()
-    // } else {
-    //   if( !app.globalData.user || !app.globalData.user._id  || !app.globalData.user.userInfo  || !app.globalData.user.userInfo.unionid) {
-    //     showToast("登录状态错误，请绑定微信后再试", 'none');
-    //     return wx.navigateBack();
-    //   }
-    // }
   },
 
   onChange (event) {
@@ -108,33 +99,6 @@ Page({
         wx.hideLoading();
       }
     });
-    // store.bindPhone({
-    //   phone,
-    //   code:sms,
-    //   _id: app.globalData.user._id,
-    //   unionid: app.globalData.user.userInfo.unionid 
-    // },(data) => {
-    //   self.setData({
-    //     godisable: false
-    //   })
-    //   if(data.status == 'ok') {
-    //     setData('sessionID', data.token);
-    //     wx.showToast('绑定成功','none');
-    //     wx.showLoading({
-    //       title: '数据同步中...',
-    //     });
-    //     store.getUserInfo({},(data) => {
-    //       if(data && data.user) app.globalData.user = data.user;
-    //       wx.navigateBack();
-    //       wx.hideLoading();
-    //     },(error) => {
-    //       wx.hideLoading();
-    //       wx.navigateBack();
-    //     });
-    //   } else {
-    //     showToast(data && data.status && data.status.message ? data.status.message: '系统错误，绑定失败', 'none');
-    //   }
-    // });
   },
 
   send () {

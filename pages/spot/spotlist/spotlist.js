@@ -38,17 +38,6 @@ Page({
         skip: res.data.page.pageNo + 1
       })
     })
-    // store.spotList({ spotName: this.data.inputValue || '', pageNo: 1, pageSize: self.data.limit }, (res) => {
-    //   console.log(res)
-    //   self.setData({
-    //     spots: self.data.spots.concat((res.data.list || [])).map(x => {
-    //       x.stars = self.stars(x.star);
-    //       return x;
-    //     }),
-    //     total: res.data.page.totalCount,
-    //     skip: res.data.page.pageNo
-    //   })
-    // })
   },
 
   inputBind: function (event) {
@@ -70,17 +59,6 @@ Page({
         skip: res.data.page.pageNo + 1
       })
     })
-    // store.spotList({ spotName: this.data.inputValue || '', pageNo: self.data.skip + 1, pageSize: self.data.limit }, (res) => {
-    //   console.log(res)
-    //   self.setData({
-    //     spots: self.data.spots.concat((res.data.list || [])).map(x => {
-    //       x.stars = self.stars(x.star);
-    //       return x;
-    //     }),
-    //     total: res.data.page.totalCount,
-    //     skip: res.data.page.pageNo
-    //   })
-    // })
   },
 
   stars (num) {
@@ -112,17 +90,6 @@ Page({
         skip: res.data.page.pageNo + 1
       })
     })
-    // store.spotList({ pageNo: self.data.skip, pageSize: self.data.limit }, (res) => {
-    //   console.log(res)
-    //   self.setData({
-    //     spots: self.data.spots.concat((res.data.list || [])).map(x => {
-    //       x.stars = self.stars(x.star);
-    //       return x;
-    //     }),
-    //     total: res.data.page.totalCount,
-    //     skip: res.data.page.pageNo
-    //   })
-    // })
   },
 
   onHide () {

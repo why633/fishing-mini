@@ -10,26 +10,8 @@
         </block>
       </swiper>
     </view>
-    <!-- <view class="box icon-box flex-row-box" style="margin:20rpx 0rpx;padding-top:10rpx;justify-content:space-between">
-      <view class="flex-column-box" data-id="0" bindtap="link">
-        <image src="/assets/game_main_icon.png" />
-        <text>赛事报名</text>
-      </view>
-      <view class="flex-column-box" data-id="1" bindtap="link">
-        <image src="/assets/activity_icon.png" />
-        <text>积分商城</text>
-      </view>
-      <view class="flex-column-box" data-id="2" bindtap="link">
-        <image src="/assets/spot_icon.png" />
-        <text>发现钓场</text>
-      </view>
-      <view class="flex-column-box" data-id="3" bindtap="link">
-        <image src="/assets/class_icon.png" />
-        <text>钓技课堂</text>
-      </view>
-    </view> -->
     <view class="message dealWith">
-      <view class="icon"></view><text class="message-text">暂无广播消息</text>
+      <view class="icon"><image src="/assets/broadcast_icon.png" /></view><text class="message-text">暂无广播消息</text>
     </view>
     <view class="block-wrap">
       <!-- 赛事报名 -->
@@ -41,40 +23,6 @@
       <!-- 品牌赛事 -->
       <image src="/assets/branch_game.png" mode='widthFix' data-id="3" bindtap="link" />
     </view>
-    <!-- <view class="box">
-      <view class='app-title'>热门赛事/活动</view>
-      <scroll-view scroll-x style="height:100%;display: flex;white-space: nowrap;">
-        <block wx:for="{{ events }}" wx:key="{{ item.id }}">
-          <view class="event-box" style="height:{{systemWidth/4}}px" data-id="{{item.id}}" bindtap="goEvent">
-            <image src="{{ item.coverImage }}" mode="widthFix" style="max-height:100%" />
-            <view class="event-info">
-              <view class="tag {{item.type == 2 ? 'game' : 'activity'}}">
-                {{ item.type == '2' ? '赛事' : '活动'}}
-              </view>
-              <view class="info flex-column-box">
-                <text class="title">{{item.name}}</text>
-                <text class="time">{{dateFormat.dateFormat(item.startTime)}}</text>
-              </view>
-            </view>
-          </view>
-        </block>
-      </scroll-view>
-    </view>
-    <view class="box">
-      <view class='app-title'>热门钓场</view>
-      <scroll-view scroll-x style="height:100%;display: flex;white-space: nowrap;">
-        <block wx:for="{{ spots }}" wx:key="{{ item.id }}">
-          <view class="spot-box" style="height:{{systemWidth/8}}px" data-id="{{item.id}}" bindtap="goSpot">
-            <image src="{{ item.icon }}" mode="widthFix" style="max-height:100%" />
-            <view class="spot-info">
-              <view class="info flex-column-box">
-                <text class="title">{{item.name}}</text>
-              </view>
-            </view>
-          </view>
-        </block>
-      </scroll-view>
-    </view> -->
     <view class="dealWith">
       <view class="dealBox flex-row-box">
         <view class="{{tab=='热门资讯' ? 'active' : ''}}" data-tab="热门资讯" bindtap="tapName">热门资讯</view>
