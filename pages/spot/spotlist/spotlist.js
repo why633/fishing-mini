@@ -35,7 +35,7 @@ Page({
           return x;
         }),
         total: res.data.page.totalCount,
-        skip: res.data.page.pageNo
+        skip: res.data.page.pageNo + 1
       })
     })
     // store.spotList({ spotName: this.data.inputValue || '', pageNo: 1, pageSize: self.data.limit }, (res) => {
@@ -67,7 +67,7 @@ Page({
           return x;
         }),
         total: res.data.page.totalCount,
-        skip: res.data.page.pageNo
+        skip: res.data.page.pageNo + 1
       })
     })
     // store.spotList({ spotName: this.data.inputValue || '', pageNo: self.data.skip + 1, pageSize: self.data.limit }, (res) => {
@@ -109,7 +109,7 @@ Page({
           return x;
         }),
         total: res.data.page.totalCount,
-        skip: res.data.page.pageNo
+        skip: res.data.page.pageNo + 1
       })
     })
     // store.spotList({ pageNo: self.data.skip, pageSize: self.data.limit }, (res) => {
