@@ -586,3 +586,17 @@ export function getMyUserInfo (params, cb, failcb) {
   })
 }
 
+// 获取渔获详情
+export function getFishCatch (params, cb, failcb) {
+  return $get({
+    url: '/info/detail/fishCatch',
+    data: params,
+    success (data) {
+      cb(data)
+    },
+    fail (error) {
+      failcb && failcb()
+    }
+  })
+}
+

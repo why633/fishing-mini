@@ -34,7 +34,7 @@ Page({
 
   loadMore: function (event) {
     let self = this;
-    store.fishCatch({ pageNo: this.data.skip + 1, pageSize: this.data.limit, spotId: 1 }, (res) => {
+    store.fishCatch({ pageNo: this.data.skip + 1, pageSize: this.data.limit }, (res) => {
       console.log(res)
       self.setData({
         articles: self.data.articles.concat((res.data.list || [])),
@@ -60,7 +60,7 @@ Page({
 
   onLoad: function () {
     const self = this;
-    store.fishCatch({ pageNo: this.data.skip, pageSize: this.data.limit, spotId: 1 }, (res) => {
+    store.fishCatch({ pageNo: this.data.skip, pageSize: this.data.limit }, (res) => {
       console.log(res)
       self.setData({
         articles: self.data.articles.concat((res.data.list || [])),
@@ -85,14 +85,14 @@ Page({
   },
 
   goEvent () {
-    return wx.switchTab({
+    return wx.navigateTo({
       url: '../event/event'
     });
   },
 
   go (event) {
     return wx.navigateTo({
-      url: '../article/fish/article?article=' + event.currentTarget.dataset.id
+      url: '../article/fish/article?fishCatchId=' + event.currentTarget.dataset.id
     });
   },
 

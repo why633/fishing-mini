@@ -1,4 +1,4 @@
-import { getData, showToast, globalTabindex} from '../../../utils/util.js'
+import { getData, showToast, globalTabindex } from '../../../utils/util.js'
 import conf from "../../../config.js";
 // adaptPadding,
 import * as store from '../../../store/index.js'
@@ -8,48 +8,47 @@ const app = getApp()
 //获取应用实例
 Page({
   data: {
-    id:'',
+    id: '',
     article: {},
     disabled: false,
     isfan: false
   },
   onReady: function (e) {
     let self = this;
-   
+
   },
-  bindKeyInput(e) {
+  bindKeyInput (e) {
     this.setData({ mark: e.detail.value });
   },
 
-  onLoad: function(opts) {
-    let { article="5d624712019c0300068b8aa5" } = opts;
-    this.setData({ id: article })
+  onLoad: function (opts) {
+    console.log(opts)
+
     let self = this;
-    store.getFishArticle({ article, user: app.globalData.user ?  app.globalData.user._id: null  }, (data) => {
+    // store.getFishArticle({ article, user: app.globalData.user ?  app.globalData.user._id: null  }, (data) => {
+    //   self.setData({
+    //       article: data.article
+    //   });
+    // });
+    store.getFishCatch({ fishCatchId: opts.fishCatchId }, (res) => {
+      console.log(res)
       self.setData({
-          article: data.article
+        articleData: res.data
       });
-    });
-    if(getData('sessionID')) {
-      store.isFan({ targetUser: (this.data.article.user && this.data.article.user._id) ? this.data.article.user._id : this.data.article.user }, (data) => {
-        self.setData({
-            isfan: data.relation ? true : false
-        });
-      });
-    }
+    })
   },
-  favor() {
-    showToast("开发中，敬请期待","none");
+  favor () {
+    showToast("开发中，敬请期待", "none");
   },
-  onHide() {
-   
+  onHide () {
+
   },
-  backhome() {
+  backhome () {
     wx.switchTab({
       url: '../../index/index'
     });
   },
-  onShow() {
-      let self = this;
+  onShow () {
+    let self = this;
   }
 })

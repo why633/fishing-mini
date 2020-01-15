@@ -1,25 +1,24 @@
+<wxs src="../../../utils/dateFormat.wxs" module="dateFormat" />
 <view class="container box" style="background:#fff">
   <view class="fixed-view" bindtap="backhome">
     <image src="/assets/backhome.png"/>
   </view>
-  <text class="title" style="margin:24rpx 0rpx">{{ article.title }}</text>
+  <text class="title" style="margin:24rpx 0rpx">{{ articleData.title }}</text>
   <view class="flex-row-box  top" >
     <view class="flex-row-box">
          <view class="avatar">
-            <image src="{{ article.user.headimgurl || '/assets/user_icon.png'}}"/>
+            <image src="{{ articleData.userHeadImg || '/assets/user_icon.png'}}"/>
          </view>
          <text class="info flex-column-box">
-            <text class="nickname">{{ article.user.nickname || '无昵称'}}</text>
-            <text class="date">{{ article.createdAt }}</text>
+            <text class="nickname">{{ articleData.userNickName || '无昵称'}}</text>
+            <text class="date">{{ dateFormat.dateFormat(articleData.createTime, 'yyyy年MM月dd日 hh:mm') }}</text>
          </text>
     </view>
-    <button wx:if="!isfan" bindtap="favor" size="mini" class="btn" disabled="{{ disabled }}" style="margin:0rpx;font-size:24rpx;">关注</button>
-    <text class="isfan" wx:else>已关注</text>
+    <!-- <button wx:if="!isfan" bindtap="favor" size="mini" class="btn" disabled="{{ disabled }}" style="margin:0rpx;font-size:24rpx;">关注</button> -->
+    <!-- <text class="isfan" wx:else>已关注</text> -->
   </view>
   <view class="content">
-  {{ article.content }}
+  {{ articleData.content }}
   </view>
-  <block wx:for="{{article.images}}" wx:key="{{index}}">
-      <image class="image" src="{{ item }}" mode="widthFix"/>
-  </block>
+  <image class="image" src="{{ articleData.coverImage }}" mode="widthFix"/>
 </view>
