@@ -46,12 +46,6 @@
         "selectedIconPath": "/assets/find_select.png"
       },
       {
-        "pagePath": "pages/score/score",
-        "text": "积分",
-        "iconPath": "/assets/score.png",
-        "selectedIconPath": "/assets/score_select.png"
-      },
-      {
         "pagePath": "pages/me/me",
         "text": "我的",
         "iconPath": "/assets/me.png",
