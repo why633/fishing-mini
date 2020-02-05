@@ -1,3 +1,11 @@
 <view class="score">
-  <view class="content">敬请期待</view>
+  <view class="content">
+      <view class="top">
+        <view class="num">
+          <view class="count">39</view>
+          <view>可用积分></view>
+        </view>
+        <view class="log">兑换记录</view>
+      </view>
+  </view>
 </view>

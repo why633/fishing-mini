@@ -23,7 +23,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.8.0",
 	"appid": "wx0fcc382fca6576c6",
-	"projectname": "%E9%92%93%E6%A6%9C",
+	"projectname": "fishing-mini",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
@@ -143,6 +143,12 @@
 					"name": "卖鱼",
 					"pathName": "pages/sellFish/sellFish",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "积分商城",
+					"pathName": "pages/score/score",
 					"scene": null
 				}
 			]

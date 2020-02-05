@@ -2,7 +2,33 @@
   min-height: 100%;
   background: #fff;
 }
-.content{
+
+.content .top{
+  height: 250rpx;
+  background: #0a3255;
+  color: #fff;
+  position: relative;
+  padding: 0 40rpx;
+}
+.num{
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  font-size: 24rpx;
+}
+.num .count{
+  font-size: 50rpx;
+}
+.log{
+  position: absolute;
+  right: 40rpx;
+  top: 40%;
+  transform: translateY(-50%);
+  font-size: 24rpx;
+  border: 1rpx solid #fff;
+  height: 60rpx;
+  line-height: 60rpx;
   text-align: center;
-  padding-top: 100rpx;
+  width: 150rpx;
+  border-radius: 30rpx;
 }
