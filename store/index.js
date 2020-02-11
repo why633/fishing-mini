@@ -614,3 +614,19 @@ export function goodsList (params, cb, failcb) {
   })
 }
 
+// 获取商品分类列表
+export function getType (params, cb, failcb) {
+  return $get({
+    url: '/goods/exchange/getType',
+    data: params,
+    success (data) {
+      cb(data)
+    },
+    fail (error) {
+      failcb && failcb()
+    }
+  })
+}
+
+
+
