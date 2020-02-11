@@ -1,5 +1,6 @@
 <view class="score">
   <view class="content">
+    <scroll-view bindscrolltolower="loadMore" scroll-y style="height:100%;">
       <view class="top">
         <view class="num">
           <view class="count">39</view>
@@ -7,5 +8,34 @@
         </view>
         <view class="log">兑换记录</view>
       </view>
+      <view class="search clearfix">
+        <view class="fl s-btn {{searchData.sort==1 ? 'up' : 'down'}}" bindtap="changeSort">排序</view>
+        <view class="fl s-btn class-btn">
+          <text>分类</text>
+          <view class="class">
+            <view class="class-item">全部</view>
+            <view class="class-item">全部</view>
+            <view class="class-item">全部</view>
+          </view>
+        </view>
+      </view>
+      <view class="list-wrap">
+        <view class="item" wx:for="{{goodsData}}" wx:key="{{index}}">
+          <view class="coverImgBox"><image src="{{item.coverImg}}" mode="aspectFit" /></view>
+          <view class="name">{{item.name}}</view>
+          <view class="price">{{item.price}}积分</view>
+        </view>
+        <view class="item"></view>
+      </view>
+      <view wx:if="{{ goodsData.length === 0 }}" class="box tip flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">
+        暂无内容
+      </view>
+      <view wx:if="{{ goodsData.length != 0  && goodsData.length < totalCount }}" class="box tip flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">
+        加载中
+      </view>
+      <view wx:if="{{ goodsData.length != 0  && goodsData.length >= totalCount }}" class="box tip flex-row-box" style="justify-content:center; font-size:30rpx;height:100rpx;color:#a9a9a9">
+        没有更多了
+      </view>
+    </scroll-view>
   </view>
 </view>

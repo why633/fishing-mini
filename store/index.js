@@ -600,3 +600,17 @@ export function getFishCatch (params, cb, failcb) {
   })
 }
 
+// 获取商品列表
+export function goodsList (params, cb, failcb) {
+  return $get({
+    url: '/goods/exchange/getList',
+    data: params,
+    success (data) {
+      cb(data)
+    },
+    fail (error) {
+      failcb && failcb()
+    }
+  })
+}
+

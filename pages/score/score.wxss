@@ -1,8 +1,10 @@
 .score{
-  min-height: 100%;
+  height: 100%;
   background: #fff;
 }
-
+.content{
+  height: 100%;
+}
 .content .top{
   height: 250rpx;
   background: #0a3255;
@@ -31,4 +33,97 @@
   text-align: center;
   width: 150rpx;
   border-radius: 30rpx;
+}
+
+.search{
+  /* font-size: 28rpx; */
+  padding: 20rpx 40rpx;
+}
+.fl{
+  float: left;
+}
+.s-btn{
+  padding-right: 40rpx;
+  margin-right: 120rpx;
+}
+.list-wrap{
+  background: #fff;
+  padding: 0 40rpx 40rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 28rpx;
+}
+.list-wrap .item{
+  width: 47%;
+  /* height: 300rpx; */
+  /* background: pink; */
+  margin-bottom: 40rpx;
+}
+.list-wrap .coverImgBox{
+  width: 100%;
+  height: 280rpx;
+  /* background: yellow; */
+}
+.list-wrap .coverImgBox image{
+  height: 100%;
+  width: 100%;
+}
+.list-wrap .item .name{
+  text-align: center;
+}
+.list-wrap .item .price{
+  text-align: center;
+  color: orange;
+}
+.up, .down{
+  position: relative;
+}
+.up::after{
+  display:block;
+  position: absolute;
+  right: 0rpx;
+  top: 10rpx;
+  content: '';
+  width: 0;
+  border-width: 10rpx;
+  border-style: solid;
+  border-color: transparent transparent gray transparent; /* transparent 设置边框颜色透明 */
+}
+.down::after{
+  display:block;
+  position: absolute;
+  right: 0rpx;
+  top: 20rpx;
+  content: '';
+  width: 0;
+  border-width: 10rpx;
+  border-style: solid;
+  border-color:gray transparent transparent transparent; /* transparent 设置边框颜色透明 */
+}
+.class{
+  position: absolute;
+  top: 60rpx;
+  width: 200rpx;
+  height: 200rpx;
+  background: pink;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10rpx;
+}
+.class::before{
+  display:block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -24rpx;
+  content: '';
+  width: 0;
+  border-width: 12rpx;
+  border-style: solid;
+  border-color:transparent transparent pink transparent;
+}
+.class-btn{
+  position: relative;
+  padding: 0;
 }
