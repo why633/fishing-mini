@@ -156,6 +156,20 @@
 					"id": -1,
 					"name": "积分商城",
 					"pathName": "pages/score/score",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "pages/score/goodDetail/goodDetail",
+					"query": "id=6",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "下载",
+					"pathName": "pages/download/download",
 					"scene": null
 				}
 			]

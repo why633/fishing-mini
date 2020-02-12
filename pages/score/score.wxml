@@ -1,7 +1,6 @@
 <view class="score">
   <view class="content">
     <scroll-view bindscrolltolower="loadMore" scroll-y style="height:100%;">
-      
       <view class="search clearfix">
         <view class="fl s-btn {{searchData.sort==1 ? 'up-db' : 'down-db'}}" bindtap="changeSort">排序</view>
         <picker class="fl s-btn down" bindchange="bindPickerChange" value="{{classIndex}}" range="{{classArray}}">
@@ -11,7 +10,7 @@
         </picker>
       </view>
       <view class="list-wrap">
-        <view class="item" wx:for="{{goodsData}}" wx:key="index">
+        <view class="item" wx:for="{{goodsData}}" wx:key="index" data-id="{{ item.id }}" bindtap="goDetail">
           <view class="coverImgBox"><image src="{{item.coverImg}}" mode="aspectFit" /></view>
           <view class="name">{{item.name}}</view>
           <view class="price">{{item.price}}积分</view>

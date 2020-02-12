@@ -79,6 +79,26 @@ Page({
   link (event) {
     let links = ['../event/event', '../score/score', '../sellFish/sellFish', '../branchGame/branchGame'];
     if (links[event.currentTarget.dataset.id]) {
+      if (event.currentTarget.dataset.id == 1) {
+        // 判断是否授权登录
+        if (!getData('sessionID')) {
+          showToast("登录状态错误，请绑定微信后再试", 'none');
+          return wx.switchTab({
+            url: '../me/me'
+          })
+        }
+        // 判断是否绑定手机号
+        console.log(getData('userInfo'))
+        if (!getData('userInfo').phone) {
+          showToast("账户状态错误，请绑定手机再报名", 'none');
+          return wx.navigateTo({
+            url: '../me/bind/bind'
+          })
+        }
+        wx.navigateTo({
+          url: links[event.currentTarget.dataset.id]
+        })
+      }
       if (event.currentTarget.dataset.id == 0) wx.navigateTo({
         url: links[event.currentTarget.dataset.id]
       })
@@ -150,6 +170,24 @@ Page({
         skip: res.data.page.pageNo
       })
     })
+  },
+
+  createApplication () {
+    // 判断是否授权登录
+    if (!getData('sessionID')) {
+      showToast("登录状态错误，请绑定微信后再试", 'none');
+      return wx.switchTab({
+        url: '../../me/me'
+      })
+    }
+    // 判断是否绑定手机号
+    console.log(getData('userInfo'))
+    if (!getData('userInfo').phone) {
+      showToast("账户状态错误，请绑定手机再报名", 'none');
+      return wx.navigateTo({
+        url: '../../me/bind/bind'
+      })
+    }
   },
 
   onHide () {

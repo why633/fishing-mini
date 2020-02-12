@@ -1,0 +1,25 @@
+.download{
+  height: 100%;
+  background: #fff;
+  position: relative;
+}
+.content{
+  
+}
+.tip{
+  text-align: center;
+  padding-top: 100rpx;
+}
+.er-img{
+  width: 500rpx;
+  height: 500rpx;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.er-img image{
+  width: 100%;
+  height: 100%;
+}

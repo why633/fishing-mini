@@ -1,0 +1,9 @@
+<view class="download">
+  <view class="content">
+    <view class="tip">请扫码下载App进行商品兑换</view>
+    <view class="er-img">
+      <image wx-if="{{device=='ios'}}" src="http://fish.diaoyuphb.com/fishing/QRcode/ios-download.png" bindtap="showIosCode" />
+      <image wx-if="{{device=='android'}}" src="http://fish.diaoyuphb.com/fishing/QRcode/android-download.png" bindtap="showAndroidCode" />
+    </view>
+  </view>
+</view>

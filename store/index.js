@@ -628,5 +628,19 @@ export function getType (params, cb, failcb) {
   })
 }
 
+// 获取商品详情
+export function goodDetail (params, cb, failcb) {
+  return $get({
+    url: '/goods/exchange/getDetail',
+    data: params,
+    success (data) {
+      cb(data)
+    },
+    fail (error) {
+      failcb && failcb()
+    }
+  })
+}
+
 
 

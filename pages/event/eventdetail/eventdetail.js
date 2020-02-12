@@ -64,25 +64,6 @@ Page({
         showToast(res.message, 'none')
       }
     }))
-    // if( !app.globalData.user ) {
-    //   showToast("账户状态错误，请绑定手机再报名", 'none');
-    //   return wx.navigateTo({
-    //     url: '../../me/bind/bind'
-    //   })
-    // }
-    // store.createApplication({
-    //   id: this.data.event._id,
-    //   count: this.data.count
-    // }, (data) => {
-    //   //'"5d6389232671ef00063a5bd4"'
-    //   if(data.application && data.application._id) {
-    //     wx.navigateTo({
-    //       url: '../../me/applicationdetail/applicationdetail?id=' +  data.application._id
-    //     })
-    //   } else {
-    //     showToast(data && data.status && data.status.message ? data.status.message : '报名失败','none');
-    //   }
-    // });
   },
 
   onLoad: function (opt) {

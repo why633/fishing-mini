@@ -78,5 +78,11 @@ Page({
       })
       this.getGoodsList()
     }
-  }
+  },
+  // 跳转详情
+  goDetail (e) {
+    return wx.navigateTo({
+      url: './goodDetail/goodDetail?id=' + e.currentTarget.dataset.id
+    });
+  },
 })

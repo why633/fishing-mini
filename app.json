@@ -15,6 +15,7 @@
     "pages/draw/draw",
     "pages/draw/seat/seat",
     "pages/score/score",
+    "pages/score/goodDetail/goodDetail",
     "pages/branchGame/branchGame",
     "pages/sellFish/sellFish"
   ],
