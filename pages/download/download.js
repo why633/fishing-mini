@@ -30,8 +30,8 @@ Page({
   },
   showAndroidCode () {
     wx.previewImage({
-      current: 'http://fish.diaoyuphb.com/fishing/QRcode/android-download.png' , // 当前显示图片的http链接
-      urls: ['http://fish.diaoyuphb.com/fishing/QRcode/android-download.png'] // 需要预览的图片http链接列表
+      current: 'http://fish.diaoyuphb.com/fishing/QRcode/android-download.jpeg' , // 当前显示图片的http链接
+      urls: ['http://fish.diaoyuphb.com/fishing/QRcode/android-download.jpeg'] // 需要预览的图片http链接列表
     })
   }
 })
