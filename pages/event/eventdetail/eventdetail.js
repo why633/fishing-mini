@@ -1,4 +1,4 @@
-import { getData, showToast, globalTabindex } from '../../../utils/util.js'
+import { getData, showToast, globalTabindex, setData } from '../../../utils/util.js'
 import conf from "../../../config.js";
 // adaptPadding,
 import * as store from '../../../store/index.js'
@@ -34,36 +34,92 @@ Page({
   createApplication () {
     // 判断是否授权登录
     if (!getData('sessionID')) {
-      showToast("登录状态错误，请绑定微信后再试", 'none');
-      return wx.switchTab({
-        url: '../../me/me'
+      wx.showToast({
+        title: '请授权登录',
+        icon: 'none',
+        duration: 1500,
+        success: function(){
+          setTimeout(function(){
+            return wx.switchTab({
+              url: '../../me/me'
+            })
+          }, 1600)
+        }
       })
+      return
     }
     // 判断是否绑定手机号
     console.log(getData('userInfo'))
     if (!getData('userInfo').phone) {
-      showToast("账户状态错误，请绑定手机再报名", 'none');
-      return wx.navigateTo({
-        url: '../../me/bind/bind'
+      wx.showToast({
+        title: '请绑定手机',
+        icon: 'none',
+        duration: 1500,
+        complete: function(){
+          setTimeout(function(){
+            return wx.navigateTo({
+              url: '../../me/bind/bind'
+            })
+          }, 1600)
+        }
       })
+      return
     }
-    const params = {
-      eventId: this.data.id,
-      count: this.data.count,
-      tranAmount: this.data.eventInfo.money * this.data.count
-    }
-    // 报名
-    store.applicationGame(JSON.stringify(params), (res => {
-      console.log(res)
-      console.log(JSON.stringify(res.data))
-      if (res.code == 200) {
-        wx.navigateTo({
-          url: '../../me/applicationdetail/applicationdetail?event=' + JSON.stringify(res.data)
-        })
-      } else {
-        showToast(res.message, 'none')
+    if (getData('userInfo').nickName == '小程序用户') {
+      console.log('小程序用户')
+      const _this = this
+      wx.getUserInfo({
+        success(res) {
+          console.log(res.userInfo)
+          const userInfo = {
+            nickName: res.userInfo.nickName,
+            gender: res.userInfo.gender,
+            headImg: res.userInfo.avatarUrl
+          }
+          store.editUse(JSON.stringify(userInfo), (res) => {
+            console.log(res)
+            console.log('修改用户名')
+            const user = res.data
+            setData('userInfo', user)
+            const params = {
+              eventId: _this.data.id,
+              count: _this.data.count,
+              tranAmount: _this.data.eventInfo.money * _this.data.count
+            }
+            // 报名
+            store.applicationGame(JSON.stringify(params), (res => {
+              console.log(res)
+              console.log(JSON.stringify(res.data))
+              if (res.code == 200) {
+                wx.navigateTo({
+                  url: '../../me/applicationdetail/applicationdetail?event=' + JSON.stringify(res.data)
+                })
+              } else {
+                showToast(res.message, 'none')
+              }
+            }))
+          })
+        }
+      })
+    } else {
+      const params = {
+        eventId: this.data.id,
+        count: this.data.count,
+        tranAmount: this.data.eventInfo.money * this.data.count
       }
-    }))
+      // 报名
+      store.applicationGame(JSON.stringify(params), (res => {
+        console.log(res)
+        console.log(JSON.stringify(res.data))
+        if (res.code == 200) {
+          wx.navigateTo({
+            url: '../../me/applicationdetail/applicationdetail?event=' + JSON.stringify(res.data)
+          })
+        } else {
+          showToast(res.message, 'none')
+        }
+      }))
+    }
   },
 
   onLoad: function (opt) {

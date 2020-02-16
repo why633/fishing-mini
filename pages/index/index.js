@@ -82,29 +82,49 @@ Page({
       if (event.currentTarget.dataset.id == 1) {
         // 判断是否授权登录
         if (!getData('sessionID')) {
-          showToast("登录状态错误，请绑定微信后再试", 'none');
-          return wx.switchTab({
-            url: '../me/me'
+          wx.showToast({
+            title: '请授权登录',
+            icon: 'none',
+            duration: 1500,
+            success: function(){
+              setTimeout(function(){
+                return wx.switchTab({
+                  url: '../me/me'
+                })
+              }, 1600)
+            }
           })
+          return
         }
         // 判断是否绑定手机号
         console.log(getData('userInfo'))
         if (!getData('userInfo').phone) {
-          showToast("账户状态错误，请绑定手机再报名", 'none');
-          return wx.navigateTo({
-            url: '../me/bind/bind'
+          wx.showToast({
+            title: '请绑定手机',
+            icon: 'none',
+            duration: 1500,
+            complete: function(){
+              setTimeout(function(){
+                return wx.navigateTo({
+                  url: '../me/bind/bind'
+                })
+              }, 1600)
+            }
           })
+          return
         }
         wx.navigateTo({
           url: links[event.currentTarget.dataset.id]
         })
+      } else if (event.currentTarget.dataset.id == 0) {
+        wx.navigateTo({
+          url: links[event.currentTarget.dataset.id]
+        }) 
+      } else {
+        return wx.navigateTo({
+          url: links[event.currentTarget.dataset.id]
+        })
       }
-      if (event.currentTarget.dataset.id == 0) wx.navigateTo({
-        url: links[event.currentTarget.dataset.id]
-      })
-      else return wx.navigateTo({
-        url: links[event.currentTarget.dataset.id]
-      })
     } else {
       showToast("开发中，敬请期待", 'none')
     }

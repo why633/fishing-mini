@@ -9,10 +9,12 @@ Page({
     descImg: ''
   },
   onLoad: function (opt) {
+    console.log(opt)
     let eventId = opt.id
     if (opt.scene) {
       eventId = decodeURIComponent(opt.scene)
     }
+    console.log(eventId)
     this.setData({
       id: eventId
     })

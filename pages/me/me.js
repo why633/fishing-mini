@@ -46,25 +46,34 @@ Page({
     app.globalData.userInfo = e.detail.userInfo;
     console.dir(e.detail);
     let self = this;
-    wx.login({
-      success: res => {
-        let code = res.code;
-        console.log(code)
-        if (code) {
-          store.programLogin({ wxCode: res.code }, (data) => {
-            console.log(data)
-            setData('sessionID', data.data.token);
-            const user = data.data
-            self.setData({ user: user, hasUserInfo: true });
-            // app.globalData.user = user
-            setData('userInfo', user);
-            showToast('登录成功', 'none');
-          })
-        } else {
-          showToast('授权失败,稍后重试', 'none')
-        }
+    wx.getUserInfo({
+      success(res) {
+        console.log("获取用户信息成功", res)
+        wx.login({
+          success: res => {
+            let code = res.code;
+            console.log(code)
+            if (code) {
+              store.programLogin({ wxCode: res.code }, (data) => {
+                console.log(data)
+                setData('sessionID', data.data.token);
+                let user = data.data
+                self.setData({ user: user, hasUserInfo: true });
+                // app.globalData.user = user
+                setData('userInfo', user);
+                showToast('登录成功', 'none');
+              })
+            } else {
+              showToast('授权失败,稍后重试', 'none')
+            }
+          }
+        })
+      },
+      fail(res) {
+        showToast('授权失败,稍后重试', 'none')
       }
     })
+    
   },
   logout () {
     remoData('sessionID');

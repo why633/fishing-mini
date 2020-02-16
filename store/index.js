@@ -642,5 +642,19 @@ export function goodDetail (params, cb, failcb) {
   })
 }
 
+// 修改用户信息
+export function editUse (params, cb, failcb) {
+  return $post({
+    url: '/user/userLogin/editUser',
+    data: params,
+    success (data) {
+      cb(data)
+    },
+    fail (error) {
+      failcb && failcb()
+    }
+  })
+}
+
 
 
