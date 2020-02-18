@@ -15,8 +15,12 @@
   font-size: 70rpx;
   margin-top: 100rpx;
 }
+.draw-btn{
+  width: 70%;
+  margin: 0 auto;
+}
 
-.btn {
+.close-btn {
   width: 70%;
   margin: 0 auto;
   background: #fff;

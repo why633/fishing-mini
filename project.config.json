@@ -177,6 +177,13 @@
 					"id": -1,
 					"name": "发现",
 					"pathName": "pages/spot/spot",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/draw/draw",
+					"pathName": "pages/draw/draw",
 					"scene": null
 				}
 			]

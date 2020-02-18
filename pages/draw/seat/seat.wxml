@@ -3,5 +3,9 @@
     <view>座位号</view>
     <view class="seat">{{seat}}</view>
   </view>
-  <button class="btn" bindtap="close">关闭</button>
+  <block wx:if="{{seat=='--'}}">
+    <button class="btn draw-btn" wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">开始摇号</button>
+    <view wx:else>请升级微信版本</view>
+  </block>
+  <button wx:else class="close-btn" bindtap="close">关闭</button>
 </view>

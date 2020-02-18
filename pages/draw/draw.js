@@ -1,8 +1,9 @@
 import * as store from '../../store/index.js'
-import { setData } from '../../utils/util.js'
+import { setData, showToast } from '../../utils/util.js'
 Page({
   data: {
-    phone: ''
+    phone: '',
+    eventId: ''
   },
 
   onReady: function (e) {
@@ -15,8 +16,16 @@ Page({
     })
   },
 
-  onLoad: function () {
-
+  onLoad: function (opt) {
+    let eventId = ''
+    if (opt.scene) {
+      eventId = decodeURIComponent(opt.scene)
+    }
+    console.log(opt.scene)
+    console.log(eventId)
+    this.setData({
+      eventId: eventId
+    })
   },
 
   onHide () {
@@ -28,9 +37,15 @@ Page({
   },
   // 获取手机号
   getPhoneNumber (e) {
+    if (e.detail.errMsg == 'getPhoneNumber:fail user deny') { //用户点击允许
+      console.log('fail user deny')
+      showToast('授权失败,稍后重试', 'none')
+      return
+    }
     let _this = this
     wx.login({
       success (res) {
+        console.log(res)
         const params = {
           code: res.code,
           encryptedData: e.detail.encryptedData,
@@ -43,7 +58,7 @@ Page({
             phone: res.data.phoneNumber
           })
           wx.navigateTo({
-            url: './seat/seat?phone=' + res.data.phoneNumber
+            url: './seat/seat?phone=' + res.data.phoneNumber + '&eventId=' + _this.data.eventId
           })
         })
       }

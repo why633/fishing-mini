@@ -1,8 +1,11 @@
 import * as store from '../../../store/index.js'
 Page({
   data: {
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     phone: '',
-    seat: '10'
+    seat: '--',
+    eventId: '',
+    nickName: ''
   },
 
   onReady: function (e) {
@@ -12,9 +15,9 @@ Page({
   onLoad: function (e) {
     console.log(e)
     this.setData({
-      phone: e.phone
+      phone: e.phone,
+      eventId: e.eventId
     })
-    this.lotNumber()
   },
 
   onHide () {
@@ -28,7 +31,8 @@ Page({
   lotNumber () {
     const params = {
       phone: this.data.phone,
-      eventId: 9
+      eventId: this.data.eventId,
+      nickName: this.data.nickName
     }
     store.lotNumber(params, (res) => {
       console.log(res)
@@ -42,5 +46,20 @@ Page({
     wx.switchTab({
       url: '../../index/index'
     });
+  },
+  bindGetUserInfo () {
+    const _this = this
+    wx.getUserInfo({
+      success(res) {
+        console.log("获取用户信息成功", res)
+        _this.setData({
+          nickName: res.userInfo.nickName
+        })
+        _this.lotNumber()
+      },
+      fail(res) {
+        showToast('授权失败,稍后重试', 'none')
+      }
+    })
   }
 })
