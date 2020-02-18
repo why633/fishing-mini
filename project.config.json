@@ -170,6 +170,13 @@
 					"id": -1,
 					"name": "下载",
 					"pathName": "pages/download/download",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发现",
+					"pathName": "pages/spot/spot",
 					"scene": null
 				}
 			]

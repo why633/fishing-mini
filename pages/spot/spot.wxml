@@ -18,18 +18,10 @@
     </view>
     <view class="box icon-box flex-row-box">
       <view  class="flex-row-box" bindtap="goSpot">
-        <image src="/assets/spot_icon.png"/>
-        <view class="info">
-           <text class="title">发现钓场</text>
-           <text>好钓鱼 钓好鱼</text>
-        </view>
+        <image src="/assets/spot_icon1.png" />
       </view>
       <view class="flex-row-box" bindtap="goEvent">
-        <image src="/assets/activity_icon.png"/>
-        <view class="info">
-           <text class="title">钓场活动</text>
-           <text>又好玩 又有趣</text>
-        </view>
+        <image src="/assets/event_icon.png" />
       </view>
     </view>
     <view class="box">
