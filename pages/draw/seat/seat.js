@@ -13,7 +13,6 @@ Page({
   },
 
   onLoad: function (e) {
-    console.log(e)
     this.setData({
       phone: e.phone,
       eventId: e.eventId
@@ -34,8 +33,9 @@ Page({
       eventId: this.data.eventId,
       nickName: this.data.nickName
     }
+    wx.showLoading({title: '摇号中…'})
     store.lotNumber(params, (res) => {
-      console.log(res)
+      wx.hideLoading()
       this.setData({
         seat: res.data.value
       })
@@ -51,7 +51,6 @@ Page({
     const _this = this
     wx.getUserInfo({
       success(res) {
-        console.log("获取用户信息成功", res)
         _this.setData({
           nickName: res.userInfo.nickName
         })

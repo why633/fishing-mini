@@ -45,15 +45,12 @@ Page({
     let _this = this
     wx.login({
       success (res) {
-        console.log(res)
         const params = {
           code: res.code,
           encryptedData: e.detail.encryptedData,
           iv: e.detail.iv
         }
-        console.log(params)
         store.decryptPhone(JSON.stringify(params), (res) => {
-          console.log(res.data.phoneNumber)
           _this.setData({
             phone: res.data.phoneNumber
           })
