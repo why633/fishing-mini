@@ -83,8 +83,8 @@ Page({
             setData('userInfo', user)
             const params = {
               eventId: _this.data.id,
-              count: _this.data.count,
-              tranAmount: _this.data.eventInfo.money * _this.data.count
+              count: 1,
+              tranAmount: _this.data.eventInfo.money + (_this.data.eventInfo.prepay==1?_this.data.eventInfo.prepayMoney:0)
             }
             // 报名
             store.applicationGame(JSON.stringify(params), (res => {
@@ -105,7 +105,7 @@ Page({
       const params = {
         eventId: this.data.id,
         count: this.data.count,
-        tranAmount: this.data.eventInfo.money * this.data.count
+        tranAmount: this.data.eventInfo.money + (this.data.eventInfo.prepay==1?this.data.eventInfo.prepayMoney:0)
       }
       // 报名
       store.applicationGame(JSON.stringify(params), (res => {

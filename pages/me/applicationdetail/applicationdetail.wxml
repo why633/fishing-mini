@@ -21,14 +21,6 @@
       <text class="label">报名金额</text>
       <text>{{ applicationInfo.tranAmount }}元</text>
     </view>
-    <view class="flex-row-box">
-      <text class="label">订单状态</text>
-      <text>{{ payok ? "已付款" : (applicationInfo.status==1?"未付款":(applicationInfo.status==2?"已付款":"已退款")) }}</text>
-    </view>
-    <view class="flex-row-box">
-      <text class="label">核销状态</text>
-      <text>{{ applicationInfo.check==2 ? "已核销" : '未核销' }}</text>
-    </view>
   </view>
   <view class="box op-box">
     <view class="flex-row-box btn-box">

@@ -14,10 +14,10 @@
      <image src="{{ user.headImg || '/assets/user_icon.png'}}"/>
   </view>
   <view class="flex-column-box item-box box" style="border-bottom: 24rpx solid #F4F4F4;">
-    <view class="item-info flex-row-box">
-        <view bindtap="goApplication">
-        <image class="icon" src="/assets/application_icon.png"/>
-        <text>我的订单</text>
+    <view class="item-info flex-row-box" bindtap="goApplication">
+        <view>
+          <image class="icon" src="/assets/application_icon.png"/>
+          <text>我的订单</text>
         </view>
         <image class="arrow" src="/assets/dark_arrow_icon.png" />
     </view>

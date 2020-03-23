@@ -1,0 +1,8 @@
+
+function eventType (typeNum) {
+    let typeName = '111'
+    return typeName
+}
+
+
+module.exports.eventType = eventType;

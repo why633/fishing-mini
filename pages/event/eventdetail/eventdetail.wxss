@@ -14,8 +14,13 @@ page {
     font-size:34rpx;
     margin:16rpx 0rpx;
 }
+.infos-box .time{
+    font-size:30rpx;
+    margin:6rpx 0rpx;
+    color: #FF9900;
+}
 .infos-box .info{
-    padding:8rpx 0rpx;
+    padding:20rpx 0rpx;
 }
 
 .infos-box .info text{
@@ -23,8 +28,9 @@ page {
 }
 
 .infos-box .info .label{
-  color:#787878;
+  /* color:#787878; */
   margin-right:32rpx;
+  width: 120rpx;
 }
 
 .infos-box .info .content{
@@ -72,11 +78,12 @@ page {
 .buy-box view .number{
   margin: 0rpx 12rpx;
 }
-.buy-box .button{
-  margin:0rpx;
+.button{
+  width: 80%;
+  margin:0 auto 30rpx;
   font-size: 32rpx;
-  background:#FF9900;
-  border-radius: 12rpx;
+  background:#0a3255;
+  border-radius: 20rpx;
   color:#fff;
 }
 

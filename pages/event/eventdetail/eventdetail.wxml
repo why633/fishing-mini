@@ -22,49 +22,69 @@
     </view>
     <view class="infos-box flex-column-box box">
         <text class="title">{{ eventInfo.name }}</text>
+        <text class="time">{{ time }}</text>
+
+        <view class="info flex-row-box">
+            <text class="label">钓场名称</text>
+            <text class="content">{{ eventInfo.spotName }}</text>
+        </view>
+
+        <view class="info flex-row-box">
+            <text class="label">比赛地址</text>
+            <text class="content">{{ eventInfo.address }}</text>
+        </view>
+        <view class="info flex-row-box">
+            <text class="label">类型</text>
+            <text class="content">{{ eventInfo.playType==1?'黑坑':(eventInfo.playType==2?'路亚':(eventInfo.playType==7?'欢乐塘':(eventInfo.playType==8?'练竿塘':(eventInfo.playType==9?'竞技池':'')))) }}</text>
+        </view>
+        <view class="info flex-row-box">
+            <text class="label">放鱼量</text>
+            <text class="content">{{ eventInfo.fishNum }}斤</text>
+        </view>
+        <view class="info flex-row-box" wx-if="{{eventInfo.repurchase}}">
+            <text class="label">回购</text>
+            <text class="content">{{ eventInfo.repurchase }}元/斤</text>
+        </view>
+        <view class="info flex-row-box">
+            <text class="label">报名费用</text>
+            <text class="content">{{ eventInfo.money }}元/人</text>
+        </view>
+        <view class="info flex-row-box">
+            <text class="label">缴纳押金</text>
+            <text class="content">{{ eventInfo.prepay==1?eventInfo.prepayMoney:'0' }}元/人</text>
+        </view>
+        <view class="info flex-row-box">
+            <text class="label">钓坑</text>
+            <text class="content">{{ eventInfo.fishpondName }}</text>
+        </view>
+
+
+
         <view class="info flex-row-box">
             <text class="label">{{ eventInfo.type == '2' ? '赛事' : '活动'}}时间</text>
             <text class="content">{{ dateFormat.dateFormat(eventInfo.startTime, 'yyyy年MM月dd日 hh:mm') }}</text>
         </view>
-         <view class="info flex-row-box">
-            <text class="label">报名截止</text>
-            <text class="content">{{ dateFormat.dateFormat(eventInfo.endTime, 'yyyy年MM月dd日 hh:mm') }}</text>
-        </view>
-         <view class="info flex-row-box">
-            <text class="label">地址信息</text>
-            <text class="content">{{ eventInfo.address ? eventInfo.address || '~' : '~' }}</text>
-        </view>
-         <view class="info flex-row-box">
+
+        <view class="info flex-row-box">
             <text class="label">联系电话</text>
             <text class="content">{{ eventInfo.phone ? eventInfo.phone || '~' : '~' }}</text>
         </view>
 
+        <view class="info">
+            <text class="content">{{ dateFormat.dateFormat(eventInfo.startTime, 'yyyy年MM月dd日 hh:mm') }} 限{{eventInfo.peopleNumber}}人</text>
+            <text class="content">{{eventInfo.fishes}} {{eventInfo.tab=='normal'?'正钓':(eventInfo.tab=='donkey'?'偷驴':(eventInfo.tab=='positive'?'正场':(eventInfo.tab=='sub'?'副场':'捡漏')))}} {{eventInfo.eventTimes==1?'日场':'夜场'}}</text>
+        </view>
+
     </view>
-    <view class="box" style="margin-bottom:280rpx;">
-        <view class='app-title'>{{ eventInfo.type == '2' ? "赛事" : '活动'}}简介</view>
+    <view class="box">
+        <view class='app-title'>温馨提示</view>
         <view style="font-size:30rpx; white-space: pre-line;">
             {{ eventInfo.content }}
         </view>
+        <view style="height:280rpx;"></view>
     </view>
-    <view class="flex-column-box bottom-box">
-    <view class="box cycle-box flex-row-box">
-        {{ time }}
-    </view>
-    <view class="box flex-row-box buy-box">
-        <view class="flex-row-box" style="align-items:center;">
-            <text>数量</text>
-            <view class="plain-btn" bindtap="sub">
-                <image src="/assets/sub.png" />
-            </view>
-            <view class="number">
-            {{ count }}
-            </view>
-            <view class="plain-btn" bindtap="plus">
-                <image src="/assets/plus.png" />
-            </view>
-        </view>
-        <button class="button" disabled="{{ eventInfo.isPast==1 }}" bindtap="createApplication">¥{{ eventInfo.money }} 立即报名</button>
-    </view>
+    <view class="bottom-box">
+      <button class="button" disabled="{{ eventInfo.isPast==1 }}" bindtap="createApplication">立即报名</button>
     </view>
   </scroll-view>
 </view>

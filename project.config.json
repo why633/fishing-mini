@@ -83,10 +83,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "活动详情",
 					"pathName": "pages/event/eventdetail/eventdetail",
-					"query": "id=19",
+					"query": "id=2385",
 					"scene": null
 				},
 				{
@@ -184,6 +184,7 @@
 					"id": -1,
 					"name": "pages/draw/draw",
 					"pathName": "pages/draw/draw",
+					"query": "",
 					"scene": null
 				}
 			]
