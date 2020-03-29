@@ -2,7 +2,11 @@ page {
  
 }
 .swiper{
-  position:relative;
+  position: relative;
+  margin: 0 20rpx;
+  border-radius: 10rpx;
+  height: 208rpx !important;
+  overflow: hidden;
 }
 
 .icon-box view{
@@ -214,25 +218,40 @@ page {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-bottom: 40rpx;
 }
-.block-wrap image{
-  /* flex: 1; */
-  width: 49%;
-  margin-bottom: 2%;
+.block-wrap .block-item{
+  flex: 1;
+  /* width: 49%; */
+  /* margin-bottom: 2%; */
+  text-align: center;
+}
+.block-wrap .block-item text{
+  font-family: PingFangSC-Regular;
+  font-size: 22rpx;
+  color: #353A47;
+}
+.block-wrap .block-item image{
+  display: block;
+  width: 80rpx;
+  height: 80rpx;
+  margin: 0 auto;
 }
 
 .message{
   height: 80rpx;
   border-radius: 10rpx;
-  margin: 30rpx 20rpx;
-  background: #f3f2f7;
-  color: #adacb1;
+  margin: 30rpx 22rpx;
+  /* background: #f3f2f7; */
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #378AC4;
 }
 .icon{
-  width: 40rpx;
-  height: 40rpx;
-  margin-top: 20rpx;
-  margin-right: 20rpx;
+  width: 34rpx;
+  height: 28rpx;
+  margin-top: 26rpx;
+  margin-right: 28rpx;
   float: left;
 }
 .icon image{
@@ -243,4 +262,95 @@ page {
   font-size: 26rpx;
   line-height: 80rpx;
 }
+.user-wrap{
+  height: 306rpx;
+  position: relative;
+}
+.user-wrap .bg{
+  position: absolute;
+  width: 100%;
+  top: -240rpx;
+}
+.user-wrap .head-img{
+  position: absolute;
+  top: 52rpx;
+  left: 60rpx;
+  height: 192rpx;
+  width: 192rpx;
+  /* background: pink; */
+  border-radius: 50%;
+  border: 8rpx solid #fff;
+  /* overflow: hidden; */
+}
+.user-wrap .head-img .img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.user-wrap .head-img .l-icon{
+  position: absolute;
+  width: 68rpx;
+  height: 52rpx;
+  right: 0rpx;
+  bottom: 0rpx;
+}
+.user-wrap .user{
+  position: absolute;
+  top: 160rpx;
+  left: 330rpx;
+  /* width: 400rpx; */
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #333333;
+  letter-spacing: -0.6rpx;
+}
+.user-wrap .text view{
+  display: inline-block;
+  /* line-height: 24rpx; */
+  /* float: left; */
+}
+.user-wrap .text .name{
+  font-size: 36rpx;
+  margin-left: 68rpx;
+}
+.user-wrap .text .arraw_icon{
+  width: 32rpx;
+  height: 28rpx;
+  margin-left: 24rpx;
+}
+.user-wrap .arraw_icon image{
+  width: 100%;
+  height: 100%;
+}
+.user-wrap .text.score{
+  text-align: right;
+  padding-right: 32rpx;
+  box-sizing: border-box;
+}
 
+.like{
+  margin-top: 60rpx;
+  padding: 0 20rpx;
+}
+.like .title{
+  position: relative;
+  padding-right: 42rpx;
+}
+.like .title .h{
+  float: left;
+  font-family: PingFangSC-Semibold;
+  font-size: 30rpx;
+  color: #333333;
+}
+.like .title .more{
+  float: right;
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  color: #666666;
+}
+.like .title .more-icon{
+  position: absolute;
+  right: 0;
+  width: 40rpx;
+  height: 40rpx;
+}

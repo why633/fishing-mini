@@ -75,10 +75,19 @@
             <text class="content">{{eventInfo.fishes}} {{eventInfo.tab=='normal'?'正钓':(eventInfo.tab=='donkey'?'偷驴':(eventInfo.tab=='positive'?'正场':(eventInfo.tab=='sub'?'副场':'捡漏')))}} {{eventInfo.eventTimes==1?'日场':'夜场'}}</text>
         </view>
 
+        <view class="tips">
+          温馨提示：
+          <view>
+            1.一个赛事/活动多次报名情况，只统计第一次报名的排名；
+          </view>
+          <view>
+            2.一次报名多人，只算一人成绩。
+          </view>
+        </view>
     </view>
     <view class="box">
-        <view class='app-title'>温馨提示</view>
         <view style="font-size:30rpx; white-space: pre-line;">
+            武切维奇委屈企鹅窝群翁王企鹅
             {{ eventInfo.content }}
         </view>
         <view style="height:280rpx;"></view>

@@ -1,6 +1,54 @@
 <wxs src="../../utils/dateFormat.wxs" module="dateFormat" />
 <view class="container">
   <scroll-view bindscrolltolower="loadMore" scroll-y style="height:100%;">
+    <view class="user-wrap">
+      <image class="bg" src='/assets/index_top_bg.png'></image>
+      <view class="info">
+        <view class="head-img">
+          <image class="img" src="{{scoreData.headImg}}"></image>
+          <image class="l-icon" src="/assets/vip_icon.png"  />
+        </view>
+        <view class="user">
+          <view class="text">
+            <view class="">
+              欢迎您 <text style="margin-left:20rpx;"></text>尊贵的会员
+            </view>
+            <view class="name">
+              {{ scoreData.nickName }}
+            </view>
+            <view class="arraw_icon">
+              <image class="" src="/assets/arraw_icon.png"></image>
+            </view>
+          </view>
+          <view class="text score">现有积分：{{ scoreData.currency }}分</view>
+        </view>
+      </view>
+    </view>
+    <view class="message dealWith">
+      <view class="icon"><image src="/assets/broadcast_icon.png" /></view><text class="message-text">暂无广播消息</text>
+    </view>
+    <view class="block-wrap">
+      <!-- 赛事报名 -->
+      <view class="block-item">
+        <image src="/assets/game_signup.png" mode='widthFix' data-id="0" bindtap="link" />
+        <text>赛事报名</text>
+      </view>
+      <!-- 积分商城 -->
+      <view class="block-item">
+        <image src="/assets/score_store.png" mode='widthFix' data-id="1" bindtap="link" />
+        <text>积分商城</text>
+      </view>
+      <!-- 卖鱼 -->
+      <view class="block-item">
+        <image src="/assets/sell_fish.png" mode='widthFix' data-id="2" bindtap="link"/>
+        <text>我要卖鱼</text>
+      </view>
+      <!-- 品牌赛事 -->
+      <view class="block-item">
+        <image src="/assets/branch_game.png" mode='widthFix' data-id="3" bindtap="link" />
+        <text>品牌赛事</text>
+      </view>
+    </view>
     <view class="swiper box" style="padding:0rpx;height:250rpx;">
       <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{color}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:100%;">
         <block wx:for="{{imgUrls}}" wx:key="{{index}}">
@@ -10,19 +58,14 @@
         </block>
       </swiper>
     </view>
-    <view class="message dealWith">
-      <view class="icon"><image src="/assets/broadcast_icon.png" /></view><text class="message-text">暂无广播消息</text>
+    <view class="like">
+      <view class="title clearfix">
+        <text class="h">猜你喜欢</text>
+        <text class="more">更多</text>
+        <image class="more-icon" src="/assets/dark_arrow_icon.png" />
+      </view>
     </view>
-    <view class="block-wrap">
-      <!-- 赛事报名 -->
-      <image src="/assets/game_signup.png" mode='widthFix' data-id="0" bindtap="link" />
-      <!-- 积分商城 -->
-      <image src="/assets/score_store.png" mode='widthFix' data-id="1" bindtap="link" />
-      <!-- 卖鱼 -->
-      <image src="/assets/sell_fish.png" mode='widthFix' data-id="2" bindtap="link"/>
-      <!-- 品牌赛事 -->
-      <image src="/assets/branch_game.png" mode='widthFix' data-id="3" bindtap="link" />
-    </view>
+      
     <view class="dealWith">
       <view class="dealBox flex-row-box">
         <view class="{{tab=='热门资讯' ? 'active' : ''}}" data-tab="热门资讯" bindtap="tapName">热门资讯</view>

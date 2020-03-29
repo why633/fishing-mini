@@ -11,6 +11,7 @@ Page({
     imgUrls: [
       "../../assets/banner.jpg"
     ],
+    scoreData: {},
     autoplay: true,
     interval: 5000,
     adinterval: 5000,
@@ -190,6 +191,7 @@ Page({
         skip: res.data.page.pageNo
       })
     })
+    this.getScoreInfo()
   },
 
   createApplication () {
@@ -208,6 +210,19 @@ Page({
         url: '../../me/bind/bind'
       })
     }
+  },
+  // 获取积分数据
+  getScoreInfo () {
+    const _this = this
+    console.log(getData('userInfo'))
+    store.scoreInfo({}, (res) => {
+      console.log(res.data)
+      res.data.headImg = getData('userInfo').headImg||'/assets/user_icon.png'
+      res.data.nickName = getData('userInfo').nickName||'--'
+      _this.setData({
+        scoreData: res.data
+      })
+    })
   },
 
   onHide () {

@@ -656,5 +656,19 @@ export function editUse (params, cb, failcb) {
   })
 }
 
+// 积分等级数据
+export function scoreInfo (params, cb, failcb) {
+  return $get({
+    url: '/event/currency/refresh',
+    data: params,
+    success (data) {
+      cb(data)
+    },
+    fail (error) {
+      failcb && failcb()
+    }
+  })
+}
+
 
 
