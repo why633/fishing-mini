@@ -89,6 +89,9 @@ Page({
       url: '../event/event'
     });
   },
+  goFishingClassroom () {
+    showToast('开发中,敬请期待', 'none')
+  },
 
   go (event) {
     return wx.navigateTo({

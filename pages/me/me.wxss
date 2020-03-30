@@ -13,7 +13,7 @@
 	background-color: #F4F4F4;
 }
 .user-info{
-	background:#0a3255;	
+	background:#52A5D4;
 	padding:24rpx 36rpx;
 	justify-content:space-between;
 	align-items:center;
@@ -24,9 +24,7 @@
 	border-radius:122rpx;
 	margin-right:14rpx;
 }
-.user-info view{
-	background:#0a3255;	
-}
+
 .user-info view text{
 	font-size: 24rpx;
 	color:#fff;

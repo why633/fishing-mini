@@ -1,13 +1,13 @@
 <view class="container" >
   <scroll-view bindscrolltolower="loadMore" scroll-y style="height:100%;">
-    <view class="swiper box" style="padding:24rpx;" wx:if="{{ imgUrls.length }}">
+    <view class="swiper box" style="padding:20rpx;" wx:if="{{ imgUrls.length }}">
         <swiper
           indicator-dots="{{indicatorDots}}"
           indicator-color="{{color}}"
           autoplay="{{autoplay}}"
           interval="{{interval}}"
           duration="{{duration}}"
-          style="height:{{systemWidth/2}}px;"
+          style="height:280rpx;border-radius:12rpx;overflow:hidden;"
         >
         <block wx:for="{{imgUrls}}" wx:key="{{index}}">
           <swiper-item>
@@ -22,6 +22,9 @@
       </view>
       <view class="flex-row-box" bindtap="goEvent">
         <image src="/assets/event_icon.png" />
+      </view>
+      <view class="flex-row-box" bindtap="goFishingClassroom">
+        <image src="/assets/fishingClass_icon.png" />
       </view>
     </view>
     <view class="box">

@@ -1,21 +1,21 @@
 page {
  
 }
+
 .swiper{
   position:relative;
 }
 
 .icon-box{
   margin-bottom: 24rpx;
-  padding: 24rpx 0rpx 48rpx 0rpx;
-  justify-content: center;
-  border-bottom: 24rpx solid #F4F4F4;
+  padding: 24rpx 20rpx 48rpx;
+  justify-content: space-between;
+  /* border-bottom: 24rpx solid #F4F4F4; */
 }
 .icon-box view{
-  width: 370rpx;
-  height: 149rpx;
+  width: 224rpx;
+  height: 112rpx;
   align-items:center;
-  padding:0rpx 20rpx;
 }
 .icon-box view image{
   width: 100%;
