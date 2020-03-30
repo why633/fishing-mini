@@ -371,7 +371,6 @@ page {
 .list .item .img-wrap{
   width: 168rpx;
   height: 168rpx;
-  background: pink;
   margin-right: 24rpx;
 }
 .list .img-wrap image{
