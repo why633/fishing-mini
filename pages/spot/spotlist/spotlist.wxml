@@ -1,5 +1,5 @@
 <view class="container" >
-  <view class="box" style="margin:24rpx 0rpx;">
+  <view class="box wrap" style="margin:24rpx 0rpx;background:#eee;">
       <view class='search' style="width:100%">
           <input type='text' placeholder='请输入钓场关键词' placeholder-style="color:#333;" value="{{inputValue}}" bindinput='inputBind' bindconfirm='query' style="width:100%" ></input>
           <view class="flex-row-box" bindtap='query' style="align-items:center;">
@@ -8,10 +8,12 @@
       </view>
   </view>
   <scroll-view bindscrolltolower="loadMore" scroll-y style="height:100%;">
-    <view class="flex-column-box box">
+    <view class="flex-column-box box wrap">
         <block wx:for="{{ spots }}" wx:key="{{index}}">
             <view class="spot-box flex-row-box" data-id="{{ item.id }}" bindtap="go">
-                <image src="{{ item.icon || item.posters }}" mode="widthFix"/>
+                <view class="img-wrap">
+                  <image src="{{ item.icon || item.posters }}" />
+                </view>
                 <view class="flex-column-box" style="margin-left: 13px;justify-content: space-between;width:100%;">
                     <view class="info">
                       <text class="title">{{item.name}}</text>

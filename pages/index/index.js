@@ -180,8 +180,12 @@ Page({
     // 热门钓场轮播数据获取
     store.hotSpot({ areaId: 110100, pageSize: 6 }, (res) => {
       self.setData({
-        spots: (res.data.list || [])
+        spots: (res.data.list || []).map(x => {
+          x.stars = self.stars(x.star);
+          return x;
+        }),
       });
+      console.log(self.data.spots)
     })
     // 获取资讯列表
     store.article({ order: this.data.tab == '热门资讯' ? 'hot' : 'time' }, (res) => {
@@ -223,6 +227,31 @@ Page({
         scoreData: res.data
       })
     })
+  },
+  stars (num) {
+    let stars = [];
+    let count = 0;
+    while (count < 5) {
+      if (num - count >= 1) {
+        stars.push('/assets/star_full.png');
+      } else if (num - count < 1 && num - count > 0) {
+        stars.push('/assets/star_half.png');
+      } else {
+        stars.push('/assets/star_none.png');
+      }
+      count++;
+    }
+    return stars;
+  },
+  goSpotList () {
+    return wx.navigateTo({
+      url: '../spot/spotlist/spotlist'
+    });
+  },
+  goSpotDetail (e) {
+    return wx.navigateTo({
+      url: '../spot/spotdetail/spotdetail?id=' + e.currentTarget.dataset.id
+    });
   },
 
   onHide () {

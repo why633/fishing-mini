@@ -354,3 +354,73 @@ page {
   width: 40rpx;
   height: 40rpx;
 }
+.list{
+  padding: 26rpx 0;
+}
+.list .item{
+  display: flex;
+  padding: 28rpx 0;
+  border-bottom: 1rpx solid #EBEDEF;
+  align-items: center;
+}
+
+.list .item:last-child{
+  border: none;
+}
+
+.list .item .img-wrap{
+  width: 168rpx;
+  height: 168rpx;
+  background: pink;
+  margin-right: 24rpx;
+}
+.list .img-wrap image{
+  width: 100%;
+  height: 100%;
+}
+
+.list .item .info{
+  flex: 1;
+  position: relative;
+}
+.list .item .info .spot-name{
+  font-family: PingFangSC-Semibold;
+  font-size: 30rpx;
+  margin-bottom: 16rpx;
+}
+.list .item .info .address{
+  margin-top: 36rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.list .stars-box image{
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 8rpx;
+}
+
+.list .item .tag-wrap{
+  position: absolute;
+  top: 52rpx;
+  right: 0;
+}
+
+.list .tag-wrap .tag{
+  display: inline-block;
+  padding: 4rpx 12rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #FFFFFF;
+  margin-right: 8rpx;
+}
+.list .tag-wrap .verify{
+  background: #F2941B;
+}
+.list .tag-wrap .game{
+  background: #2D6BB4;
+}
+.list .tag-wrap .activity{
+  background: #EA651B;
+}

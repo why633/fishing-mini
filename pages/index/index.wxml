@@ -61,8 +61,33 @@
     <view class="like">
       <view class="title clearfix">
         <text class="h">猜你喜欢</text>
-        <text class="more">更多</text>
+        <text class="more" bindtap="goSpotList">更多</text>
         <image class="more-icon" src="/assets/dark_arrow_icon.png" />
+      </view>
+      <view class="list">
+        <view class="item" wx:for="{{spots}}" wx:key="{{index}}" wx:if="{{index<3}}" data-id="{{ item.id }}" bindtap="goSpotDetail">
+          <view class="img-wrap">
+            <image src="{{ item.icon || item.posters }}" />
+          </view>
+          <view class="info">
+            <view class="spot-name">
+              {{item.name}}
+            </view>
+            <view class="stars-box">
+              <block wx:for="{{ item.stars }}" wx:key="{{index}}">
+                <image class="star" src="{{ item }}"/>
+              </block>
+            </view>
+            <view class="address">
+              {{item.address}}
+            </view>
+            <view class="tag-wrap">
+              <view wx:if="{{item.attestation==2}}" class="tag verify">认证</view>
+              <view wx:if="{{item.game==2}}" class="tag game">赛事</view>
+              <view wx:if="{{item.activity==2}}" class="tag activity">活动</view>
+            </view>
+          </view>
+        </view>
       </view>
     </view>
       
