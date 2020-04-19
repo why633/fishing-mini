@@ -7,7 +7,8 @@ Page({
   data: {
     user: {},
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    hasUserInfo: false
+    hasUserInfo: false,
+    userData: {}
   },
 
   onReady: function (e) {
@@ -19,6 +20,25 @@ Page({
       url: './application/application'
     })
     else {
+      showToast('请绑定微信后查看', 'none')
+    }
+  },
+
+  goAuthen () {
+    if (getData('sessionID')) {
+      const self = this
+      console.log(self.data.user)
+      store.checkIdCard({userId: self.data.user.id}, (res) => {
+        console.log(res.data.value)
+        if(res.data.value){
+          showToast('您已认证', 'none')
+        } else {
+          wx.navigateTo({
+            url: './authen/authen'
+          })
+        }
+      })
+    } else {
       showToast('请绑定微信后查看', 'none')
     }
   },
@@ -35,6 +55,7 @@ Page({
         user: getData('userInfo'),
         hasUserInfo: true
       })
+      self.getMyUserInfo()
     } else {
       this.setData({
         user: null, hasUserInfo: false
@@ -62,6 +83,7 @@ Page({
                 // app.globalData.user = user
                 setData('userInfo', user);
                 showToast('登录成功', 'none');
+                self.getMyUserInfo()
               })
             } else {
               showToast('授权失败,稍后重试', 'none')
@@ -75,12 +97,31 @@ Page({
     })
     
   },
+  // 获取我的相关信息
+  getMyUserInfo () {
+    let self = this
+    store.getMyUserInfo({}, (res) => {
+      console.log(res.data)
+      self.setData({
+        userData: res.data
+      })
+      console.log(self.data.userData)
+    })
+  },
   logout () {
     remoData('sessionID');
     remoData('userInfo');
     this.setData({
-      user: null, hasUserInfo: false
+      user: null, hasUserInfo: false, userData: {}
     })
+  },
+  goWallet () {
+    if (getData('sessionID')) wx.navigateTo({
+      url: './wallet/wallet'
+    })
+    else {
+      showToast('请绑定微信后查看', 'none')
+    }
   },
   onHide () {
 

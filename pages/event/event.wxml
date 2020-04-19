@@ -1,4 +1,5 @@
 <wxs src="../../utils/dateFormat.wxs" module="dateFormat" />
+<wxs src="../../utils/eventType.wxs" module="eventType" />
 <view class="container" >
   <scroll-view bindscrolltolower="loadMore" scroll-y style="height:100%;">
     <view class="week-box flex-row-box">
@@ -15,14 +16,14 @@
     <view class="flex-column-box">
     	<block wx:for="{{ events }}" wx:key="{{index}}">
    	 		<view class="event-box flex-row-box" data-id="{{ item.id }}" bindtap="go">
-    			<image src="{{ item.coverImage }}" mode="aspectFill"/>
-    			<view class="flex-column-box" style="margin-left: 13px;min-height:258rpx;justify-content: space-between;">
+    			<image src="{{ item.coverImage }}"/>
+    			<view class="flex-column-box" style="margin-left: 13px;min-height:258rpx;justify-content: space-between;flex: 1">
 	                <view class="info">
 	                  <text class="title">{{item.name}}</text>
 	                </view>
 	                <view class="tag">
 	                  <text class="{{ item.type==2?'game':'' }}">{{ item.type == '2' ? '赛事' : '活动' }}</text>
-	                  <text class="{{ item.spotType == '1' ? 'type heikeng' : (item.spotType == '2' ? 'type luya': ( item.spotType == '4' ? 'type haidiao' : (item.spotType == '3' ? 'type ziran' : 'type')))}}">{{ item.spotType == '1' ? '黑坑' : (item.spotType == '2' ? '路亚': ( item.spotType == '4' ? '海钓' : (item.spotType == '3' ? '自然水域':'')))}}</text>
+	                  <text class="{{ item.spotType == '1' ? 'type heikeng' : (item.spotType == '2' ? 'type luya': ( item.spotType == '4' ? 'type haidiao' : (item.spotType == '3' ? 'type ziran' : 'type')))}}">{{eventType.eventType(item.spotType)}}</text>
 	                  <text class="{{ item.isPast ? 'end' : 'going'}}">{{ item.isPast ? '已过期' : '报名中' }}</text>
 	                </view>
 	                <view class="flex-column-box">

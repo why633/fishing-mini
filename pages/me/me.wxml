@@ -13,43 +13,113 @@
   <view class="box flex-row-box user-none-info" wx:else>
      <image src="{{ user.headImg || '/assets/user_icon.png'}}"/>
   </view>
-  <view class="flex-column-box item-box box" style="border-bottom: 24rpx solid #F4F4F4;">
-    <view class="item-info flex-row-box" bindtap="goApplication">
-        <view>
-          <image class="icon" src="/assets/application_icon.png"/>
-          <text>我的订单</text>
-        </view>
-        <image class="arrow" src="/assets/dark_arrow_icon.png" />
+
+  <view class="join-wrap">
+    <view class="join-item" bindtap="goApplication">
+      <view class="num">{{userData.activity}}</view>
+      <view class="title">参与的活动</view>
     </view>
-    <view class="item-info flex-row-box" bindtap="alert">
-        <view class="flex-row-box">
-        <image class="icon" src="/assets/game_icon.png"/>
-        <text>我参与的</text>
-        </view>
-        <image class="arrow" src="/assets/dark_arrow_icon.png" />
+    <view class="join-item" bindtap="goApplication">
+      <view class="num">{{userData.game}}</view>
+      <view class="title">参与的赛事</view>
     </view>
-    <view class="item-info flex-row-box"  bindtap="alert">
-        <view class="flex-row-box">
-        <image class="icon" src="/assets/wallet_icon.png"/>
-        <text>我的钱包</text>
-        </view>
-        <image class="arrow" src="/assets/dark_arrow_icon.png" />
+    <view class="join-item" bindtap="alert">
+      <view class="num">0</view>
+      <view class="title">我的收藏</view>
     </view>
-    <view class="item-info flex-row-box" style="border:none;"  bindtap="alert">
-        <view class="flex-row-box">
-        <image class="icon" src="/assets/setting_icon.png"/>
-        <text>设置</text>
-        </view>
-        <image class="arrow" src="/assets/dark_arrow_icon.png" />
+  </view>
+  <view class="money-wrap">
+    <view class="money-item" bindtap="goWallet">
+      <view class="icon">
+        <image src="/assets/wallet.png" />
+        <view class="text">钱包</view>
+      </view>
+      <view class="num">￥{{userData.money}}元</view>
+    </view>
+    <view class="money-item" bindtap="alert">
+      <view class="icon">
+        <image src="/assets/wallet.png" />
+        <view class="text">代金券</view>
+      </view>
+      <view class="num">{{userData.coupons}}张</view>
+    </view>
+  </view>
+  <view class="link-wrap" bindtap="alert">
+    <view class="icon">
+      <image src="/assets/link_top.png" />
+    </view>
+    <view class="title">
+      协会赛事排名
+    </view>
+    <view class="arraw">
+      <image class="arrow" src="/assets/dark_arrow_icon.png" />
     </view>
   </view>
 
-  <view class="box flex-row-box" style="font-size:32rpx;height:84rpx;">
+  <view class="link-wrap" bindtap="goApplication">
+    <view class="icon">
+      <image src="/assets/link_order.png" />
+    </view>
+    <view class="title">
+      我的订单
+    </view>
+    <view class="arraw">
+      <image class="arrow" src="/assets/dark_arrow_icon.png" />
+    </view>
+  </view>
+  <view class="link-wrap" bindtap="goAuthen">
+    <view class="icon">
+      <image src="/assets/link_name_authen.png" />
+    </view>
+    <view class="title">
+      实名认证
+    </view>
+    <view class="arraw">
+      <image class="arrow" src="/assets/dark_arrow_icon.png" />
+    </view>
+  </view>
+  <view class="link-wrap" bindtap="alert">
+    <view class="icon">
+      <image src="/assets/link_spot_authen.png" />
+    </view>
+    <view class="title">
+      钓场认证
+    </view>
+    <view class="arraw">
+      <image class="arrow" src="/assets/dark_arrow_icon.png" />
+    </view>
+  </view>
+
+  <view class="link-wrap" bindtap="alert">
+    <view class="icon">
+      <image src="/assets/link_extension.png" />
+    </view>
+    <view class="title">
+      推广申请
+    </view>
+    <view class="arraw">
+      <image class="arrow" src="/assets/dark_arrow_icon.png" />
+    </view>
+  </view>
+
+  <view class="link-wrap" bindtap="alert">
+    <view class="icon">
+      <image src="/assets/link_address.png" />
+    </view>
+    <view class="title">
+      收获地址管理
+    </view>
+    <view class="arraw">
+      <image class="arrow" src="/assets/dark_arrow_icon.png" />
+    </view>
+  </view>
+
+  <view class="box flex-row-box" style="font-size:32rpx;height:84rpx;margin-top:20rpx;">
     <text style="line-height:84rpx;">当前版本：v1.0.0</text>
   </view>
 
-  <view class="box" wx:if="{{hasUserInfo}}" style="background:#F4F4F4">
-    <button class="btn" bindtap="logout">退出登录</button>
+  <view class="box" wx:if="{{hasUserInfo}}">
+    <button class="logout-btn" bindtap="logout">退出登录</button>
   </view>
 
   <view class="box" wx:if="{{!hasUserInfo && canIUse}}" style="background:#F4F4F4">

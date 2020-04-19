@@ -1,6 +1,38 @@
 
 function eventType (typeNum) {
-    let typeName = '111'
+    var typeName = ''
+    switch (typeNum) {
+        case 1:
+            typeName = '黑坑';
+            break;
+        case 2:
+            typeName = '路亚';
+            break;
+        case 3:
+            typeName = '自然水域';
+            break;
+        case 4:
+            typeName = '海钓';
+            break;
+        case 5:
+            typeName = '装备';
+            break;
+        case 6:
+            typeName = '野钓';
+            break;
+        case 7:
+            typeName = '欢乐塘';
+            break;
+        case 8:
+            typeName = '练竿塘';
+            break;
+        case 9:
+            typeName = '竞技池';
+            break;
+        default:
+            typeName = ''
+        
+    }
     return typeName
 }
 

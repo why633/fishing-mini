@@ -14,8 +14,8 @@
       <text>{{ dateFormat.dateFormat(applicationInfo.startDate, 'yyyy年MM月dd日 hh:mm') }}</text>
     </view>
     <view class="flex-row-box">
-      <text class="label">报名人数</text>
-      <text>{{ applicationInfo.peopleNumber }}</text>
+      <text class="label">最高人数</text>
+      <text>限{{ applicationInfo.peopleNumber }}人</text>
     </view>
     <view class="flex-row-box">
       <text class="label">报名金额</text>

@@ -195,7 +195,7 @@ Page({
         skip: res.data.page.pageNo
       })
     })
-    this.getScoreInfo()
+    
   },
 
   createApplication () {
@@ -263,5 +263,6 @@ Page({
       systemWidth: wx.getSystemInfoSync().windowWidth,
       width: wx.getSystemInfoSync().windowWidth * 0.96 - 20
     })
+    this.getScoreInfo()
   }
 })

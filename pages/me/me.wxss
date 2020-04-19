@@ -1,3 +1,6 @@
+page{
+	height: auto;
+}
 .container{
 	background:#F4F4F4;
 }
@@ -77,4 +80,88 @@
 .item-box .item-info image.arrow{
 	width:36rpx;
 	height:36rpx;
+}
+.join-wrap{
+	display: flex;
+	background: #fff;
+	margin-bottom: 20rpx;
+	padding: 36rpx 0 30rpx;
+}
+
+.join-wrap .join-item{
+	flex: 1;
+	text-align: center;
+	font-family: PingFangSC-Medium;
+	font-size: 28rpx;
+	color: #52A5D4;
+}
+.join-item:nth-child(2){
+	border-left: 1px solid #EFF2F4;
+	border-right: 1px solid #EFF2F4;
+}
+.money-wrap{
+	display: flex;
+	background: #fff;
+	
+}
+.money-wrap .money-item{
+	flex: 1;
+	text-align: center;
+	font-family: PingFangSC-Medium;
+	font-size: 28rpx;
+	color: #333333;
+	padding: 30rpx 0 24rpx;
+}
+.money-wrap .money-item image{
+	width: 70rpx;
+	height: 70rpx;
+}
+.money-wrap .icon .text{
+	font-size: 24rpx;
+	color: #1062C6;
+	margin-top: -16rpx;
+}
+.money-wrap .money-item .num{
+	margin-top: 12rpx;
+}
+.money-wrap .money-item:first-child{
+	border-right: 1px solid #EFF2F4;
+}
+
+.link-wrap{
+	display: flex;
+	align-items: center;
+	height: 92rpx;
+	padding: 0 28rpx;
+	font-family: PingFangSC-Regular;
+	font-size: 32rpx;
+	color: #333333;
+	background: #fff;
+}
+.link-wrap .icon{
+	width: 76rpx;
+	height: 76rpx;
+	margin-right: 26rpx;
+}
+.link-wrap .icon image{
+	width: 100%;
+	height: 100%;
+}
+.link-wrap .arraw{
+	width: 50rpx;
+	height: 50rpx;
+}
+.link-wrap .arraw image{
+	width: 100%;
+	height: 100%;
+}
+.link-wrap .title{
+	flex: 1;
+}
+.logout-btn{
+	width: 60%;
+	font-size: 32rpx;
+	margin: 60rpx auto;
+	height: 70rpx;
+	line-height: 70rpx;
 }

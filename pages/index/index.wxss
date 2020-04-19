@@ -233,8 +233,8 @@ page {
 }
 .block-wrap .block-item image{
   display: block;
-  width: 80rpx;
-  height: 80rpx;
+  width: 100rpx;
+  height: 100rpx;
   margin: 0 auto;
 }
 
@@ -263,13 +263,14 @@ page {
   line-height: 80rpx;
 }
 .user-wrap{
-  height: 306rpx;
+  height: 288rpx;
   position: relative;
 }
 .user-wrap .bg{
   position: absolute;
   width: 100%;
-  top: -240rpx;
+  height: 100%;
+  top: -80rpx;
 }
 .user-wrap .head-img{
   position: absolute;
@@ -280,12 +281,12 @@ page {
   /* background: pink; */
   border-radius: 50%;
   border: 8rpx solid #fff;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 .user-wrap .head-img .img{
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  /* border-radius: 50%; */
 }
 .user-wrap .head-img .l-icon{
   position: absolute;
@@ -297,7 +298,7 @@ page {
 .user-wrap .user{
   position: absolute;
   top: 160rpx;
-  left: 330rpx;
+  right: 40rpx;
   /* width: 400rpx; */
   font-family: PingFangSC-Medium;
   font-size: 24rpx;
@@ -305,13 +306,19 @@ page {
   letter-spacing: -0.6rpx;
 }
 .user-wrap .text view{
-  display: inline-block;
-  /* line-height: 24rpx; */
-  /* float: left; */
+  height: 50rpx;
+  line-height: 50rpx;
+  float: left;
 }
 .user-wrap .text .name{
   font-size: 36rpx;
-  margin-left: 68rpx;
+  margin-left: 46rpx;
+  width: 126rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  height: 50rpx;
+  line-height: 50rpx;
 }
 .user-wrap .text .arraw_icon{
   width: 32rpx;
@@ -324,7 +331,6 @@ page {
 }
 .user-wrap .text.score{
   text-align: right;
-  padding-right: 32rpx;
   box-sizing: border-box;
 }
 

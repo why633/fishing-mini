@@ -1,0 +1,20 @@
+<view class="container">
+	<view class="total">
+		<view class="title">总金额</view>
+		<view class="num">{{walletData.amount}}</view>
+	</view>
+	
+	<button class="recharge" bindtap="goDownloadApp">去充值</button>
+	<button class="cash-out" bindtap="goDownloadApp">提现</button>
+
+	<view class="text">
+		<view class="p">1.用户钱包有可用资金即可提现</view>
+		<view class="p">2.单笔提现最小金额为100元人民币</view>
+		<view class="p">3.单人每日提现额度上限为20000人民币</view>
+		<view class="p">4.提现需工作人员人工审核，工作日受理提现时间如下：</view>
+
+		<view class="p mt-16">工作日：上午9：00-10：00及下午14：00-15：00</view>
+		<view class="p">双休日：上午10：00-12：00及下午16：00-17：00</view>
+		<view class="p">节假日：受理提现实践请关注平台通知</view>
+	</view>
+</view>

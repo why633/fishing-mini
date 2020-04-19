@@ -669,6 +669,46 @@ export function scoreInfo (params, cb, failcb) {
     }
   })
 }
+// 获取钱包信息
+export function walletInfo (params, cb, failcb) {
+  return $post({
+    url: '/order/balance/select/info',
+    data: params,
+    success (data) {
+      cb(data)
+    },
+    fail (error) {
+      failcb && failcb()
+    }
+  })
+}
 
+// 验证是否实名
+export function checkIdCard(params, cb, failcb) {
+  return $get({
+    url: '/user/userInfo/check/idCard',
+    data: params,
+    success (data) {
+      cb(data)
+    },
+    fail (error) {
+      failcb && failcb()
+    }
+  })
+}
+
+// 实名认证
+export function certification(params, cb, failcb) {
+  return $get({
+    url: '/user/userInfo/certification/name',
+    data: params,
+    success (data) {
+      cb(data)
+    },
+    fail (error) {
+      failcb && failcb()
+    }
+  })
+}
 
 

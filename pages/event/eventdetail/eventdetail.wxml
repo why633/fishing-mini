@@ -1,4 +1,5 @@
 <wxs src="../../../utils/dateFormat.wxs" module="dateFormat" />
+<wxs src="../../../utils/eventType.wxs" module="eventType" />
 <view class="container" >
   <view class="fixed-view" bindtap="backhome">
     <image src="/assets/backhome.png"/>
@@ -34,8 +35,8 @@
             <text class="content">{{ eventInfo.address }}</text>
         </view>
         <view class="info flex-row-box">
-            <text class="label">类型</text>
-            <text class="content">{{ eventInfo.playType==1?'黑坑':(eventInfo.playType==2?'路亚':(eventInfo.playType==7?'欢乐塘':(eventInfo.playType==8?'练竿塘':(eventInfo.playType==9?'竞技池':'')))) }}</text>
+            <text class="label">钓坑类型</text>
+            <text class="content">{{ eventType.eventType(eventInfo.spotType)}}</text>
         </view>
         <view class="info flex-row-box">
             <text class="label">放鱼量</text>

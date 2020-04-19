@@ -58,7 +58,6 @@ const $Request = param => {
     url: param.url || '',
     data: param.data || {},
     success: (res) => {
-      console.log(res)
       clearTimeout(timeout)
       if(res.data.code === 4001) {
         remoData('sessionID');
@@ -79,6 +78,7 @@ const $Request = param => {
       (typeof param.success == "function") && param.success(res.data, "");
     },
     fail: (err) => {
+      console.log(err)
       clearTimeout(timeout);
       (typeof param.fail == "function") && param.fail(null, err.errMsg);
     }

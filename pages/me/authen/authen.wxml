@@ -1,0 +1,21 @@
+<view class="authen">
+	<van-cell-group>
+	  <van-field
+	    value="{{ name }}"
+	    label="姓名"
+	    placeholder="请填写真实姓名"
+	    bind:change="onNameChange"
+	  />
+	  <van-field
+	    value="{{ idCard }}"
+	    label="身份证"
+	    placeholder="请填写身份证号"
+	    bind:change="onIdCardChange"
+	  >
+	  </van-field>
+	 
+	</van-cell-group>
+	<view class="box">
+		<button class="btn" bindtap="submit" disabled="{{ subing }}">提交</button>
+	</view>
+</view>

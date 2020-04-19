@@ -1,0 +1,42 @@
+.total{
+  background: #52A5D4;
+  height: 200rpx;
+}
+.total .title{
+  text-align: center;
+  font-family: PingFangSC-Medium;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  margin-top: 40rpx;
+}
+.total .num{
+  text-align: center;
+  font-family: PingFangSC-Medium;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  margin-top: 16rpx;
+}
+.recharge{
+  color: #fff;
+  width: 60%;
+	font-size: 32rpx;
+	margin: 60rpx auto 0;
+	height: 70rpx;
+  line-height: 70rpx;
+  background: #52A5D4;
+}
+
+.cash-out{
+  width: 60%;
+	font-size: 32rpx;
+	margin: 60rpx auto 120rpx;
+	height: 70rpx;
+  line-height: 70rpx;
+}
+.text{
+  padding: 0 20rpx;
+  font-size: 28rpx;
+}
+.text .p.mt-16{
+  margin-top: 10rpx;
+}

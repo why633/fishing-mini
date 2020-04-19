@@ -82,7 +82,7 @@ page {
   width: 80%;
   margin:0 auto 30rpx;
   font-size: 32rpx;
-  background:#0a3255;
+  background:#52A5D4;
   border-radius: 20rpx;
   color:#fff;
 }

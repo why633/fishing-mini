@@ -1,5 +1,5 @@
 .week-box{
-	background: #0a3255;
+	background: #52A5D4;
 	justify-content:space-around;	
 }
 .week-box .day{
@@ -10,13 +10,13 @@
 }
 .week-box .active{
 	color: #fff;
-    background: #2a567b;
+	background: #4288c2;
 }
 
 .tab-box{
-  	width: 100%;
-   	justify-content:space-around;
-	background:#0a3255;
+	width: 100%;
+	justify-content:space-around;
+	background:#52A5D4;
 	padding:12rpx 0rpx;
 }
 .tab-box view{

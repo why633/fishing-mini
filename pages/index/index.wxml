@@ -5,20 +5,21 @@
       <image class="bg" src='/assets/index_top_bg.png'></image>
       <view class="info">
         <view class="head-img">
-          <image class="img" src="{{scoreData.headImg}}"></image>
-          <image class="l-icon" src="/assets/vip_icon.png"  />
+          <image class="img" mode="aspectFill" src="{{scoreData.headImg}}"></image>
+            
+          <!-- <image class="l-icon" src="{{scoreData.userLevel == 1 ? '' : (scoreData.userLevel == 2 ? '/assets/vip_2.png' : (scoreData.userLevel == 3 ? '/assets/vip_3.png' : (scoreData.userLevel == 4?'/assets/vip_4.png':'')))}}"  /> -->
         </view>
         <view class="user">
           <view class="text">
             <view class="">
-              欢迎您 <text style="margin-left:20rpx;"></text>尊贵的会员
+              欢迎您 <text style="margin-left:20rpx;"></text>尊贵的{{scoreData.userLevel == 1 ? '普通会员' : (scoreData.userLevel == 2 ? '白银会员' : (scoreData.userLevel == 3 ? '黄金会员' : (scoreData.userLevel == 4?'白金会员':'')))}}{{!scoreData.userLevel?'会员':''}}
             </view>
             <view class="name">
               {{ scoreData.nickName }}
             </view>
-            <view class="arraw_icon">
+            <!-- <view class="arraw_icon">
               <image class="" src="/assets/arraw_icon.png"></image>
-            </view>
+            </view> -->
           </view>
           <view class="text score">现有积分：{{ scoreData.currency }}分</view>
         </view>
