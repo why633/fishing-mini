@@ -56,6 +56,10 @@ Page({
     if (type == '4') {
       url = '../article/normal/article?id=' + id
     }
+    if (type == '5') {
+      url = '../spot/spotlist/spotlist'
+      
+    }
     if (url) {
       return wx.navigateTo({
         url

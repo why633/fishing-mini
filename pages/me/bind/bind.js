@@ -1,4 +1,4 @@
-import { setData, getData, showToast, globalTabindex } from '../../../utils/util.js'
+import { setData, getData, remoData, showToast, globalTabindex } from '../../../utils/util.js'
 import conf from "../../../config.js";
 // adaptPadding,
 import * as store from '../../../store/index.js'
@@ -95,7 +95,16 @@ Page({
         wx.showLoading({
           title: '数据同步中...',
         });
-        wx.navigateBack();
+        if(getData('eventId')){
+          let eventId = getData('eventId')
+          remoData('eventId');
+          console.log(eventId)
+          wx.navigateTo({
+            url: '../../event/eventdetail/eventdetail?id=' + eventId
+          });
+        } else {
+          wx.navigateBack();
+        }
         wx.hideLoading();
       }
     });

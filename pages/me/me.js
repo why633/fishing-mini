@@ -84,6 +84,13 @@ Page({
                 setData('userInfo', user);
                 showToast('登录成功', 'none');
                 self.getMyUserInfo()
+                if(getData('eventId')){
+                  let eventId = getData('eventId')
+                  remoData('eventId');
+                  wx.navigateTo({
+                    url: '../event/eventdetail/eventdetail?id=' + eventId
+                  });
+                }
               })
             } else {
               showToast('授权失败,稍后重试', 'none')

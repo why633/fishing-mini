@@ -32,8 +32,10 @@ Page({
   },
 
   createApplication () {
+    let _this = this
     // 判断是否授权登录
     if (!getData('sessionID')) {
+      setData('eventId', _this.data.id)
       wx.showToast({
         title: '请授权登录',
         icon: 'none',
@@ -51,6 +53,7 @@ Page({
     // 判断是否绑定手机号
     console.log(getData('userInfo'))
     if (!getData('userInfo').phone) {
+      setData('eventId', _this.data.id)
       wx.showToast({
         title: '请绑定手机',
         icon: 'none',
@@ -114,6 +117,10 @@ Page({
         if (res.code == 200) {
           wx.navigateTo({
             url: '../../me/applicationdetail/applicationdetail?event=' + JSON.stringify(res.data)
+          })
+        } else if(res.code == 5001){
+          wx.navigateTo({
+            url: '../../me/application/application'
           })
         } else {
           showToast(res.message, 'none')

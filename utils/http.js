@@ -72,7 +72,7 @@ const $Request = param => {
           }
         })
       }
-      if(res.data.code !== 200) {
+      if(res.data.code !== 200&&res.data.code !== 5001) {
          showToast(res.data.message, 'none');
       }
       (typeof param.success == "function") && param.success(res.data, "");

@@ -74,7 +74,7 @@ Page({
     if (this.data.goodsData.length < this.data.totalCount) {
       this.data.searchData.pageNo = this.data.searchData.pageNo + 1
       this.setData({
-        searchData: this.searchData
+        searchData: this.data.searchData
       })
       this.getGoodsList()
     }
