@@ -1,4 +1,4 @@
-import { getData, showToast, globalTabindex, setData } from '../../../utils/util.js'
+import { getData, showToast, globalTabindex, setData, remoData } from '../../../utils/util.js'
 import conf from "../../../config.js";
 // adaptPadding,
 import * as store from '../../../store/index.js'
@@ -110,11 +110,13 @@ Page({
         count: this.data.count,
         tranAmount: this.data.eventInfo.money + (this.data.eventInfo.prepay==1?this.data.eventInfo.prepayMoney:0)
       }
+      setData('eventId', _this.data.id)
       // 报名
       store.applicationGame(JSON.stringify(params), (res => {
         console.log(res)
         console.log(JSON.stringify(res.data))
         if (res.code == 200) {
+          remoData('eventId');
           wx.navigateTo({
             url: '../../me/applicationdetail/applicationdetail?event=' + JSON.stringify(res.data)
           })

@@ -81,6 +81,9 @@
 .event-box view .tag text.going {
 	background: #0ec254;
 }
+.event-box view .tag text.city {
+	background: #59a3d0;
+}
 .event-box view .tag text.end{
 	background:#989aa2;
 }

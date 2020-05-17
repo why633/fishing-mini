@@ -25,6 +25,7 @@
 	                  <text class="{{ item.type==2?'game':'' }}">{{ item.type == '2' ? '赛事' : '活动' }}</text>
 	                  <text class="{{ item.spotType == '1' ? 'type heikeng' : (item.spotType == '2' ? 'type luya': ( item.spotType == '4' ? 'type haidiao' : (item.spotType == '3' ? 'type ziran' : 'type')))}}">{{eventType.eventType(item.spotType)}}</text>
 	                  <text class="{{ item.isPast ? 'end' : 'going'}}">{{ item.isPast ? '已过期' : '报名中' }}</text>
+	                  <text class="city">{{ item.city }}</text>
 	                </view>
 	                <view class="flex-column-box">
 	                  <view class="info-box">

@@ -17,12 +17,18 @@ Page({
     skip: 1,
     width: 0,
     weeks: [],
-    day: moment().format('YYYY-MM-DD')
+    day: ''
   },
 
   onReady: function (e) {
     let cc = 0;
-    let weeks = [];
+    let weeks = [
+      {
+        key: '',
+        date: '全部',
+        month: ''
+      }
+    ];
 
     while (cc < 7) {
       let temp = moment().add(cc, 'days')
